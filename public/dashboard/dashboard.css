@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f7faf9;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 900px;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #234a45;
+}
+
+/* GRID */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* BASE TILE */
+
+.tile {
+  border: none;
+  border-radius: 26px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tile:active {
+  transform: scale(0.96);
+}
+
+/* LEVELS */
+
+.levels .tile {
+  background: #cfeee6;
+  color: #215b55;
+}
+
+/* FEATURE COLORS */
+
+.coral {
+  background: #ffd6cf;
+  color: #7a2d22;
+}
+
+.lavender {
+  background: #e7dbff;
+  color: #3f2a6b;
+}
+
+.blue {
+  background: #d9efff;
+  color: #1f4a72;
+}
+
+.peach {
+  background: #ffe5cc;
+  color: #7a3d0c;
+}
+
+.purple {
+  background: #f0dcff;
+  color: #532b7a;
+}
+
+/* BOTTOM */
+
+.bottom-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.bottom-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 28px;
+  border: none;
+  background: #2f5b55;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bottom-btn.outline {
+  background: transparent;
+  border: 2px solid #2f5b55;
+  color: #2f5b55;
+}
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-actions {
+    flex-direction: column;
+  }
+}
+/* ===============================
+   SPECIAL SUPPORT SAYBON BUTTON
+================================ */
+
+.support-btn {
+  background: #2f5b55;
+  color: white;
+  font-weight: 800;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(79, 191, 168, 0.35);
+}
+
+.support-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.support-btn:hover::after {
+  opacity: 1;
+}
+
+.support-btn {
+  font-weight: 800;
+}

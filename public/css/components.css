@@ -1,0 +1,117 @@
+.teacher {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid var(--mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 1.4s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.teacher img {
+  width: 130px;
+  border-radius: 50%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 300px;
+}
+
+button {
+  padding: 16px;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+}
+
+.primary {
+  background: var(--mint);
+  color: white;
+}
+
+
+.secondary {
+  background: white;
+  border: 2px dashed var(--mint);
+  color: var(--mint-dark);
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.teacher-wrap.speaking .teacher-ring {
+  animation: speakPulse 1.2s infinite;
+}
+
+@keyframes speakPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(152, 255, 208, 0.6);
+  }
+  70% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 22px rgba(152, 255, 208, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}const teacher = document.getElementById("teacherCircle");
+const audio = document.getElementById("introAudio");
+
+if (teacher && audio) {
+  teacher.addEventListener("click", () => {
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.log("Audio blocked until user interaction");
+    });
+
+    teacher.classList.add("speaking");
+
+    audio.onended = () => {
+      teacher.classList.remove("speaking");
+    };
+  });
+}
+.teacher-wrap.speaking .teacher-ring {
+  animation: speakPulse 1.2s infinite;
+}
+
+@keyframes speakPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(152, 255, 208, 0.6);
+  }
+  70% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 22px rgba(152, 255, 208, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}const teacher = document.getElementById("teacherCircle");
+const audio = document.getElementById("introAudio");
+
+if (teacher && audio) {
+  teacher.addEventListener("click", () => {
+    audio.currentTime = 0;
+    audio.play().catch(err => {
+      console.log("Audio blocked until user interaction");
+    });
+
+    teacher.classList.add("speaking");
+
+    audio.onended = () => {
+      teacher.classList.remove("speaking");
+    };
+  });
+}

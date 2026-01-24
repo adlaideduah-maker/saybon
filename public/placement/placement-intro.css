@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f7fff9, #e6f5f1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-wrapper {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #234f47;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #355f58;
+  margin-bottom: 36px;
+}
+
+/* =========================
+   TEACHER
+========================= */
+
+.teacher-wrap {
+  margin-bottom: 40px;
+}
+
+.teacher-ring {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #fdeeee;
+  border: 6px solid #cfeee6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+.teacher-ring img {
+  width: 88%;
+}
+
+/* halo */
+.teacher-ring::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(170, 230, 215, 0.7);
+  animation: halo 2.5s ease-in-out infinite;
+}
+
+.tap-text {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #d7b095;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.primary-btn {
+  background: #2f5b55;
+  color: white;
+  border: none;
+  border-radius: 36px;
+  padding: 18px;
+  font-size: 19px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.primary-btn:active {
+  transform: scale(0.96);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px dashed #9fd6c9;
+  color: #2f5b55;
+  border-radius: 36px;
+  padding: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-7px); }
+  60% { transform: translateY(0); }
+}
+
+@keyframes halo {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your SayBon Level</title>
+
+  <link rel="stylesheet" href="css/reveal.css" />
+</head>
+
+<body>
+
+  <div class="reveal-page">
+
+    <!-- CONFETTI -->
+    <div id="confetti"></div>
+
+    <!-- TEACHER -->
+    <div class="teacher-wrap" id="teacherCircle">
+      <div class="halo"></div>
+      <img src="assets/images/teacher.png" alt="Teacher" />
+    </div>
+
+    <p class="tap-text">Tap to find out your level ✨</p>
+
+    <!-- LEVEL -->
+    <div class="level-stage">
+      <h1 id="levelText" class="level hidden"></h1>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="action-buttons" id="actions">
+      <button class="primary-btn" id="startBtn">
+        Start my journey →
+      </button>
+
+      <button class="secondary-btn" id="homeBtn">
+        ← Back to homepage
+      </button>
+    </div>
+
+    <audio id="levelAudio"></audio>
+
+  </div>
+
+  <!-- CORE LOGIC -->
+  <script>
+    // 🔒 ensure level always exists
+    const level =
+      sessionStorage.getItem("saybon_level") || "A1";
+
+    // expose globally for reveal.js
+    window.SAYBON_LEVEL = level;
+
+    // button safety
+    document.getElementById("startBtn").onclick = () => {
+      window.location.href = "/dashboard/";
+    };
+
+    document.getElementById("homeBtn").onclick = () => {
+      window.location.href = "/";
+    };
+  </script>
+
+  <!-- Reveal animation logic -->
+  <script src="js/reveal.js"></script>
+
+</body>
+</html>

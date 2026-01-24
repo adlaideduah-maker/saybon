@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SayBon — Learner Dashboard</title>
+
+  <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <h1 class="title">LEARNER 📌 DASHBOARD</h1>
+
+    <div class="grid">
+
+      <!-- LEFT — LEVELS -->
+      <div class="column levels">
+        <button class="tile level" onclick="goLevel('absolute-beginner')">Absolute Beginner</button>
+        <button class="tile level" onclick="goLevel('beginner')">Beginner</button>
+        <button class="tile level" onclick="goLevel('intermediate')">Intermediate</button>
+        <button class="tile level" onclick="goLevel('semi-advanced')">Semi-Advanced</button>
+        <button class="tile level" onclick="goLevel('advanced')">Advanced</button>
+      </div>
+
+      <!-- RIGHT — FEATURES -->
+      <div class="column features">
+        <button class="tile coral" onclick="goFeature('talkletics')">🎮 Talkletics (French Games)</button>
+        <button class="tile lavender" onclick="goFeature('music')">🎵 SayBon Music</button>
+        <button class="tile blue" onclick="goFeature('delf')">📘 DELF Exam Prep</button>
+        <button class="tile peach" onclick="goFeature('translation')">🌍 Translation Services</button>
+        <button class="tile purple" onclick="goFeature('chat')">💬 Chat Room</button>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM ACTIONS -->
+    <div class="bottom-actions">
+  <button
+    class="bottom-btn"
+    onclick="window.location.href='../features/feedback/index.html'">
+    Feedback & Contact
+  </button>
+
+  <button
+    class="bottom-btn support-btn"
+    onclick="window.location.href='../features/support/index.html'">
+    Support 💚 SayBon
+  </button>
+
+  <button
+    class="bottom-btn outline"
+    onclick="goHome()">
+    ← Back to Homepage
+  </button>
+</div>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
+

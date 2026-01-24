@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  background: #f7faf9;
+  text-align: center;
+}
+
+.level-title {
+  margin: 30px 0;
+  font-size: 26px;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 20px;
+  max-width: 420px;
+  margin: auto;
+}
+
+.lesson {
+  padding: 20px 0;
+  border-radius: 20px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.lesson.unlocked {
+  background: #4fbfa8;
+  color: white;
+}
+
+.lesson.locked {
+  background: #e7efee;
+  color: #8da7a3;
+}
+.back {
+  margin: 30px;
+  background: none;
+  border: none;
+  color: #4fbfa8;
+}

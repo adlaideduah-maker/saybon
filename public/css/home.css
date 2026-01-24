@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #2f5b55;
+}
+
+/* ================= LAYOUT ================= */
+
+.app {
+  min-height: 100svh;
+  display: flex;
+}
+
+.white-area {
+  width: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 360px;
+}
+
+.green-area {
+  width: 50%;
+  background: #2f5b55;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================= TEACHER ================= */
+
+.teacher-ring {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(14px);
+  border: 2px solid rgba(255,255,255,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MIRROR LIGHT SWEEP */
+.teacher-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.35) 45%,
+    rgba(255,255,255,0) 60%
+  );
+  transform: translateX(-120%);
+  animation: glassSweep 6s infinite ease-in-out;
+}
+
+@keyframes glassSweep {
+  0% { transform: translateX(-120%); }
+  45% { transform: translateX(-120%); }
+  65% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+.teacher-ring img {
+  width: 85%;
+}
+
+.tap-text {
+  margin-top: 10px;
+  margin-left: 30px;
+  color: #f2d9b8;
+  font-weight: 600;
+}
+
+/* ================= BUTTONS ================= */
+
+.actions {
+  margin-top: 42px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.action-btn {
+  padding: 18px;
+  border-radius: 40px;
+  border: none;
+  background: #3f6f69;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================= OVERLAY ================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 25, 35, 0.88);
+  backdrop-filter: blur(22px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+
+  z-index: 50;
+
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h2 {
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ================= PILLS ================= */
+
+.pill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pill {
+  width: 420px;
+  height: 56px;
+  border-radius: 50px;
+
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0.08)
+  );
+
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+
+.pill span {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 2.4s ease;
+}
+
+.pill.show {
+  opacity: 1;
+}
+
+.pill.show span {
+  opacity: 1;
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 900px) {
+
+  .app {
+    flex-direction: column;
+  }
+
+  .white-area,
+  .green-area {
+    width: 100%;
+  }
+
+  .white-area {
+    padding: 36px 0 24px;
+  }
+
+  .green-area {
+    padding: 28px 0 42px;
+  }
+
+  .logo {
+    width: 250px;
+  }
+
+  .teacher-ring {
+    width: 110px;
+    height: 110px;
+  }
+
+  .actions {
+    width: 88%;
+    margin-top: 36px;
+  }
+
+  .action-btn {
+    padding: 16px;
+    font-size: 17px;
+  }
+
+  .overlay {
+    padding: 30px 0;
+  }
+
+  .overlay h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .pill {
+    width: 88vw;
+    height: 52px;
+  }
+
+  .pill span {
+    font-size: 15px;
+  }
+}

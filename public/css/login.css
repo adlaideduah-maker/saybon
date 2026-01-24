@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7faf9;
+}
+
+.login-page {
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #6b8f88;
+  margin-bottom: 30px;
+}
+
+.google-btn {
+  background: #4fbfa8;
+  color: white;
+  border: none;
+  padding: 16px 34px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  background: #eef6fb;
+}
+
+.placement-wrapper {
+  max-width: 520px;
+  margin: 80px auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.option {
+  padding: 18px;
+  border-radius: 40px;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.question-image {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 18px;
+  margin: 20px auto;
+}
+
+/* INTERVENTION */
+
+.intervention {
+  position: fixed;
+  inset: 0;
+  background: rgba(12,25,35,0.9);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: 1000;
+}
+
+.intervention.hidden {
+  display: none;
+}
+
+.teacher-box {
+  position: relative;
+  width: 150px;
+}
+
+.teacher-box img {
+  width: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.halo {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 3px solid rgba(180,255,220,0.6);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.25; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.intervention-actions {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.intervention-actions button {
+  padding: 16px;
+  border-radius: 40px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+#revealBtn {
+  background: #4fa487;
+  color: white;
+}
+
+#continueBtn {
+  background: transparent;
+  color: #bdebe0;
+  border: 2px solid rgba(190,235,220,0.5);
+}

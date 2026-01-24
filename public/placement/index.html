@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SayBon Placement Test</title>
+
+  <link rel="stylesheet" href="placement.css" />
+</head>
+
+<body>
+
+  <!-- TEST CONTAINER -->
+  <div class="placement-wrapper">
+
+    <h2 id="questionPrompt"></h2>
+
+    <!-- MEDIA -->
+    <div id="mediaArea"></div>
+
+    <!-- OPTIONS -->
+    <div id="options" class="options"></div>
+
+  </div>
+
+  <!-- INTERVENTION OVERLAY -->
+  <div id="intervention" class="intervention hidden">
+
+    <div class="teacher-box">
+      <div class="halo"></div>
+      <img src="/assets/images/teacher.png" alt="Teacher" />
+
+      <audio id="interventionAudio">
+        <source src="/assets/sounds/placement/intervention.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <div class="intervention-actions">
+      <button id="revealBtn">Go to level reveal →</button>
+      <button id="continueBtn">Continue test</button>
+    </div>
+
+  </div>
+
+  <script src="placement.js"></script>
+</body>
+</html>
