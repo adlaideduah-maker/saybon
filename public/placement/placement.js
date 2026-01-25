@@ -1,6 +1,14 @@
-console.log("PLACEMENT LOADED");
+/**************************************************
+ * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
+ * Full rebuild (stable)
+ * Intervention: 3 wrong in a row
+ **************************************************/
 
-/* ================= QUESTIONS ================= */
+console.log("🔥 placement.js loaded");
+
+/* ==================================================
+   🔒 LOCKED QUESTION SET — DO NOT MODIFY
+================================================== */
 
 const questions = [
   {
@@ -34,19 +42,23 @@ const questions = [
     level: "A0"
   },
 
-  { id: 5, prompt: "Choose the correct sentence.", options: [
-    "Je suis étudiant.",
-    "Je être étudiant.",
-    "Je suis être étudiant.",
-    "Je étudiant suis."
-  ], correct: 0, level: "A1" },
+  { id: 5, prompt: "Choose the correct sentence.",
+    options: [
+      "Je suis étudiant.",
+      "Je être étudiant.",
+      "Je suis être étudiant.",
+      "Je étudiant suis."
+    ],
+    correct: 0, level: "A1" },
 
-  { id: 6, prompt: "What does « j’ai 10 ans » mean?", options: [
-    "I am 10 years old",
-    "I have 10 years",
-    "I had 10 years",
-    "I am ten years"
-  ], correct: 0, level: "A1" },
+  { id: 6, prompt: "What does « j’ai 10 ans » mean?",
+    options: [
+      "I am 10 years old",
+      "I have 10 years",
+      "I had 10 years",
+      "I am ten years"
+    ],
+    correct: 0, level: "A1" },
 
   { id: 7, prompt: "Choose the correct article.",
     options: ["une maison", "un maison", "le maison", "des maison"],
@@ -54,7 +66,8 @@ const questions = [
 
   { id: 8, prompt: "Il pleut. Choisis l’image correcte.",
     image: "/assets/images/a1_q8_weather_collage.png",
-    options: ["A","B","C","D"], correct: 0, level: "A1" },
+    options: ["A","B","C","D"],
+    correct: 0, level: "A1" },
 
   { id: 9, prompt: "Choisis la bonne réponse.",
     options: [
@@ -152,46 +165,65 @@ const questions = [
     correct: 0, level: "C1" }
 ];
 
+/* ==================================================
+   STATE
+================================================== */
+
 let index = 0;
 let wrongStreak = 0;
-const scores = { A0:0,A1:0,A2:0,B1:0,B2:0,C1:0 };
 
-const prompt = document.getElementById("prompt");
-const media = document.getElementById("media");
-const options = document.getElementById("options");
+const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const promptEl = document.getElementById("questionPrompt");
+const optionsEl = document.getElementById("options");
+const mediaArea = document.getElementById("mediaArea");
 
 const overlay = document.getElementById("intervention");
-const teacher = document.getElementById("teacherCircle");
-const buttons = document.getElementById("interventionButtons");
-const audio = document.getElementById("interventionAudio");
+const teacherBox = document.querySelector(".teacher-box");
+const actions = document.querySelector(".intervention-actions");
+const interventionAudio = document.getElementById("interventionAudio");
 
-function load() {
+/* ==================================================
+   LOAD QUESTION
+================================================== */
+
+function loadQuestion() {
   const q = questions[index];
-  prompt.textContent = q.prompt;
-  media.innerHTML = "";
-  options.innerHTML = "";
+
+  promptEl.textContent = q.prompt;
+  optionsEl.innerHTML = "";
+  mediaArea.innerHTML = "";
 
   if (q.audio) {
-    const a = document.createElement("audio");
-    a.src = q.audio;
-    a.controls = true;
-    media.appendChild(a);
+    const audio = document.createElement("audio");
+    audio.src = q.audio;
+    audio.controls = true;
+    mediaArea.appendChild(audio);
   }
 
   if (q.image) {
     const img = document.createElement("img");
     img.src = q.image;
-    img.style.width = "100%";
-    media.appendChild(img);
+    img.className = "question-image";
+    mediaArea.appendChild(img);
   }
 
-  q.options.forEach((opt,i)=>{
-    const b=document.createElement("button");
-    b.textContent=opt;
-    b.onclick=()=>answer(i);
-    options.appendChild(b);
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.textContent = opt;
+    btn.onclick = () => answer(i);
+    optionsEl.appendChild(btn);
   });
 }
+
+/* ==================================================
+   ANSWER LOGIC
+================================================== */
 
 function answer(choice) {
   const q = questions[index];
@@ -203,46 +235,67 @@ function answer(choice) {
     wrongStreak++;
   }
 
-  if (wrongStreak >= 3) return intervention();
+  if (wrongStreak >= 3) {
+    triggerIntervention();
+    return;
+  }
 
   index++;
-  if (index >= questions.length) return finish();
-  load();
+  if (index >= questions.length) finish();
+  else loadQuestion();
 }
 
-function intervention() {
+/* ==================================================
+   INTERVENTION
+================================================== */
+
+function triggerIntervention() {
   overlay.classList.remove("hidden");
-  buttons.classList.add("hidden");
 
-  audio.currentTime = 0;
-  audio.play(); // user gesture already occurred → guaranteed
+  actions.style.display = "none";
+  teacherBox.style.display = "flex";
+  teacherBox.style.opacity = "1";
 
-  audio.onended = () => {
-    teacher.style.display = "none";
-    buttons.classList.remove("hidden");
+  setTimeout(() => {
+    interventionAudio.currentTime = 0;
+    interventionAudio.play().catch(()=>{});
+  }, 200);
+
+  interventionAudio.onended = () => {
+    teacherBox.style.opacity = "0";
+
+    setTimeout(() => {
+      teacherBox.style.display = "none";
+      actions.style.display = "flex";
+    }, 700);
   };
 }
 
-document.getElementById("backBtn").onclick = () => {
+/* ==================================================
+   BUTTONS
+================================================== */
+
+document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
-  teacher.style.display = "flex";
   wrongStreak = 0;
 };
 
 document.getElementById("revealBtn").onclick = finish;
 
+/* ==================================================
+   FINISH
+================================================== */
+
 function finish() {
   let level = "Absolute Beginner";
 
-  if (scores.C1) level = "Advanced";
-  else if (scores.B2||scores.B1) level="Semi Advanced";
-  else if (scores.A2) level="Intermediate";
-  else if (scores.A1) level="Beginner";
+  if (scores.C1 > 0) level = "Advanced";
+  else if (scores.B2 > 0 || scores.B1 > 0) level = "Semi Advanced";
+  else if (scores.A2 > 0) level = "Intermediate";
+  else if (scores.A1 > 0) level = "Beginner";
 
   sessionStorage.setItem("saybon_level", level);
-  sessionStorage.setItem("placement_complete", "yes");
-
-  window.location.href = "/reveal/index.html";
+  window.location.href = "/reveal.html";
 }
 
-load();
+loadQuestion();
