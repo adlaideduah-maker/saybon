@@ -1,3 +1,8 @@
+// ================================
+// SAYBON PLACEMENT TEST — LOCKED
+// QUESTIONS MUST NEVER BE MODIFIED
+// ================================
+
 const questions = [
   {
     id: 1,
@@ -214,14 +219,22 @@ const questions = [
   }
 ];
 
+// ====================================
+// LOGIC — DESIGN SAFE
+// ====================================
+
 let index = 0;
 let wrongStreak = 0;
+
+const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
 const mediaArea = document.getElementById("mediaArea");
 
 const overlay = document.getElementById("intervention");
+const teacherOrb = document.getElementById("teacherOrb");
+const actions = document.getElementById("interventionActions");
 const interventionAudio = document.getElementById("interventionAudio");
 
 function loadQuestion() {
@@ -259,34 +272,62 @@ function answer(choice) {
 
   if (choice === q.correct) {
     wrongStreak = 0;
+    scores[q.level]++;
   } else {
     wrongStreak++;
   }
 
   if (wrongStreak >= 3) {
-    overlay.classList.remove("hidden");
-    interventionAudio.currentTime = 0;
-    interventionAudio.play();
+    startIntervention();
     return;
   }
 
   index++;
-
-  if (index >= questions.length) {
-    finish();
-  } else {
+  if (index < questions.length) {
     loadQuestion();
+  } else {
+    finish();
   }
+}
+
+function startIntervention() {
+  document.getElementById("testUI").style.opacity = 0;
+
+  setTimeout(() => {
+    overlay.classList.remove("hidden");
+    interventionAudio.play();
+  }, 600);
+
+  interventionAudio.onended = () => {
+    teacherOrb.style.opacity = 0;
+
+    setTimeout(() => {
+      teacherOrb.style.display = "none";
+      actions.classList.remove("hidden");
+    }, 700);
+  };
 }
 
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
+  actions.classList.add("hidden");
+  teacherOrb.style.display = "block";
+  teacherOrb.style.opacity = 1;
   wrongStreak = 0;
+  document.getElementById("testUI").style.opacity = 1;
 };
 
 document.getElementById("revealBtn").onclick = finish;
 
 function finish() {
+  let level = "Absolute Beginner";
+
+  if (scores.C1 > 0) level = "Advanced";
+  else if (scores.B2 > 0 || scores.B1 > 0) level = "Semi Advanced";
+  else if (scores.A2 > 0) level = "Intermediate";
+  else if (scores.A1 > 0) level = "Beginner";
+
+  sessionStorage.setItem("saybon_level", level);
   window.location.href = "/reveal.html";
 }
 
