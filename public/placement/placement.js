@@ -1,3 +1,7 @@
+// =======================
+// QUESTIONS (UNCHANGED)
+// =======================
+
 const questions = [
   {
     id: 1,
@@ -162,7 +166,7 @@ const questions = [
     level: "B1"
   },
 
-  // ADVANCED
+  // B2 / C1
   {
     id: 17,
     prompt: "Quelle formulation est la plus diplomatique ?",
@@ -214,6 +218,10 @@ const questions = [
   }
 ];
 
+// =======================
+// LOGIC (ORIGINAL + INTERVENTION)
+// =======================
+
 let index = 0;
 let wrongStreak = 0;
 const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
@@ -222,7 +230,10 @@ const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
 const mediaArea = document.getElementById("mediaArea");
 
+const testScreen = document.getElementById("testScreen");
 const overlay = document.getElementById("intervention");
+const teacher = document.getElementById("teacherGlass");
+const actions = document.getElementById("interventionActions");
 const interventionAudio = document.getElementById("interventionAudio");
 
 function loadQuestion() {
@@ -266,25 +277,48 @@ function answer(choice) {
   }
 
   if (wrongStreak >= 3) {
-    overlay.classList.remove("hidden");
-    interventionAudio.play();
+    triggerIntervention();
     return;
   }
 
   index++;
-
-  if (index >= questions.length) {
-    finish();
-  } else {
-    loadQuestion();
-  }
+  loadQuestion();
 }
 
-document.getElementById("revealBtn").onclick = finish;
+function triggerIntervention() {
+  testScreen.classList.add("fade-out");
+
+  setTimeout(() => {
+    overlay.classList.remove("hidden");
+
+    setTimeout(() => {
+      teacher.classList.add("show");
+      interventionAudio.play();
+    }, 400);
+
+  }, 800);
+
+  interventionAudio.onended = () => {
+    teacher.classList.remove("show");
+
+    setTimeout(() => {
+      actions.classList.add("show");
+    }, 600);
+  };
+}
+
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
+  actions.classList.remove("show");
+  teacher.classList.remove("show");
+
+  testScreen.classList.remove("fade-out");
   wrongStreak = 0;
+  index++;
+  loadQuestion();
 };
+
+document.getElementById("revealBtn").onclick = finish;
 
 function finish() {
   let level = "Absolute Beginner";

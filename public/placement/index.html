@@ -10,15 +10,13 @@
 
 <body>
 
-  <!-- TEST CONTAINER -->
-  <div class="placement-wrapper">
+  <!-- TEST -->
+  <div id="testScreen" class="placement-wrapper">
 
     <h2 id="questionPrompt"></h2>
 
-    <!-- MEDIA -->
     <div id="mediaArea"></div>
 
-    <!-- OPTIONS -->
     <div id="options" class="options"></div>
 
   </div>
@@ -26,19 +24,19 @@
   <!-- INTERVENTION OVERLAY -->
   <div id="intervention" class="intervention hidden">
 
-    <div class="teacher-box">
-      <div class="halo"></div>
-      <img src="/assets/images/teacher.png" alt="Teacher" />
-
-      <audio id="interventionAudio">
-        <source src="/assets/sounds/placement/intervention.mp3" type="audio/mpeg" />
-      </audio>
+    <div id="teacherGlass" class="teacher-glass">
+      <div class="halo shimmer"></div>
+      <img src="/assets/images/teacher.png" />
     </div>
 
-    <div class="intervention-actions">
+    <div id="interventionActions" class="intervention-actions">
       <button id="revealBtn">Go to level reveal →</button>
       <button id="continueBtn">Continue test</button>
     </div>
+
+    <audio id="interventionAudio">
+      <source src="/assets/sounds/placement/intervention.mp3" type="audio/mpeg" />
+    </audio>
 
   </div>
 
