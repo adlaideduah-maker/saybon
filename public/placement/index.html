@@ -6,30 +6,27 @@
   <title>SayBon Placement Test</title>
 
   <link rel="stylesheet" href="placement.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- TEST -->
-  <div class="placement-wrapper" id="testArea">
-
+  <div class="placement-wrapper" id="testUI">
     <h2 id="questionPrompt"></h2>
-
     <div id="mediaArea"></div>
-
     <div id="options" class="options"></div>
-
   </div>
 
   <!-- INTERVENTION -->
   <div id="intervention" class="intervention hidden">
 
-    <div class="teacher-glass">
+    <div class="teacher-orb" id="teacherOrb">
 
-      <div class="halo"></div>
+      <div class="halo-glow"></div>
+      <div class="orb-core"></div>
+      <div class="glass-layer"></div>
 
-      <img src="/assets/images/teacher.png" />
+      <img src="/assets/images/teacher.png" class="teacher-img" />
 
       <audio id="interventionAudio">
         <source src="/assets/sounds/placement/intervention.mp3" type="audio/mpeg">
@@ -37,9 +34,9 @@
 
     </div>
 
-    <div class="intervention-actions">
-      <button id="continueBtn">Continue test</button>
-      <button id="revealBtn">Go to level reveal →</button>
+    <div class="intervention-actions hidden" id="interventionActions">
+      <button id="continueBtn" class="secondary">Continue test</button>
+      <button id="revealBtn" class="primary">Go to level reveal →</button>
     </div>
 
   </div>

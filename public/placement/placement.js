@@ -3,6 +3,7 @@
  * Intervention system fixed
  **************************************************/
 
+console.log("🔥 placement.js loaded");
 const questions = [
   {
     id: 1,
