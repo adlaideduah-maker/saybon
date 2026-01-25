@@ -2,41 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SayBon Placement Test</title>
-
   <link rel="stylesheet" href="placement.css" />
 </head>
 
 <body>
 
-  <!-- TEST -->
-  <div class="placement-wrapper" id="testUI">
-    <h2 id="questionPrompt"></h2>
+  <div class="placement-container">
+
     <div id="mediaArea"></div>
-    <div id="options" class="options"></div>
+
+    <h2 id="questionPrompt"></h2>
+
+    <div id="options"></div>
+
   </div>
 
-  <!-- INTERVENTION -->
-  <div id="intervention" class="intervention hidden">
+  <!-- INTERVENTION OVERLAY -->
+  <div id="intervention" class="hidden">
 
-    <div class="teacher-orb" id="teacherOrb">
-
-      <div class="halo-glow"></div>
-      <div class="orb-core"></div>
-      <div class="glass-layer"></div>
-
-      <img src="/assets/images/teacher.png" class="teacher-img" />
-
-      <audio id="interventionAudio">
-        <source src="/assets/sounds/placement/intervention.mp3" type="audio/mpeg">
-      </audio>
-
+    <div class="teacher-box">
+      <img src="/assets/images/teacher.png" class="teacher" />
     </div>
 
-    <div class="intervention-actions hidden" id="interventionActions">
-      <button id="continueBtn" class="secondary">Continue test</button>
-      <button id="revealBtn" class="primary">Go to level reveal →</button>
+    <audio id="interventionAudio" src="/assets/sounds/intervention.mp3"></audio>
+
+    <div class="intervention-actions">
+      <button id="continueBtn">Continue test</button>
+      <button id="revealBtn">Go to level reveal →</button>
     </div>
 
   </div>

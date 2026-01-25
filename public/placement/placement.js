@@ -1,13 +1,9 @@
 /**************************************************
  * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
- * 🚫 QUESTIONS NEVER MODIFIED
+ * DO NOT MODIFY QUESTION ARRAY
  **************************************************/
 
 console.log("🔥 placement.js loaded");
-
-/* =======================
-   🔒 LOCKED QUESTION SET
-======================= */
 
 const questions = [
   {
@@ -41,154 +37,96 @@ const questions = [
     level: "A0"
   },
 
-  // A1
-  {
-    id: 5,
-    prompt: "Choose the correct sentence.",
-    options: [
-      "Je suis étudiant.",
-      "Je être étudiant.",
-      "Je suis être étudiant.",
-      "Je étudiant suis."
-    ],
-    correct: 0,
-    level: "A1"
-  },
-  {
-    id: 6,
-    prompt: "What does « j’ai 10 ans » mean?",
-    options: [
-      "I am 10 years old",
-      "I have 10 years",
-      "I had 10 years",
-      "I am ten years"
-    ],
-    correct: 0,
-    level: "A1"
-  },
-  {
-    id: 7,
-    prompt: "Choose the correct article.",
-    options: ["une maison", "un maison", "le maison", "des maison"],
-    correct: 0,
-    level: "A1"
-  },
-  {
-    id: 8,
-    prompt: "Il pleut. Choisis l’image correcte.",
-    image: "/assets/images/a1_q8_weather_collage.png",
-    options: ["A", "B", "C", "D"],
-    correct: 0,
-    level: "A1"
-  },
+  { id: 5, prompt: "Choose the correct sentence.", options: [
+    "Je suis étudiant.",
+    "Je être étudiant.",
+    "Je suis être étudiant.",
+    "Je étudiant suis."
+  ], correct: 0, level: "A1" },
 
-  // A2
-  {
-    id: 9,
-    prompt: "Choisis la bonne réponse.",
+  { id: 6, prompt: "What does « j’ai 10 ans » mean?", options: [
+    "I am 10 years old",
+    "I have 10 years",
+    "I had 10 years",
+    "I am ten years"
+  ], correct: 0, level: "A1" },
+
+  { id: 7, prompt: "Choose the correct article.",
+    options: ["une maison", "un maison", "le maison", "des maison"],
+    correct: 0, level: "A1" },
+
+  { id: 8, prompt: "Il pleut. Choisis l’image correcte.",
+    image: "/assets/images/a1_q8_weather_collage.png",
+    options: ["A","B","C","D"], correct: 0, level: "A1" },
+
+  { id: 9, prompt: "Choisis la bonne réponse.",
     options: [
       "Je vais au travail.",
       "Je va travail.",
       "Je vais travail.",
       "Je allé travail."
     ],
-    correct: 0,
-    level: "A2"
-  },
-  {
-    id: 10,
-    prompt: "Quel est le passé correct ?",
-    options: ["J’ai mangé", "Je mange", "Je manger", "Je mangé"],
-    correct: 0,
-    level: "A2"
-  },
-  {
-    id: 11,
-    prompt: "Choose the correct meaning of « souvent ».",
-    options: ["Often", "Never", "Yesterday", "Slowly"],
-    correct: 0,
-    level: "A2"
-  },
-  {
-    id: 12,
-    prompt: "Choisis la phrase correcte.",
+    correct: 0, level: "A2" },
+
+  { id: 10, prompt: "Quel est le passé correct ?",
+    options: ["J’ai mangé","Je mange","Je manger","Je mangé"],
+    correct: 0, level: "A2" },
+
+  { id: 11, prompt: "Choose the meaning of « souvent ».",
+    options: ["Often","Never","Yesterday","Slowly"],
+    correct: 0, level: "A2" },
+
+  { id: 12, prompt: "Choisis la phrase correcte.",
     options: [
       "Il y a beaucoup de monde.",
       "Il est beaucoup monde.",
       "Il y a monde beaucoup.",
       "Il beaucoup y a monde."
     ],
-    correct: 0,
-    level: "A2"
-  },
+    correct: 0, level: "A2" },
 
-  // B1
-  {
-    id: 13,
-    prompt: "Choisis la bonne structure.",
+  { id: 13, prompt: "Choisis la bonne structure.",
     options: [
       "Je le lui ai donné.",
       "Je lui le ai donné.",
       "Je ai le lui donné.",
       "Je donné le lui ai."
     ],
-    correct: 0,
-    level: "B1"
-  },
-  {
-    id: 14,
-    prompt: "Écoute et choisis.",
+    correct: 0, level: "B1" },
+
+  { id: 14, prompt: "Écoute et choisis.",
     audio: "/assets/sounds/placement/b1_q10_bus.mp3",
-    options: [
-      "Prendre le bus",
-      "Acheter une maison",
-      "Cuisiner",
-      "Dormir"
-    ],
-    correct: 0,
-    level: "B1"
-  },
-  {
-    id: 15,
-    prompt: "Pourquoi est-il parti ?",
+    options: ["Prendre le bus","Acheter une maison","Cuisiner","Dormir"],
+    correct: 0, level: "B1" },
+
+  { id: 15, prompt: "Pourquoi est-il parti ?",
     options: [
       "Parce qu’il était fatigué.",
       "Parce qu’il fatigue.",
       "Parce qu’il fatigué.",
       "Parce fatigue."
     ],
-    correct: 0,
-    level: "B1"
-  },
-  {
-    id: 16,
-    prompt: "Choisis la phrase la plus naturelle.",
+    correct: 0, level: "B1" },
+
+  { id: 16, prompt: "Choisis la phrase la plus naturelle.",
     options: [
       "Ça dépend de la situation.",
       "Ça dépend la situation.",
       "Ça dépend pour la situation.",
       "Ça dépend à la situation."
     ],
-    correct: 0,
-    level: "B1"
-  },
+    correct: 0, level: "B1" },
 
-  // ADVANCED
-  {
-    id: 17,
-    prompt: "Quelle formulation est la plus diplomatique ?",
+  { id: 17, prompt: "Quelle formulation est la plus diplomatique ?",
     options: [
       "Je comprends votre point de vue.",
       "Vous avez tort.",
       "C’est faux.",
       "Impossible."
     ],
-    correct: 0,
-    level: "B2"
-  },
-  {
-    id: 18,
-    prompt: "Choisis la formulation la plus formelle.",
+    correct: 0, level: "B2" },
+
+  { id: 18, prompt: "Choisis la formulation la plus formelle.",
     audio: "/assets/sounds/placement/c1_q18_formel.mp3",
     options: [
       "Je vous saurais gré de bien vouloir…",
@@ -196,47 +134,31 @@ const questions = [
       "Fais-le.",
       "Dis-moi."
     ],
-    correct: 0,
-    level: "C1"
-  },
-  {
-    id: 19,
-    prompt: "Quelle phrase est stylistiquement correcte ?",
+    correct: 0, level: "C1" },
+
+  { id: 19, prompt: "Quelle phrase est stylistiquement correcte ?",
     options: [
       "N’eût-il pas été prévenu…",
       "Il n’a pas été prévenu pas.",
       "Il n’était pas prévenir.",
       "Pas été prévenu il."
     ],
-    correct: 0,
-    level: "C1"
-  },
-  {
-    id: 20,
-    prompt: "Choisis la nuance correcte.",
+    correct: 0, level: "C1" },
+
+  { id: 20, prompt: "Choisis la nuance correcte.",
     options: [
       "Il semble que ce soit vrai.",
       "Il semble que c’est vrai.",
       "Il semble est vrai.",
       "Il semble vrai que."
     ],
-    correct: 0,
-    level: "C1"
-  }
+    correct: 0, level: "C1" }
 ];
-
-/* =======================
-   STATE
-======================= */
 
 let index = 0;
 let wrongStreak = 0;
 
 const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
-
-/* =======================
-   DOM (SAFE)
-======================= */
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
@@ -246,10 +168,6 @@ const overlay = document.getElementById("intervention");
 const teacherBox = document.querySelector(".teacher-box");
 const actions = document.querySelector(".intervention-actions");
 const interventionAudio = document.getElementById("interventionAudio");
-
-/* =======================
-   LOAD QUESTION
-======================= */
 
 function loadQuestion() {
   const q = questions[index];
@@ -268,11 +186,10 @@ function loadQuestion() {
   if (q.image) {
     const img = document.createElement("img");
     img.src = q.image;
-    img.className = "question-image";
     mediaArea.appendChild(img);
   }
 
-  q.options.forEach((opt, i) => {
+  q.options.forEach((opt,i)=>{
     const btn = document.createElement("button");
     btn.className = "option";
     btn.textContent = opt;
@@ -280,10 +197,6 @@ function loadQuestion() {
     optionsEl.appendChild(btn);
   });
 }
-
-/* =======================
-   ANSWER
-======================= */
 
 function answer(choice) {
   const q = questions[index];
@@ -301,26 +214,20 @@ function answer(choice) {
   }
 
   index++;
-  if (index < questions.length) loadQuestion();
-  else finish();
+  if (index >= questions.length) finish();
+  else loadQuestion();
 }
-
-/* =======================
-   INTERVENTION
-======================= */
 
 function triggerIntervention() {
   overlay.classList.remove("hidden");
-
-  teacherBox.style.display = "flex";
   actions.style.display = "none";
+  teacherBox.style.display = "flex";
 
-  interventionAudio.currentTime = 0;
-  interventionAudio.play();
-
-  teacherBox.classList.remove("teacher-bounce");
-  void teacherBox.offsetWidth;
-  teacherBox.classList.add("teacher-bounce");
+  setTimeout(() => {
+    interventionAudio.currentTime = 0;
+    interventionAudio.play();
+    teacherBox.classList.add("teacher-bounce");
+  }, 100);
 
   interventionAudio.onended = () => {
     teacherBox.classList.remove("teacher-bounce");
@@ -329,20 +236,12 @@ function triggerIntervention() {
   };
 }
 
-/* =======================
-   BUTTONS
-======================= */
-
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
   wrongStreak = 0;
 };
 
 document.getElementById("revealBtn").onclick = finish;
-
-/* =======================
-   FINISH
-======================= */
 
 function finish() {
   let level = "Absolute Beginner";
