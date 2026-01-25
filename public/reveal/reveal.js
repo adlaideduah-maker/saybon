@@ -11,7 +11,7 @@ levelText.textContent = level;
 
 // button routing
 startBtn.addEventListener("click", () => {
-  window.location.href = "/login/";
+  window.location.href = "/auth/login.html/";
 });
 
 homeBtn.addEventListener("click", () => {
