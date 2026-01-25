@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Your Level</title>
-  <link rel="stylesheet" href="reveal.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Level — SayBon</title>
+
+  <link rel="stylesheet" href="reveal.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
+  <div class="reveal-container">
 
-<div class="reveal-actions hidden">
-  <button id="startJourney" class="btn primary">
-    Start journey
-  </button>
+    <h1 id="levelText" class="level-text">
+      Loading...
+    </h1>
 
-  <button id="backHome" class="btn secondary">
-    Back to homepage
-  </button>
-</div>
+    <div class="reveal-actions">
+      <button id="startJourney" class="btn primary">
+        Start journey
+      </button>
 
-<script src="reveal.js"></script>
+      <button id="backHome" class="btn secondary">
+        Back to homepage
+      </button>
+    </div>
 
+  </div>
+
+  <script src="reveal.js"></script>
 </body>
 </html>

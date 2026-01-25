@@ -1,181 +1,71 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Nunito", system-ui, sans-serif;
 }
 
 body {
-  background: #0f2f2a;
   height: 100vh;
+  background: linear-gradient(160deg, #0b3c49, #0f5f6a);
+  font-family: 'Nunito', sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-
-/* =======================
-   REVEAL CONTAINER
-======================= */
-
-.reveal {
-  text-align: center;
+  align-items: center;
   color: white;
 }
 
-/* =======================
-   LEVEL TEXT
-======================= */
-
-#levelText {
-  font-size: 56px;
-  font-weight: 800;
-  color: #9ff3d9;
-  opacity: 0;
-
-#levelText.enter {
-  animation: levelEnter 1.4s cubic-bezier(.22,1.4,.36,1),
-             levelBounce 1.2s ease 1.4s;
+.reveal-container {
+  text-align: center;
+  animation: fadeIn 1.2s ease forwards;
 }
 
-@keyframes levelEnter {
-  from { transform: translateX(120px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+.level-text {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  animation: bounceIn 1.2s ease;
 }
-
-@keyframes levelBounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.05); }
-  60% { transform: scale(0.97); }
-  100% { transform: scale(1); }
-}
-
-
-/* =======================
-   BUTTONS
-======================= */
 
 .reveal-actions {
-  margin-top: 50px;
   display: flex;
   gap: 30px;
   justify-content: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-}
-
-.reveal-actions.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .btn {
-  padding: 16px 38px;
-  border-radius: 40px;
+  padding: 18px 40px;
   font-size: 18px;
-  font-weight: 700;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
-  backdrop-filter: blur(14px);
-  transition: transform .3s ease, box-shadow .3s ease;
+  font-weight: 800;
+  transition: transform 0.2s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: scale(1.05);
 }
 
-.btn.primary {
-  background: linear-gradient(135deg, #42e6c1, #3ab7ff);
-  color: #001b1f;
-  box-shadow: 0 0 30px rgba(66,230,193,.4);
+.primary {
+  background: #2ee6b6;
+  color: #053b35;
 }
 
-.btn.secondary {
-  background: rgba(255,255,255,0.15);
+.secondary {
+  background: transparent;
   color: #ffffff;
-  border: 1px solid rgba(255,255,255,.35);
+  border: 2px solid rgba(255,255,255,0.5);
 }
 
-/* =======================
-   BOUNCE
-======================= */
+/* animations */
 
-@keyframes gentleBounce {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* =======================
-   MOBILE
-======================= */
-
-@media (max-width: 600px) {
-  #levelText {
-    font-size: 42px;
-  }
-}
-
-/* ---------- REVEAL PAGE ANIMATION ---------- */
-
-.reveal-actions {
-  position: absolute;
-  top: 60%;
-  display: flex;
-  gap: 40px;
-  opacity: 0;
-}
-
-.reveal-actions.show {
-  opacity: 1;
-}
-
-/* Buttons */
-.reveal-btn {
-  padding: 18px 42px;
-  font-size: 20px;
-  font-weight: 700;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  backdrop-filter: blur(18px);
-  transition: transform 0.3s ease;
-  letter-spacing: 0.3px;
-}
-
-/* Fun but classy */
-.reveal-btn.primary {
-  background: linear-gradient(135deg, #4fd1c5, #38b2ac);
-  color: #062c2c;
-  box-shadow: 0 12px 30px rgba(79, 209, 197, 0.35);
-}
-
-.reveal-btn.secondary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 12px 30px rgba(118, 75, 162, 0.35);
-}
-
-.reveal-btn:hover {
-  transform: translateY(-4px) scale(1.04);
-}
-
-/* Slide animations */
-.slide-left {
-  animation: slideFromLeft 1.2s ease forwards;
-}
-
-.slide-right {
-  animation: slideFromRight 1.2s ease forwards;
-}
-
-@keyframes slideFromLeft {
-  from { transform: translateX(-120px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideFromRight {
-  from { transform: translateX(120px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+@keyframes bounceIn {
+  0% { transform: scale(0.7); }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
