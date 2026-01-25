@@ -1,7 +1,7 @@
-// ==============================
-// SAYBON PLACEMENT TEST (LOCKED)
-// Questions MUST NOT be edited
-// ==============================
+/**************************************************
+ * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
+ * Intervention system fixed
+ **************************************************/
 
 const questions = [
   {
@@ -219,21 +219,12 @@ const questions = [
   }
 ];
 
-// ==============================
-// STATE
-// ==============================
+/* ------------------------------------------------ */
 
 let index = 0;
 let wrongStreak = 0;
 
-const scores = {
-  A0: 0,
-  A1: 0,
-  A2: 0,
-  B1: 0,
-  B2: 0,
-  C1: 0
-};
+const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
@@ -244,9 +235,7 @@ const teacherBox = document.querySelector(".teacher-box");
 const actions = document.querySelector(".intervention-actions");
 const interventionAudio = document.getElementById("interventionAudio");
 
-// ==============================
-// LOAD QUESTION
-// ==============================
+/* ------------------------------------------------ */
 
 function loadQuestion() {
   const q = questions[index];
@@ -278,9 +267,7 @@ function loadQuestion() {
   });
 }
 
-// ==============================
-// ANSWER LOGIC
-// ==============================
+/* ------------------------------------------------ */
 
 function answer(choice) {
   const q = questions[index];
@@ -293,43 +280,37 @@ function answer(choice) {
   }
 
   if (wrongStreak >= 3) {
-    showIntervention();
+    triggerIntervention();
     return;
   }
 
   index++;
-
-  if (index >= questions.length) {
-    finish();
-  } else {
-    loadQuestion();
-  }
+  if (index >= questions.length) finish();
+  else loadQuestion();
 }
 
-// ==============================
-// INTERVENTION
-// ==============================
+/* ------------------------------------------------ */
 
-function showIntervention() {
+function triggerIntervention() {
   overlay.classList.remove("hidden");
-
-  teacherBox.style.display = "flex";
   actions.style.display = "none";
+  teacherBox.style.display = "flex";
 
-  teacherBox.classList.add("pulsing");
-  interventionAudio.currentTime = 0;
-  interventionAudio.play();
+  // safe autoplay
+  setTimeout(() => {
+    interventionAudio.currentTime = 0;
+    interventionAudio.play();
+    teacherBox.classList.add("teacher-bounce");
+  }, 150);
 
   interventionAudio.onended = () => {
-    teacherBox.classList.remove("pulsing");
+    teacherBox.classList.remove("teacher-bounce");
     teacherBox.style.display = "none";
     actions.style.display = "flex";
   };
 }
 
-// ==============================
-// BUTTONS
-// ==============================
+/* ------------------------------------------------ */
 
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
@@ -338,9 +319,7 @@ document.getElementById("continueBtn").onclick = () => {
 
 document.getElementById("revealBtn").onclick = finish;
 
-// ==============================
-// FINISH
-// ==============================
+/* ------------------------------------------------ */
 
 function finish() {
   let level = "Absolute Beginner";
@@ -353,7 +332,5 @@ function finish() {
   sessionStorage.setItem("saybon_level", level);
   window.location.href = "/reveal.html";
 }
-
-// ==============================
 
 loadQuestion();
