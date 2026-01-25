@@ -1,114 +1,192 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap");
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", system-ui, sans-serif;
+}
 
 body {
   margin: 0;
-  background: radial-gradient(circle at center, #0b2a6f, #071a3a);
-  font-family: "Nunito", sans-serif;
-  color: white;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f6f73, #0a4f57);
+  color: #ffffff;
+  overflow: hidden;
 }
 
-.hidden {
-  display: none !important;
+/* =====================================================
+   MAIN PLACEMENT PAGE (Photo B)
+===================================================== */
+
+#app {
+  height: 100vh;
+  width: 100%;
+  padding-top: 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-/* ===============================
-   INTERVENTION OVERLAY
-================================ */
+#questionPrompt {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+#mediaArea {
+  margin-bottom: 28px;
+}
+
+#options {
+  width: 100%;
+  max-width: 480px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.option {
+  padding: 18px;
+  border-radius: 999px;
+  border: none;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   INTERVENTION OVERLAY (Photo A)
+===================================================== */
 
 #intervention {
   position: fixed;
   inset: 0;
-  background: rgba(5, 15, 40, 0.85);
+  background: radial-gradient(circle at center, #0b2e3b, #061a22);
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  opacity: 1;
+  transition: opacity 2.8s ease;
   z-index: 999;
 }
 
-/* ===============================
-   TEACHER CIRCLE
-================================ */
+#intervention.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* =====================================================
+   TEACHER
+===================================================== */
 
 .teacher-box {
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  animation: glowPulse 2.5s ease-in-out infinite;
 }
 
-/* OUTER GLOW ONLY */
-.teacher-box::after {
+.teacher-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teacher-circle img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* outer glow only */
+.teacher-circle::after {
   content: "";
   position: absolute;
-  inset: -25px;
+  inset: -18px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(90,180,255,0.45), transparent 70%);
-  filter: blur(25px);
-  z-index: -1;
+  background: radial-gradient(circle, rgba(110, 210, 255, 0.55), transparent 70%);
+  animation: glowPulse 3s ease-in-out infinite;
+  z-index: 1;
 }
-
-.teacher-box img {
-  width: 220px;
-}
-
-/* ===============================
-   GLOW ANIMATION
-================================ */
 
 @keyframes glowPulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.04); }
-  100% { transform: scale(1); }
+  0%   { opacity: 0.4; transform: scale(0.96); }
+  50%  { opacity: 0.9; transform: scale(1.05); }
+  100% { opacity: 0.4; transform: scale(0.96); }
 }
 
-/* ===============================
-   BUTTONS
-================================ */
+/* =====================================================
+   BUTTONS (appear after audio)
+===================================================== */
 
 .intervention-actions {
-  position: absolute;
-  bottom: 22%;
-  width: 100%;
+  margin-top: 40px;
   display: flex;
-  justify-content: center;
   gap: 40px;
+
+  /* bring upward */
+  transform: translateY(-40px);
 }
 
-.intervention-actions button {
-  font-family: "Nunito", sans-serif;
-  font-size: 20px;
-  padding: 16px 42px;
-  border-radius: 40px;
+/* classier glass tones */
+
+.glass-btn {
+  min-width: 200px;
+  padding: 16px 28px;
+
+  border-radius: 999px;
   border: none;
+
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
   cursor: pointer;
-  color: #fff;
-  backdrop-filter: blur(10px);
-  transition: transform 0.4s ease;
+  backdrop-filter: blur(14px);
+
+  transition: all 0.4s ease;
 }
 
-/* FUN COLORS */
-#continueBtn {
-  background: linear-gradient(135deg, #ff7ad9, #ff4fbf);
-  animation: slideLeft 0.9s ease forwards;
+/* elegant blue */
+.glass-btn.back {
+  background: rgba(120, 190, 255, 0.25);
+  color: #e8f4ff;
 }
 
-#revealBtn {
-  background: linear-gradient(135deg, #4fdcff, #4fa3ff);
-  animation: slideRight 0.9s ease forwards;
+/* refined teal */
+.glass-btn.reveal {
+  background: rgba(90, 230, 200, 0.28);
+  color: #ecfffb;
 }
 
-@keyframes slideLeft {
-  from { transform: translateX(-120px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+.glass-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.25);
 }
 
-@keyframes slideRight {
-  from { transform: translateX(120px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
-}
+
+
