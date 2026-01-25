@@ -261,14 +261,15 @@ function triggerIntervention() {
     interventionAudio.play().catch(()=>{});
   }, 200);
 
-  interventionAudio.onended = () => {
-    teacherBox.style.opacity = "0";
+ interventionAudio.onended = () => {
+  teacherBox.classList.remove("teacher-bounce");
+  teacherBox.style.display = "none";
 
-    setTimeout(() => {
-      teacherBox.style.display = "none";
-      actions.style.display = "flex";
-    }, 700);
-  };
+  actions.style.display = "flex";
+
+  document.getElementById("continueBtn").classList.add("slide-in-left");
+  document.getElementById("revealBtn").classList.add("slide-in-right");
+};
 }
 
 /* ==================================================

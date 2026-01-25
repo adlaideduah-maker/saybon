@@ -107,3 +107,31 @@ body {
     font-size: 42px;
   }
 }
+
+/* ---------- REVEAL PAGE ANIMATION ---------- */
+
+.level-container {
+  position: absolute;
+  top: 50%;
+  left: 120%;
+  transform: translate(-50%, -50%);
+  animation: slideInReveal 1.8s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes slideInReveal {
+  to {
+    left: 50%;
+  }
+}
+
+.level-text {
+  font-size: 64px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  animation: bounceSoft 2.5s ease-in-out infinite;
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
