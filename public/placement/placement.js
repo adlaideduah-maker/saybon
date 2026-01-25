@@ -1,7 +1,7 @@
-// ================================
-// SAYBON PLACEMENT TEST — LOCKED
-// QUESTIONS MUST NEVER BE MODIFIED
-// ================================
+// ==============================
+// SAYBON PLACEMENT TEST (LOCKED)
+// Questions MUST NOT be edited
+// ==============================
 
 const questions = [
   {
@@ -35,7 +35,7 @@ const questions = [
     level: "A0"
   },
 
-  // ===== A1 =====
+  // A1
   {
     id: 5,
     prompt: "Choose the correct sentence.",
@@ -76,7 +76,7 @@ const questions = [
     level: "A1"
   },
 
-  // ===== A2 =====
+  // A2
   {
     id: 9,
     prompt: "Choisis la bonne réponse.",
@@ -116,7 +116,7 @@ const questions = [
     level: "A2"
   },
 
-  // ===== B1 =====
+  // B1
   {
     id: 13,
     prompt: "Choisis la bonne structure.",
@@ -167,7 +167,7 @@ const questions = [
     level: "B1"
   },
 
-  // ===== ADVANCED =====
+  // ADVANCED
   {
     id: 17,
     prompt: "Quelle formulation est la plus diplomatique ?",
@@ -219,23 +219,34 @@ const questions = [
   }
 ];
 
-// ====================================
-// LOGIC — DESIGN SAFE
-// ====================================
+// ==============================
+// STATE
+// ==============================
 
 let index = 0;
 let wrongStreak = 0;
 
-const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
+const scores = {
+  A0: 0,
+  A1: 0,
+  A2: 0,
+  B1: 0,
+  B2: 0,
+  C1: 0
+};
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
 const mediaArea = document.getElementById("mediaArea");
 
 const overlay = document.getElementById("intervention");
-const teacherOrb = document.getElementById("teacherOrb");
-const actions = document.getElementById("interventionActions");
+const teacherBox = document.querySelector(".teacher-box");
+const actions = document.querySelector(".intervention-actions");
 const interventionAudio = document.getElementById("interventionAudio");
+
+// ==============================
+// LOAD QUESTION
+// ==============================
 
 function loadQuestion() {
   const q = questions[index];
@@ -267,6 +278,10 @@ function loadQuestion() {
   });
 }
 
+// ==============================
+// ANSWER LOGIC
+// ==============================
+
 function answer(choice) {
   const q = questions[index];
 
@@ -278,46 +293,54 @@ function answer(choice) {
   }
 
   if (wrongStreak >= 3) {
-    startIntervention();
+    showIntervention();
     return;
   }
 
   index++;
-  if (index < questions.length) {
-    loadQuestion();
-  } else {
+
+  if (index >= questions.length) {
     finish();
+  } else {
+    loadQuestion();
   }
 }
 
-function startIntervention() {
-  document.getElementById("testUI").style.opacity = 0;
+// ==============================
+// INTERVENTION
+// ==============================
 
-  setTimeout(() => {
-    overlay.classList.remove("hidden");
-    interventionAudio.play();
-  }, 600);
+function showIntervention() {
+  overlay.classList.remove("hidden");
+
+  teacherBox.style.display = "flex";
+  actions.style.display = "none";
+
+  teacherBox.classList.add("pulsing");
+  interventionAudio.currentTime = 0;
+  interventionAudio.play();
 
   interventionAudio.onended = () => {
-    teacherOrb.style.opacity = 0;
-
-    setTimeout(() => {
-      teacherOrb.style.display = "none";
-      actions.classList.remove("hidden");
-    }, 700);
+    teacherBox.classList.remove("pulsing");
+    teacherBox.style.display = "none";
+    actions.style.display = "flex";
   };
 }
 
+// ==============================
+// BUTTONS
+// ==============================
+
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
-  actions.classList.add("hidden");
-  teacherOrb.style.display = "block";
-  teacherOrb.style.opacity = 1;
   wrongStreak = 0;
-  document.getElementById("testUI").style.opacity = 1;
 };
 
 document.getElementById("revealBtn").onclick = finish;
+
+// ==============================
+// FINISH
+// ==============================
 
 function finish() {
   let level = "Absolute Beginner";
@@ -330,5 +353,7 @@ function finish() {
   sessionStorage.setItem("saybon_level", level);
   window.location.href = "/reveal.html";
 }
+
+// ==============================
 
 loadQuestion();
