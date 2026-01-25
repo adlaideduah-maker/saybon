@@ -1,9 +1,14 @@
 /**************************************************
  * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
- * Intervention system fixed
+ * 🚫 QUESTIONS NEVER MODIFIED
  **************************************************/
 
 console.log("🔥 placement.js loaded");
+
+/* =======================
+   🔒 LOCKED QUESTION SET
+======================= */
+
 const questions = [
   {
     id: 1,
@@ -220,12 +225,18 @@ const questions = [
   }
 ];
 
-/* ------------------------------------------------ */
+/* =======================
+   STATE
+======================= */
 
 let index = 0;
 let wrongStreak = 0;
 
 const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
+
+/* =======================
+   DOM (SAFE)
+======================= */
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
@@ -236,7 +247,9 @@ const teacherBox = document.querySelector(".teacher-box");
 const actions = document.querySelector(".intervention-actions");
 const interventionAudio = document.getElementById("interventionAudio");
 
-/* ------------------------------------------------ */
+/* =======================
+   LOAD QUESTION
+======================= */
 
 function loadQuestion() {
   const q = questions[index];
@@ -268,7 +281,9 @@ function loadQuestion() {
   });
 }
 
-/* ------------------------------------------------ */
+/* =======================
+   ANSWER
+======================= */
 
 function answer(choice) {
   const q = questions[index];
@@ -286,23 +301,26 @@ function answer(choice) {
   }
 
   index++;
-  if (index >= questions.length) finish();
-  else loadQuestion();
+  if (index < questions.length) loadQuestion();
+  else finish();
 }
 
-/* ------------------------------------------------ */
+/* =======================
+   INTERVENTION
+======================= */
 
 function triggerIntervention() {
   overlay.classList.remove("hidden");
-  actions.style.display = "none";
-  teacherBox.style.display = "flex";
 
-  // safe autoplay
-  setTimeout(() => {
-    interventionAudio.currentTime = 0;
-    interventionAudio.play();
-    teacherBox.classList.add("teacher-bounce");
-  }, 150);
+  teacherBox.style.display = "flex";
+  actions.style.display = "none";
+
+  interventionAudio.currentTime = 0;
+  interventionAudio.play();
+
+  teacherBox.classList.remove("teacher-bounce");
+  void teacherBox.offsetWidth;
+  teacherBox.classList.add("teacher-bounce");
 
   interventionAudio.onended = () => {
     teacherBox.classList.remove("teacher-bounce");
@@ -311,7 +329,9 @@ function triggerIntervention() {
   };
 }
 
-/* ------------------------------------------------ */
+/* =======================
+   BUTTONS
+======================= */
 
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
@@ -320,7 +340,9 @@ document.getElementById("continueBtn").onclick = () => {
 
 document.getElementById("revealBtn").onclick = finish;
 
-/* ------------------------------------------------ */
+/* =======================
+   FINISH
+======================= */
 
 function finish() {
   let level = "Absolute Beginner";
