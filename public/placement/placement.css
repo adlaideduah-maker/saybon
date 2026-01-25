@@ -1,139 +1,223 @@
+
+
+/* ======================================
+   BASE
+====================================== */
+
 * {
   box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
-  margin: 0;
-  background: #eef6fb;
+  background: radial-gradient(circle at center, #0b2c57, #050b18);
+  min-height: 100vh;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ================= TEST ================= */
+/* ======================================
+   PLACEMENT WRAPPER
+====================================== */
 
 .placement-wrapper {
+  width: 100%;
   max-width: 520px;
-  margin: 80px auto;
-  padding: 24px;
+  padding: 40px 24px;
   text-align: center;
+  transition: opacity 0.6s ease;
 }
+
+.placement-wrapper.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ======================================
+   QUESTION
+====================================== */
 
 #questionPrompt {
   font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
 }
+
+#mediaArea {
+  margin-bottom: 24px;
+}
+
+#mediaArea audio {
+  width: 100%;
+  border-radius: 999px;
+}
+
+/* ======================================
+   OPTIONS
+====================================== */
 
 .options {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .option {
-  padding: 18px;
-  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #09213f;
+  border-radius: 999px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
   border: none;
-  font-size: 17px;
   cursor: pointer;
-  background: white;
-  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.question-image {
-  max-width: 100%;
-  border-radius: 18px;
-  margin-bottom: 20px;
+.option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-/* ================= INTERVENTION ================= */
+/* ======================================
+   INTERVENTION OVERLAY
+====================================== */
 
 .intervention {
   position: fixed;
   inset: 0;
-  background: rgba(10,25,35,.88);
-  backdrop-filter: blur(16px);
+  background: radial-gradient(circle at center, #0e2b55, #050b18);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 40px;
-  z-index: 999;
-  animation: fadeIn 1s ease;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.7s ease;
 }
 
 .intervention.hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* ================= GLASS TEACHER ================= */
+/* ======================================
+   TEACHER GLASS ORB
+====================================== */
 
-.teacher-glass {
+.teacher-box {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
-  background: rgba(255,255,255,.25);
-  backdrop-filter: blur(18px);
-  border: 2px solid rgba(255,255,255,.45);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  /* VERY OBVIOUS GLASS */
+  background:
+    radial-gradient(circle at 30% 30%,
+      rgba(255,255,255,0.45),
+      rgba(255,255,255,0.08)
+    ),
+    rgba(90,160,255,0.28);
+
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+
   box-shadow:
-    inset 0 0 20px rgba(255,255,255,.4),
-    0 0 30px rgba(150,255,220,.35);
+    0 0 50px rgba(120,190,255,0.65),
+    inset 0 0 35px rgba(255,255,255,0.45);
+
+  animation: floatOrb 6s ease-in-out infinite;
 }
 
-.teacher-glass img {
-  width: 85%;
+.teacher-box img {
+  width: 95px;
   z-index: 2;
 }
 
-/* ================= HALO ================= */
+/* ======================================
+   PULSING GLOW HALO
+====================================== */
 
-.halo {
+.teacher-box::before {
+  content: "";
   position: absolute;
-  inset: -18px;
+  inset: -45px;
   border-radius: 50%;
-  border: 3px solid rgba(170,255,230,.7);
-  animation: haloPulse 2.4s ease-in-out infinite;
+  background: radial-gradient(circle,
+    rgba(130,210,255,0.7),
+    rgba(130,210,255,0.0) 70%
+  );
+  opacity: 0;
 }
 
-@keyframes haloPulse {
-  0% { transform: scale(1); opacity: .7; }
-  50% { transform: scale(1.18); opacity: .25; }
-  100% { transform: scale(1); opacity: .7; }
+.teacher-box.pulsing::before {
+  animation: glowPulse 2.4s ease-in-out infinite;
 }
 
-/* ================= ACTIONS ================= */
+/* ======================================
+   ACTION BUTTONS
+====================================== */
 
 .intervention-actions {
-  width: 280px;
-  display: flex;
+  margin-top: 40px;
+  display: none;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+}
+
+.intervention-actions.show {
+  display: flex;
 }
 
 .intervention-actions button {
-  padding: 16px;
-  border-radius: 40px;
-  font-weight: 800;
+  min-width: 260px;
+  padding: 16px 26px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
   border: none;
   cursor: pointer;
-  font-size: 16px;
 }
 
 #continueBtn {
   background: transparent;
-  color: #bff3e6;
-  border: 2px solid rgba(190,240,220,.5);
-}
-
-#revealBtn {
-  background: #4fa487;
+  border: 2px solid rgba(255,255,255,0.45);
   color: white;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0 }
-  to { opacity: 1 }
+#revealBtn {
+  background: linear-gradient(135deg, #6fd3ff, #4ea3ff);
+  color: #03224d;
+}
+
+/* ======================================
+   ANIMATIONS
+====================================== */
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes floatOrb {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
