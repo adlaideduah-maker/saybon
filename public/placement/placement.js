@@ -296,7 +296,7 @@ function finish() {
   else if (scores.A1 > 0) level = "Beginner";
 
   sessionStorage.setItem("saybon_level", level);
-  window.location.href = "/reveal.html";
+  window.location.href = "/reveal/";
 }
 
 loadQuestion();
