@@ -55,43 +55,46 @@ body {
    BUTTONS
 ======================= */
 
-.actions {
-  margin-top: 40px;
+.reveal-actions {
+  margin-top: 50px;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  gap: 30px;
+  justify-content: center;
   opacity: 0;
   transform: translateY(20px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
+  transition: all 1s ease;
 }
 
-.actions:not(.hidden) {
+.reveal-actions.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.actions button {
-  padding: 18px 32px;
+.btn {
+  padding: 16px 38px;
   border-radius: 40px;
-  border: none;
   font-size: 18px;
   font-weight: 700;
+  border: none;
   cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
-/* primary */
-.actions button:first-child {
-  background: #4fa487;
-  color: white;
+.btn:hover {
+  transform: translateY(-2px);
 }
 
-/* secondary */
-.actions button:last-child {
-  background: transparent;
-  border: 2px solid rgba(160, 255, 230, 0.6);
-  color: #bff5e6;
+.btn.primary {
+  background: linear-gradient(135deg, #42e6c1, #3ab7ff);
+  color: #001b1f;
+  box-shadow: 0 0 30px rgba(66,230,193,.4);
+}
+
+.btn.secondary {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,.35);
 }
 
 /* =======================

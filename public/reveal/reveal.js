@@ -1,32 +1,45 @@
+
+
+
+
+console.log("🔥 reveal.js loaded");
+
 const levelText = document.getElementById("levelText");
 const actions = document.querySelector(".reveal-actions");
 
 const startBtn = document.getElementById("startJourney");
 const homeBtn = document.getElementById("backHome");
 
-// load level
+// ----------------------------
+// Load detected level
+// ----------------------------
 const level = sessionStorage.getItem("saybon_level") || "Beginner";
 levelText.textContent = level;
 
-// entrance animation
-setTimeout(() => {
+// ----------------------------
+// Animate reveal flow
+// ----------------------------
+window.addEventListener("load", () => {
+  // slide text in
   levelText.classList.add("enter");
-}, 300);
 
-// after level settles → show buttons
-setTimeout(() => {
-  actions.classList.remove("hidden");
-  actions.classList.add("show");
+  // wait for text to settle
+  setTimeout(() => {
+    levelText.classList.add("bounce");
 
-  startBtn.classList.add("slide-left");
-  homeBtn.classList.add("slide-right");
-}, 2200);
+    // then bring buttons in
+    actions.classList.remove("hidden");
+    actions.classList.add("show");
+  }, 1800);
+});
 
-// navigation
-startBtn.onclick = () => {
+// ----------------------------
+// Button navigation
+// ----------------------------
+startBtn.addEventListener("click", () => {
   window.location.href = "/login/";
-};
+});
 
-homeBtn.onclick = () => {
+homeBtn.addEventListener("click", () => {
   window.location.href = "/";
-};
+});
