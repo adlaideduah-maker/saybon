@@ -1,9 +1,6 @@
-/**************************************************
- * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
- * DO NOT MODIFY QUESTION ARRAY
- **************************************************/
+console.log("PLACEMENT LOADED");
 
-console.log("🔥 placement.js loaded");
+/* ================= QUESTIONS ================= */
 
 const questions = [
   {
@@ -157,44 +154,42 @@ const questions = [
 
 let index = 0;
 let wrongStreak = 0;
+const scores = { A0:0,A1:0,A2:0,B1:0,B2:0,C1:0 };
 
-const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
-
-const promptEl = document.getElementById("questionPrompt");
-const optionsEl = document.getElementById("options");
-const mediaArea = document.getElementById("mediaArea");
+const prompt = document.getElementById("prompt");
+const media = document.getElementById("media");
+const options = document.getElementById("options");
 
 const overlay = document.getElementById("intervention");
-const teacherBox = document.querySelector(".teacher-box");
-const actions = document.querySelector(".intervention-actions");
-const interventionAudio = document.getElementById("interventionAudio");
+const teacher = document.getElementById("teacherCircle");
+const buttons = document.getElementById("interventionButtons");
+const audio = document.getElementById("interventionAudio");
 
-function loadQuestion() {
+function load() {
   const q = questions[index];
-
-  promptEl.textContent = q.prompt;
-  optionsEl.innerHTML = "";
-  mediaArea.innerHTML = "";
+  prompt.textContent = q.prompt;
+  media.innerHTML = "";
+  options.innerHTML = "";
 
   if (q.audio) {
-    const audio = document.createElement("audio");
-    audio.src = q.audio;
-    audio.controls = true;
-    mediaArea.appendChild(audio);
+    const a = document.createElement("audio");
+    a.src = q.audio;
+    a.controls = true;
+    media.appendChild(a);
   }
 
   if (q.image) {
     const img = document.createElement("img");
     img.src = q.image;
-    mediaArea.appendChild(img);
+    img.style.width = "100%";
+    media.appendChild(img);
   }
 
   q.options.forEach((opt,i)=>{
-    const btn = document.createElement("button");
-    btn.className = "option";
-    btn.textContent = opt;
-    btn.onclick = () => answer(i);
-    optionsEl.appendChild(btn);
+    const b=document.createElement("button");
+    b.textContent=opt;
+    b.onclick=()=>answer(i);
+    options.appendChild(b);
   });
 }
 
@@ -208,36 +203,29 @@ function answer(choice) {
     wrongStreak++;
   }
 
-  if (wrongStreak >= 3) {
-    triggerIntervention();
-    return;
-  }
+  if (wrongStreak >= 3) return intervention();
 
   index++;
-  if (index >= questions.length) finish();
-  else loadQuestion();
+  if (index >= questions.length) return finish();
+  load();
 }
 
-function triggerIntervention() {
+function intervention() {
   overlay.classList.remove("hidden");
-  actions.style.display = "none";
-  teacherBox.style.display = "flex";
+  buttons.classList.add("hidden");
 
-  setTimeout(() => {
-    interventionAudio.currentTime = 0;
-    interventionAudio.play();
-    teacherBox.classList.add("teacher-bounce");
-  }, 100);
+  audio.currentTime = 0;
+  audio.play(); // user gesture already occurred → guaranteed
 
-  interventionAudio.onended = () => {
-    teacherBox.classList.remove("teacher-bounce");
-    teacherBox.style.display = "none";
-    actions.style.display = "flex";
+  audio.onended = () => {
+    teacher.style.display = "none";
+    buttons.classList.remove("hidden");
   };
 }
 
-document.getElementById("continueBtn").onclick = () => {
+document.getElementById("backBtn").onclick = () => {
   overlay.classList.add("hidden");
+  teacher.style.display = "flex";
   wrongStreak = 0;
 };
 
@@ -246,13 +234,15 @@ document.getElementById("revealBtn").onclick = finish;
 function finish() {
   let level = "Absolute Beginner";
 
-  if (scores.C1 > 0) level = "Advanced";
-  else if (scores.B2 > 0 || scores.B1 > 0) level = "Semi Advanced";
-  else if (scores.A2 > 0) level = "Intermediate";
-  else if (scores.A1 > 0) level = "Beginner";
+  if (scores.C1) level = "Advanced";
+  else if (scores.B2||scores.B1) level="Semi Advanced";
+  else if (scores.A2) level="Intermediate";
+  else if (scores.A1) level="Beginner";
 
   sessionStorage.setItem("saybon_level", level);
-  window.location.href = "/reveal.html";
+  sessionStorage.setItem("placement_complete", "yes");
+
+  window.location.href = "/reveal/index.html";
 }
 
-loadQuestion();
+load();

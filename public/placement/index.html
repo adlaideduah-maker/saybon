@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SayBon Placement Test</title>
-  <link rel="stylesheet" href="placement.css" />
+  <meta charset="UTF-8">
+  <title>SayBon Placement</title>
+  <link rel="stylesheet" href="placement.css">
 </head>
 
 <body>
 
-  <div class="placement-container">
+<div class="test-container">
+  <h2 id="prompt"></h2>
 
-    <div id="mediaArea"></div>
+  <div id="media"></div>
 
-    <h2 id="questionPrompt"></h2>
+  <div id="options"></div>
+</div>
 
-    <div id="options"></div>
+<!-- INTERVENTION -->
+<div id="intervention" class="intervention hidden">
 
+  <div id="teacherCircle" class="teacher-circle">
+    <div class="halo"></div>
+    <img src="/assets/images/teacher.png">
+    <audio id="interventionAudio" preload="auto">
+      <source src="/assets/sounds/placement/intervention.mp3">
+    </audio>
   </div>
 
-  <!-- INTERVENTION OVERLAY -->
-  <div id="intervention" class="hidden">
-
-    <div class="teacher-box">
-      <img src="/assets/images/teacher.png" class="teacher" />
-    </div>
-
-    <audio id="interventionAudio" src="/assets/sounds/intervention.mp3"></audio>
-
-    <div class="intervention-actions">
-      <button id="continueBtn">Continue test</button>
-      <button id="revealBtn">Go to level reveal →</button>
-    </div>
-
+  <div id="interventionButtons" class="intervention-buttons hidden">
+    <button id="backBtn">Back to test</button>
+    <button id="revealBtn">Reveal level</button>
   </div>
 
-  <script src="placement.js"></script>
+</div>
+
+<script src="placement.js"></script>
 </body>
 </html>
