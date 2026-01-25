@@ -39,28 +39,38 @@
 
     <!-- BOTTOM ACTIONS -->
     <div class="bottom-actions">
-  <button
-    class="bottom-btn"
-    onclick="window.location.href='../features/feedback/index.html'">
-    Feedback & Contact
-  </button>
+      <button
+        class="bottom-btn"
+        onclick="window.location.href='../features/feedback/index.html'">
+        Feedback & Contact
+      </button>
 
-  <button
-    class="bottom-btn support-btn"
-    onclick="window.location.href='../features/support/index.html'">
-    Support 💚 SayBon
-  </button>
+      <button
+        class="bottom-btn support-btn"
+        onclick="window.location.href='../features/support/index.html'">
+        Support 💚 SayBon
+      </button>
 
-  <button
-    class="bottom-btn outline"
-    onclick="goHome()">
-    ← Back to Homepage
-  </button>
-</div>
+      <button
+        class="bottom-btn outline"
+        onclick="goHome()">
+        ← Back to Homepage
+      </button>
+    </div>
 
   </div>
 
+  <!-- 🔒 PLACEMENT LOCK — FIRST TIME ONLY -->
+  <script>
+    const placementDone = localStorage.getItem("saybon_placement_done");
+
+    if (!placementDone) {
+      // prevent dashboard access until placement is completed
+      window.location.replace("/placement/");
+    }
+  </script>
+
   <script src="dashboard.js"></script>
+
 </body>
 </html>
-

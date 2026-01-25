@@ -1,94 +1,139 @@
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
 body {
   margin: 0;
-  background: #081726;
-  font-family: Nunito, sans-serif;
-  color: white;
+  background: #eef6fb;
 }
+
+/* ================= TEST ================= */
 
 .placement-wrapper {
-  padding: 40px;
-  transition: opacity 0.8s ease;
+  max-width: 520px;
+  margin: 80px auto;
+  padding: 24px;
+  text-align: center;
 }
 
-.fade-out {
-  opacity: 0;
+#questionPrompt {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
-/* INTERVENTION OVERLAY */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.option {
+  padding: 18px;
+  border-radius: 40px;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+}
+
+.question-image {
+  max-width: 100%;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+/* ================= INTERVENTION ================= */
 
 .intervention {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, #0a2340, #050c16);
+  background: rgba(10,25,35,.88);
+  backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 40px;
+  z-index: 999;
+  animation: fadeIn 1s ease;
 }
 
-/* TEACHER */
+.intervention.hidden {
+  display: none;
+}
+
+/* ================= GLASS TEACHER ================= */
 
 .teacher-glass {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 1.2s ease, transform 1.2s ease;
   position: relative;
-}
-
-.teacher-glass.show {
-  opacity: 1;
-  transform: scale(1);
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  backdrop-filter: blur(18px);
+  border: 2px solid rgba(255,255,255,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,.4),
+    0 0 30px rgba(150,255,220,.35);
 }
 
 .teacher-glass img {
-  width: 180px;
-  position: relative;
+  width: 85%;
   z-index: 2;
 }
 
-/* GLASS SHIMMER */
+/* ================= HALO ================= */
 
 .halo {
   position: absolute;
-  inset: -40px;
+  inset: -18px;
   border-radius: 50%;
-  background: rgba(130, 200, 255, 0.14);
-  backdrop-filter: blur(14px);
+  border: 3px solid rgba(170,255,230,.7);
+  animation: haloPulse 2.4s ease-in-out infinite;
 }
 
-.shimmer {
-  animation: shimmer 4s infinite ease-in-out;
+@keyframes haloPulse {
+  0% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.18); opacity: .25; }
+  100% { transform: scale(1); opacity: .7; }
 }
 
-@keyframes shimmer {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.85; }
-  100% { opacity: 0.4; }
-}
-
-/* ACTION BUTTONS */
+/* ================= ACTIONS ================= */
 
 .intervention-actions {
-  margin-top: 40px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
-}
-
-.intervention-actions.show {
-  opacity: 1;
-  transform: translateY(0);
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .intervention-actions button {
-  padding: 14px 28px;
-  margin: 10px;
-  border-radius: 30px;
+  padding: 16px;
+  border-radius: 40px;
+  font-weight: 800;
   border: none;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-.hidden {
-  display: none;
+#continueBtn {
+  background: transparent;
+  color: #bff3e6;
+  border: 2px solid rgba(190,240,220,.5);
+}
+
+#revealBtn {
+  background: #4fa487;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
