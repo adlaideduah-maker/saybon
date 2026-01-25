@@ -1,21 +1,32 @@
-const level = sessionStorage.getItem("saybon_level");
-const text = document.getElementById("levelText");
-const actions = document.querySelector(".actions");
+const levelText = document.getElementById("levelText");
+const actions = document.querySelector(".reveal-actions");
 
-text.textContent = level;
+const startBtn = document.getElementById("startJourney");
+const homeBtn = document.getElementById("backHome");
 
-setTimeout(()=>{
-  text.classList.add("center");
-},800);
+// load level
+const level = sessionStorage.getItem("saybon_level") || "Beginner";
+levelText.textContent = level;
 
-setTimeout(()=>{
+// entrance animation
+setTimeout(() => {
+  levelText.classList.add("enter");
+}, 300);
+
+// after level settles → show buttons
+setTimeout(() => {
   actions.classList.remove("hidden");
-},2000);
+  actions.classList.add("show");
 
-function goLogin() {
-  window.location.href="/auth/login.html";
-}
+  startBtn.classList.add("slide-left");
+  homeBtn.classList.add("slide-right");
+}, 2200);
 
-function goHome() {
-  window.location.href="/index.html";
-}
+// navigation
+startBtn.onclick = () => {
+  window.location.href = "/login/";
+};
+
+homeBtn.onclick = () => {
+  window.location.href = "/";
+};

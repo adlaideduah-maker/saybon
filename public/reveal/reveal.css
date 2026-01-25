@@ -32,18 +32,24 @@ body {
   font-weight: 800;
   color: #9ff3d9;
   opacity: 0;
-  transform: translateX(120px);
-  transition:
-    transform 1.2s ease,
-    opacity 1.2s ease;
+
+#levelText.enter {
+  animation: levelEnter 1.4s cubic-bezier(.22,1.4,.36,1),
+             levelBounce 1.2s ease 1.4s;
 }
 
-/* slide-in to center */
-#levelText.center {
-  opacity: 1;
-  transform: translateX(0);
-  animation: gentleBounce 2.6s ease-in-out infinite;
+@keyframes levelEnter {
+  from { transform: translateX(120px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
+
+@keyframes levelBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.05); }
+  60% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
 
 /* =======================
    BUTTONS
@@ -110,28 +116,63 @@ body {
 
 /* ---------- REVEAL PAGE ANIMATION ---------- */
 
-.level-container {
+.reveal-actions {
   position: absolute;
-  top: 50%;
-  left: 120%;
-  transform: translate(-50%, -50%);
-  animation: slideInReveal 1.8s cubic-bezier(.22,.61,.36,1) forwards;
+  top: 60%;
+  display: flex;
+  gap: 40px;
+  opacity: 0;
 }
 
-@keyframes slideInReveal {
-  to {
-    left: 50%;
-  }
+.reveal-actions.show {
+  opacity: 1;
 }
 
-.level-text {
-  font-size: 64px;
-  font-weight: 900;
-  margin-bottom: 40px;
-  animation: bounceSoft 2.5s ease-in-out infinite;
+/* Buttons */
+.reveal-btn {
+  padding: 18px 42px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  backdrop-filter: blur(18px);
+  transition: transform 0.3s ease;
+  letter-spacing: 0.3px;
 }
 
-@keyframes bounceSoft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+/* Fun but classy */
+.reveal-btn.primary {
+  background: linear-gradient(135deg, #4fd1c5, #38b2ac);
+  color: #062c2c;
+  box-shadow: 0 12px 30px rgba(79, 209, 197, 0.35);
+}
+
+.reveal-btn.secondary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 12px 30px rgba(118, 75, 162, 0.35);
+}
+
+.reveal-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+
+/* Slide animations */
+.slide-left {
+  animation: slideFromLeft 1.2s ease forwards;
+}
+
+.slide-right {
+  animation: slideFromRight 1.2s ease forwards;
+}
+
+@keyframes slideFromLeft {
+  from { transform: translateX(-120px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromRight {
+  from { transform: translateX(120px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
