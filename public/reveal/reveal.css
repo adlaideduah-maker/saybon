@@ -1,71 +1,75 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
+  margin: 0;
   height: 100vh;
-  background: linear-gradient(160deg, #0b3c49, #0f5f6a);
-  font-family: 'Nunito', sans-serif;
+  background: radial-gradient(circle at center, #0f3f4b, #061c22);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  font-family: "Poppins", system-ui, sans-serif;
+  overflow: hidden;
 }
 
 .reveal-container {
   text-align: center;
-  animation: fadeIn 1.2s ease forwards;
 }
 
 .level-text {
   font-size: 64px;
-  font-weight: 900;
-  margin-bottom: 50px;
-  animation: bounceIn 1.2s ease;
+  font-weight: 800;
+  color: #6fe7ff;
+  opacity: 0;
+  transform: translateX(120px);
+  animation: slideIn 1.6s ease-out forwards;
 }
 
-.reveal-actions {
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-buttons {
+  margin-top: 40px;
   display: flex;
-  gap: 30px;
+  gap: 24px;
   justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reveal-buttons.show {
+  animation: buttonsIn 1.2s ease forwards;
+  pointer-events: auto;
+}
+
+@keyframes buttonsIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .btn {
-  padding: 18px 40px;
+  padding: 14px 28px;
   font-size: 18px;
   border-radius: 40px;
   border: none;
   cursor: pointer;
-  font-weight: 800;
-  transition: transform 0.2s ease;
+  font-weight: 600;
 }
 
-.btn:hover {
-  transform: scale(1.05);
+.btn.primary {
+  background: linear-gradient(135deg, #2af598, #08aeea);
+  color: #001a1f;
 }
 
-.primary {
-  background: #2ee6b6;
-  color: #053b35;
-}
-
-.secondary {
-  background: transparent;
+.btn.secondary {
+  background: rgba(255,255,255,0.15);
   color: #ffffff;
-  border: 2px solid rgba(255,255,255,0.5);
-}
-
-/* animations */
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes bounceIn {
-  0% { transform: scale(0.7); }
-  60% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  backdrop-filter: blur(12px);
 }

@@ -1,19 +1,24 @@
-console.log("🔥 reveal.js loaded");
+// get placement result
+const level =
+  sessionStorage.getItem("saybon_level") ||
+  "Absolute Beginner";
 
 const levelText = document.getElementById("levelText");
-const startBtn = document.getElementById("startJourney");
-const homeBtn = document.getElementById("backHome");
-
-// get level from placement test
-const level = sessionStorage.getItem("saybon_level") || "Absolute Beginner";
+const buttons = document.getElementById("buttons");
 
 levelText.textContent = level;
 
-// button routing
-startBtn.addEventListener("click", () => {
-  window.location.href = "/auth/login.html/";
-});
+// show buttons only AFTER level animation finishes
+setTimeout(() => {
+  buttons.classList.add("show");
+}, 1700);
 
-homeBtn.addEventListener("click", () => {
+// ✅ START JOURNEY → LOGIN PAGE
+document.getElementById("startJourney").onclick = () => {
+  window.location.href = "/auth/login.html";
+};
+
+// ✅ BACK TO HOMEPAGE
+document.getElementById("backHome").onclick = () => {
   window.location.href = "/";
-});
+};
