@@ -1,49 +1,107 @@
-body {
+/* ===============================
+   SAYBON — REVEAL PAGE STYLES
+   =============================== */
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle at center, #0f3f4b, #061c22);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "Poppins", system-ui, sans-serif;
-  overflow: hidden;
+  padding: 0;
 }
+
+body {
+  height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #1fb5b5 0%,
+    #0e6f78 40%,
+    #062f3a 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* ===============================
+   MAIN CONTAINER
+   =============================== */
 
 .reveal-container {
   text-align: center;
+  position: relative;
 }
+
+/* ===============================
+   LEVEL TEXT
+   =============================== */
 
 .level-text {
   font-size: 64px;
   font-weight: 800;
-  color: #6fe7ff;
-  opacity: 0;
-  transform: translateX(120px);
-  animation: slideIn 1.6s ease-out forwards;
+  letter-spacing: 1px;
+  color: #bdfcff;
+  text-shadow:
+    0 0 25px rgba(120, 255, 255, 0.6),
+    0 0 50px rgba(0, 200, 200, 0.3);
+  animation: levelBounce 2.2s ease-in-out infinite;
 }
 
-@keyframes slideIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* soft playful bounce */
+@keyframes levelBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
 }
 
-.reveal-buttons {
-  margin-top: 40px;
+/* ===============================
+   BUTTON AREA
+   =============================== */
+
+.reveal-actions {
+  margin-top: 50px;
   display: flex;
-  gap: 24px;
+  gap: 40px;
   justify-content: center;
   opacity: 0;
-  pointer-events: none;
+  animation: buttonsFadeIn 1.6s ease forwards;
+  animation-delay: 1.8s;
 }
 
-.reveal-buttons.show {
-  animation: buttonsIn 1.2s ease forwards;
-  pointer-events: auto;
+/* ===============================
+   GLASS BUTTONS
+   =============================== */
+
+.reveal-btn {
+  padding: 16px 38px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #eaffff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
-@keyframes buttonsIn {
+.reveal-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    inset 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+/* ===============================
+   BUTTON ENTRANCE
+   =============================== */
+
+@keyframes buttonsFadeIn {
   from {
     opacity: 0;
     transform: translateY(25px);
@@ -52,24 +110,4 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.btn {
-  padding: 14px 28px;
-  font-size: 18px;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.btn.primary {
-  background: linear-gradient(135deg, #2af598, #08aeea);
-  color: #001a1f;
-}
-
-.btn.secondary {
-  background: rgba(255,255,255,0.15);
-  color: #ffffff;
-  backdrop-filter: blur(12px);
 }
