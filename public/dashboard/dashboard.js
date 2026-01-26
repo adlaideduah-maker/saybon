@@ -1,9 +1,3 @@
-const hasCompletedPlacement = sessionStorage.getItem("saybon_level");
-
-if (!hasCompletedPlacement) {
-  window.location.href = "/placement/";
-}
-
 // ============================
 // SAFARI-SAFE DASHBOARD LOGIC
 // ============================
