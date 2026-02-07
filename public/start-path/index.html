@@ -56,10 +56,12 @@
 </div>
 
 <script>
+  // ✅ ONLY this goes to placement
   document.getElementById("placementBtn").onclick = () => {
     window.location.href = "/placement/";
   };
 
+  // ✅ Fresh start should NOT touch placement at all
   document.getElementById("freshBtn").onclick = () => {
     sessionStorage.setItem("saybon_next", "/dashboard/");
     window.location.href = "/loader.html";
