@@ -20,7 +20,9 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
 
-    sessionStorage.setItem("saybon_next", "dashboard/index.html");
+    // ✅ FIX — Force login users straight to dashboard (never placement)
+    sessionStorage.setItem("saybon_next", "/dashboard/");
+
     window.location.href = "../loader.html";
 
   } catch (err) {
