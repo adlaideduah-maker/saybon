@@ -48,3 +48,6 @@ document.getElementById("loginBtn").onclick = () => {
 document.getElementById("adminBtn").onclick = () => {
   window.location.href = "/admin/";
 };
+document.getElementById("settingsBtn").onclick = () => {
+  window.location.href = "/admin/";
+};
