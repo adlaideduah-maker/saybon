@@ -3,74 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SayBon — Learner Dashboard</title>
+  <title>LEARNER 📌 DASHBOARD</title>
 
-  <link rel="stylesheet" href="dashboard.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/dashboard/dashboard.css" />
 </head>
-
 <body>
 
-  <div class="dashboard">
+  <header class="dash-header">
+    <h1>LEARNER 📌 DASHBOARD</h1>
+  </header>
 
-    <h1 class="title">LEARNER 📌 DASHBOARD</h1>
+  <main class="dash-grid">
 
-    <div class="grid">
+    <button class="dash-tile" onclick="goLevels()">
+      🌍 Levels
+    </button>
 
-      <!-- LEFT — LEVELS -->
-      <div class="column levels">
-        <button class="tile level" onclick="goLevel('absolute-beginner')">Absolute Beginner</button>
-        <button class="tile level" onclick="goLevel('beginner')">Beginner</button>
-        <button class="tile level" onclick="goLevel('intermediate')">Intermediate</button>
-        <button class="tile level" onclick="goLevel('semi-advanced')">Semi-Advanced</button>
-        <button class="tile level" onclick="goLevel('advanced')">Advanced</button>
-      </div>
+    <button class="dash-tile" onclick="goTalkletics()">
+      🎮 Talkletics Games
+    </button>
 
-      <!-- RIGHT — FEATURES -->
-      <div class="column features">
-        <button class="tile coral" onclick="goFeature('talkletics')">🎮 Talkletics (French Games)</button>
-        <button class="tile lavender" onclick="goFeature('music')">🎵 SayBon Music</button>
-        <button class="tile blue" onclick="goFeature('delf')">📘 DELF Exam Prep</button>
-        <button class="tile peach" onclick="goFeature('translation')">🌍 Translation Services</button>
-        <button class="tile purple" onclick="goFeature('chat')">💬 Chat Room</button>
-      </div>
+    <button class="dash-tile" onclick="goMusic()">
+      🎵 SayBon Music
+    </button>
 
-    </div>
+    <button class="dash-tile" onclick="goDelf()">
+      🎓 DELF Exam Prep
+    </button>
 
-    <!-- BOTTOM ACTIONS -->
-    <div class="bottom-actions">
-      <button
-        class="bottom-btn"
-        onclick="window.location.href='../features/feedback/index.html'">
-        Feedback & Contact
-      </button>
+    <button class="dash-tile" onclick="goTranslation()">
+      🌐 Professional Translation
+    </button>
 
-      <button
-        class="bottom-btn support-btn"
-        onclick="window.location.href='../features/support/index.html'">
-        Support 💚 SayBon
-      </button>
+    <button class="dash-tile" onclick="goChat()">
+      💬 Chat Room
+    </button>
 
-      <button
-        class="bottom-btn outline"
-        onclick="goHome()">
-        ← Back to Homepage
-      </button>
-    </div>
+    <button class="dash-tile" onclick="goFeedback()">
+      📝 Feedback & Enquiries
+    </button>
 
-  </div>
+    <button class="dash-tile" onclick="goSupport()">
+      Support 💚 SayBon
+    </button>
 
-  <!-- 🔒 PLACEMENT LOCK — FIRST TIME ONLY -->
-  <script>
-    const placementDone = localStorage.getItem("saybon_placement_done");
+  </main>
 
-    if (!placementDone) {
-      // prevent dashboard access until placement is completed
-      window.location.replace("/placement/");
-    }
-  </script>
-
-  <script src="dashboard.js"></script>
-
+  <script src="/dashboard/dashboard.js"></script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+.admin-gate {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#accessMessage {
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.granted {
+  color: #2af598;
+}
+
+.denied {
+  color: #ff4f6d;
+}

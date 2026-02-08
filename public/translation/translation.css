@@ -1,0 +1,22 @@
+.translation-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.trans-tile {
+  padding: 22px;
+  border-radius: 18px;
+  border: none;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+  color: #0b1f23;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.trans-tile:hover {
+  transform: translateY(-3px);
+}

@@ -1,9 +1,3 @@
-/**************************************************
- * SAYBON PLACEMENT TEST — LOCKED QUESTIONS
- * Full rebuild (stable)
- * Intervention: 3 wrong in a row
- **************************************************/
-
 console.log("🔥 placement.js loaded");
 
 /* ==================================================
@@ -41,7 +35,6 @@ const questions = [
     correct: 0,
     level: "A0"
   },
-
   { id: 5, prompt: "Choose the correct sentence.",
     options: [
       "Je suis étudiant.",
@@ -164,19 +157,11 @@ const questions = [
     ],
     correct: 0, level: "C1" }
 ];
-
-/* ==================================================
-   STATE
-================================================== */
+const questions = [ /* YOUR FULL 20 QUESTIONS EXACTLY AS PROVIDED */ ];
 
 let index = 0;
 let wrongStreak = 0;
-
 const scores = { A0:0, A1:0, A2:0, B1:0, B2:0, C1:0 };
-
-/* ==================================================
-   ELEMENTS
-================================================== */
 
 const promptEl = document.getElementById("questionPrompt");
 const optionsEl = document.getElementById("options");
@@ -186,10 +171,6 @@ const overlay = document.getElementById("intervention");
 const teacherBox = document.querySelector(".teacher-box");
 const actions = document.querySelector(".intervention-actions");
 const interventionAudio = document.getElementById("interventionAudio");
-
-/* ==================================================
-   LOAD QUESTION
-================================================== */
 
 function loadQuestion() {
   const q = questions[index];
@@ -202,6 +183,8 @@ function loadQuestion() {
     const audio = document.createElement("audio");
     audio.src = q.audio;
     audio.controls = true;
+    audio.preload = "metadata";
+    audio.load();
     mediaArea.appendChild(audio);
   }
 
@@ -220,10 +203,6 @@ function loadQuestion() {
     optionsEl.appendChild(btn);
   });
 }
-
-/* ==================================================
-   ANSWER LOGIC
-================================================== */
 
 function answer(choice) {
   const q = questions[index];
@@ -245,36 +224,24 @@ function answer(choice) {
   else loadQuestion();
 }
 
-/* ==================================================
-   INTERVENTION
-================================================== */
-
 function triggerIntervention() {
   overlay.classList.remove("hidden");
-
   actions.style.display = "none";
   teacherBox.style.display = "flex";
-  teacherBox.style.opacity = "1";
 
   setTimeout(() => {
     interventionAudio.currentTime = 0;
     interventionAudio.play().catch(()=>{});
   }, 200);
 
- interventionAudio.onended = () => {
-  teacherBox.classList.remove("teacher-bounce");
-  teacherBox.style.display = "none";
+  interventionAudio.onended = () => {
+    teacherBox.style.display = "none";
+    actions.style.display = "flex";
 
-  actions.style.display = "flex";
-
-  document.getElementById("continueBtn").classList.add("slide-in-left");
-  document.getElementById("revealBtn").classList.add("slide-in-right");
-};
+    document.getElementById("continueBtn").classList.add("slide-in-left");
+    document.getElementById("revealBtn").classList.add("slide-in-right");
+  };
 }
-
-/* ==================================================
-   BUTTONS
-================================================== */
 
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
@@ -282,10 +249,6 @@ document.getElementById("continueBtn").onclick = () => {
 };
 
 document.getElementById("revealBtn").onclick = finish;
-
-/* ==================================================
-   FINISH
-================================================== */
 
 function finish() {
   let level = "Absolute Beginner";

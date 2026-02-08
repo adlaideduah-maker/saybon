@@ -1,0 +1,33 @@
+const tags = [
+  "Hold on… our hamsters are learning French 🐹… et toi ?",
+  "Stirring the brain soup… très délicieux 🧠🥣",
+  "Loading genius mode… doucement hein 😏",
+  "Downloading confidence… oui oui ✨",
+  "Waking up the pixels… bonjour pixels 👋",
+  "Bribing the server with croissants… ça marche 🥐",
+  "Connecting the dots… comme par magie 🪄",
+  "Sharpening your brain… très pointu 🧠✏️",
+  "Teaching the screen manners… s’il te plaît 😌",
+  "Loading vibes… très chic 💅",
+  "Convincing the app you’re brilliant… facile 😎",
+  "Calibrating your future fluency… presque parfait 🎯",
+  "Charging creativity… allez allez ⚡",
+  "Untangling digital spaghetti… mamma mia… pardon 😅",
+  "Giving the app a pep talk… tu peux le faire 💪",
+  "Buffering brilliance… c’est sérieux 🧠✨",
+  "Rolling out the red carpet… bienvenue 🌟",
+  "Polishing pixels and pronunciations… très propre 🧼",
+  "Tuning your experience… comme une guitare 🎸",
+  "Almost there… respire… inspire… expire… parfait 😮‍💨"
+];
+
+const tagEl = document.getElementById("loaderTag");
+
+// ONE TAG PER LOADER APPEARANCE
+const tag = tags[Math.floor(Math.random() * tags.length)];
+tagEl.textContent = tag;
+
+setTimeout(() => {
+  const next = sessionStorage.getItem("saybon_next") || "/";
+  window.location.href = next;
+}, 1800);

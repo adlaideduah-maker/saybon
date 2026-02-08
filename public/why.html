@@ -3,65 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Why French — SayBon</title>
+  <title>Why Learn French?</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f7f9fb;
-      font-family: system-ui, sans-serif;
-    }
-
-    .box {
-      width: 100%;
-      max-width: 420px;
-      padding: 24px;
-      text-align: center;
-    }
-
-    h2 {
-      margin-bottom: 32px;
-    }
-
-    button {
-      width: 100%;
-      padding: 18px;
-      margin-bottom: 16px;
-      border-radius: 40px;
-      border: none;
-      font-size: 17px;
-      background: #7aa6c2;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/why.css" />
 </head>
-
 <body>
 
-<div class="box">
-  <h2>Why do you want to learn French?</h2>
+  <main class="center-card">
+    <h2>Why do you want to learn French?</h2>
 
-  <button data-reason="travel">Travel ✈️</button>
-  <button data-reason="school">School 📘</button>
-  <button data-reason="work">Work 💼</button>
-  <button data-reason="fun">Just for fun 😄</button>
-</div>
+    <textarea id="whyInput" placeholder="Tell us your reason..."></textarea>
 
-<script>
-  document.querySelectorAll("button").forEach(btn => {
-    btn.onclick = () => {
-      localStorage.setItem("whyFrench", btn.dataset.reason);
+    <button id="continueBtn" class="primary-btn">
+      Continue
+    </button>
+  </main>
 
-      sessionStorage.setItem("saybon_next", "/start-path/");
-      window.location.href = "/loader.html";
+  <script>
+    document.getElementById("continueBtn").onclick = () => {
+      window.location.href = "/start.html";
     };
-  });
-</script>
+  </script>
 
 </body>
 </html>

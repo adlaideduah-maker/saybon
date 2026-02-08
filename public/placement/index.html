@@ -3,73 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>SayBon Placement Test</title>
-
-  <!-- Placement styles -->
   <link rel="stylesheet" href="placement.css" />
 </head>
-
 <body>
 
-  <!-- =========================
-       MAIN PLACEMENT APP
-  ========================== -->
-  <main id="app">
+<main id="app">
+  <h2 id="questionPrompt"></h2>
+  <div id="mediaArea"></div>
+  <div id="options"></div>
+</main>
 
-    <h2 id="questionPrompt"></h2>
+<div id="intervention" class="hidden">
 
-    <!-- audio / image goes here -->
-    <div id="mediaArea"></div>
-
-    <!-- answer buttons -->
-    <div id="options"></div>
-
-  </main>
-
-
-  <!-- =========================
-       INTERVENTION OVERLAY
-  ========================== -->
-  <div id="intervention" class="hidden">
-
-    <!-- teacher only while audio plays -->
-    <div class="teacher-box">
-      <div class="teacher-circle">
-        <img
-          src="/assets/images/teacher.png"
-          alt="Teacher"
-        />
-      </div>
+  <div class="teacher-box">
+    <div class="teacher-circle">
+      <img src="/assets/images/teacher.png" alt="Teacher"/>
     </div>
-
-    <!-- autoplay intervention audio -->
-    <audio
-      id="interventionAudio"
-      src="/assets/sounds/placement/intervention.mp3"
-      preload="auto"
-    ></audio>
-
-    <!-- buttons appear AFTER audio -->
-    <div class="intervention-actions">
-
-      <button id="continueBtn" class="glass-btn back">
-        Back to test
-      </button>
-
-      <button id="revealBtn" class="glass-btn reveal">
-        Reveal level
-      </button>
-
-    </div>
-
   </div>
 
+  <audio
+    id="interventionAudio"
+    src="/assets/sounds/placement/intervention.mp3"
+    preload="auto">
+  </audio>
 
-  <!-- =========================
-       SCRIPT — MUST BE LAST
-  ========================== -->
-  <script src="./placement.js"></script>
+  <div class="intervention-actions">
+    <button id="continueBtn" class="glass-btn back">Back to test</button>
+    <button id="revealBtn" class="glass-btn reveal">Reveal level</button>
+  </div>
+</div>
 
+<script src="./placement.js"></script>
 </body>
 </html>

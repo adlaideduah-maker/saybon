@@ -1,24 +1,21 @@
-// get placement result
 const level =
-  sessionStorage.getItem("saybon_level") ||
-  "Absolute Beginner";
+  sessionStorage.getItem("saybon_level") || "Absolute Beginner";
 
 const levelText = document.getElementById("levelText");
 const buttons = document.getElementById("buttons");
 
 levelText.textContent = level;
 
-// show buttons only AFTER level animation finishes
 setTimeout(() => {
   buttons.classList.add("show");
 }, 1700);
 
-// ✅ START JOURNEY → LOGIN PAGE
+// ✅ START JOURNEY → LOGIN
 document.getElementById("startJourney").onclick = () => {
   window.location.href = "/auth/login.html";
 };
 
-// ✅ BACK TO HOMEPAGE
+// ✅ BACK HOME
 document.getElementById("backHome").onclick = () => {
   window.location.href = "/";
 };

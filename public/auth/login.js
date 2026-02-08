@@ -20,10 +20,9 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
 
-    // ✅ FIX — Force login users straight to dashboard (never placement)
+    // 🔒 LOCKED: ALWAYS LOADER → DASHBOARD
     sessionStorage.setItem("saybon_next", "/dashboard/");
-
-    window.location.href = "../loader.html";
+    window.location.href = "/loader.html";
 
   } catch (err) {
     alert("Login cancelled or failed.");

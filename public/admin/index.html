@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — SayBon</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+
+  <div class="admin-gate">
+
+    <div id="gateStage">
+      <h2>ADMIN ACCESS</h2>
+      <p>Enter passcode</p>
+
+      <input type="password" id="adminPass" placeholder="••••••••••••" />
+      <button id="checkPass" class="primary">Unlock</button>
+
+      <div id="accessMessage"></div>
+    </div>
+
+    <div id="nameStage" class="hidden">
+      <h2>ACCESS GRANTED</h2>
+      <p>Enter your name</p>
+
+      <input type="text" id="adminName" placeholder="Your name" />
+      <button id="openAdmin" class="primary">Open Admin</button>
+    </div>
+
+  </div>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>
