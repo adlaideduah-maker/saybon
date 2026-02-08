@@ -20,7 +20,7 @@ teacher.addEventListener("click", () => {
   pills.forEach((pill, index) => {
     setTimeout(() => {
       pill.classList.add("show");
-    }, index * 4200);
+    }, index * 4200); // VERY slow reveal
   });
 
   audio.onended = () => {
@@ -35,13 +35,16 @@ teacher.addEventListener("click", () => {
   };
 });
 
-// ✅ START PATH → WHY → LOADER (LOCKED)
 document.getElementById("startBtn").onclick = () => {
   sessionStorage.setItem("saybon_next", "/why.html");
   window.location.href = "/loader.html";
 };
 
-// ✅ LOGIN → DIRECT TO LOGIN PAGE
 document.getElementById("loginBtn").onclick = () => {
   window.location.href = "/auth/login.html";
+};
+
+// 🔒 ADMIN ENTRY (NEW — LOCKED)
+document.getElementById("adminBtn").onclick = () => {
+  window.location.href = "/admin/";
 };

@@ -20,7 +20,8 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
 
-    // 🔒 LOCKED: ALWAYS LOADER → DASHBOARD
+    // 🔒 LOCKED BEHAVIOR:
+    // Always go → loader → dashboard
     sessionStorage.setItem("saybon_next", "/dashboard/");
     window.location.href = "/loader.html";
 

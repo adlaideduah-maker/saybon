@@ -1,29 +1,28 @@
-const PASSWORD = "s9a6y3b2o8n1";
+const PASSWORD = "s9a6y3b2o8n1"; // 🔒 LOCKED
 
-const gateStage = document.getElementById("gateStage");
-const nameStage = document.getElementById("nameStage");
-const accessMessage = document.getElementById("accessMessage");
+const status = document.getElementById("status");
+const passInput = document.getElementById("adminPassword");
+const checkBtn = document.getElementById("checkBtn");
+const nameBox = document.getElementById("nameBox");
+const adminName = document.getElementById("adminName");
+const openAdminBtn = document.getElementById("openAdminBtn");
 
-document.getElementById("checkPass").onclick = () => {
-  const entered = document.getElementById("adminPass").value;
-
-  if (entered === PASSWORD) {
-    accessMessage.textContent = "ACCESS GRANTED ✓";
-    accessMessage.className = "granted";
-
-    setTimeout(() => {
-      gateStage.classList.add("hidden");
-      nameStage.classList.remove("hidden");
-    }, 900);
-
+checkBtn.onclick = () => {
+  if (passInput.value === PASSWORD) {
+    status.textContent = "ACCESS GRANTED ✔";
+    nameBox.classList.remove("hidden");
+    passInput.disabled = true;
+    checkBtn.disabled = true;
   } else {
-    accessMessage.textContent = "ACCESS DENIED ✕";
-    accessMessage.className = "denied";
+    status.textContent = "ACCESS DENIED ❌";
   }
 };
 
-document.getElementById("openAdmin").onclick = () => {
-  const name = document.getElementById("adminName").value || "Admin";
-  sessionStorage.setItem("saybon_admin", name);
-  window.location.href = "/admin/panel.html";
+openAdminBtn.onclick = () => {
+  if (adminName.value.trim()) {
+    sessionStorage.setItem("admin_name", adminName.value.trim());
+    window.location.href = "/admin/dashboard.html";
+  } else {
+    alert("Please enter your name.");
+  }
 };

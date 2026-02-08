@@ -3,34 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin — SayBon</title>
-  <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/admin/admin.css" />
+  <title>Admin Access — SayBon</title>
+
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
 
-  <div class="admin-gate">
+<div class="admin-gate">
 
-    <div id="gateStage">
-      <h2>ADMIN ACCESS</h2>
-      <p>Enter passcode</p>
+  <div id="screen">
+    <h1 id="status">ENTER ACCESS CODE</h1>
 
-      <input type="password" id="adminPass" placeholder="••••••••••••" />
-      <button id="checkPass" class="primary">Unlock</button>
+    <input type="password" id="adminPassword" placeholder="••••••••••••" />
 
-      <div id="accessMessage"></div>
+    <button id="checkBtn">Unlock</button>
+
+    <div id="nameBox" class="hidden">
+      <input type="text" id="adminName" placeholder="Enter your name" />
+      <button id="openAdminBtn">Open Admin</button>
     </div>
-
-    <div id="nameStage" class="hidden">
-      <h2>ACCESS GRANTED</h2>
-      <p>Enter your name</p>
-
-      <input type="text" id="adminName" placeholder="Your name" />
-      <button id="openAdmin" class="primary">Open Admin</button>
-    </div>
-
   </div>
 
-  <script src="/admin/admin.js"></script>
+</div>
+
+<script src="admin.js"></script>
 </body>
 </html>

@@ -5,46 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start your journey — SayBon</title>
 
-  <link rel="stylesheet" href="/css/global.css" />
-
-  <style>
-    .card {
-      background: white;
-      padding: 36px;
-      border-radius: 24px;
-      width: 90%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,.15);
-    }
-
-    button {
-      width: 100%;
-      padding: 20px;
-      margin-top: 18px;
-      border-radius: 18px;
-      border: none;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-    .test { background: #e6f0ff; }
-    .fresh { background: #e9fbf4; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/start.css" />
 </head>
 
-<body class="center-page">
+<body>
 
-<div class="card">
-  <h2>How would you like to begin?</h2>
+<div class="start-app">
 
-  <button class="test" id="placementBtn">
-    Find my level 🎯
-  </button>
+  <!-- floating accents -->
+  <div class="spark s1"></div>
+  <div class="spark s2"></div>
+  <div class="spark s3"></div>
 
-  <button class="fresh" id="freshBtn">
-    Start from scratch 🌱
-  </button>
+  <div class="start-card">
+
+    <div class="badge">🚀 Start your journey</div>
+
+    <h1 class="start-title">
+      How would you like to begin?
+    </h1>
+
+    <p class="start-sub">
+      Choose the path that fits you best.
+    </p>
+
+    <button class="path-btn test" id="placementBtn">
+      🎯 Find my level  
+      <span class="small">Take a quick smart test</span>
+    </button>
+
+    <button class="path-btn fresh" id="freshBtn">
+      🌱 Start from scratch  
+      <span class="small">Begin with Absolute Beginner</span>
+    </button>
+
+  </div>
 </div>
 
 <script>

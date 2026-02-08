@@ -1,139 +1,175 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
-}
+/* =========================================
+   HOMEPAGE — DISTINCT VISUAL IDENTITY
+   (Green is ONLY for homepage)
+========================================= */
 
-body {
-  background: #2f5b55;
-}
-
-/* ================= LAYOUT ================= */
-
-.app {
-  min-height: 100svh;
-  display: flex;
-}
-
-.white-area {
-  width: 50%;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo {
-  width: 360px;
-}
-
-.green-area {
-  width: 50%;
-  background: #2f5b55;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ================= TEACHER ================= */
-
-.teacher-ring {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  backdrop-filter: blur(14px);
-  border: 2px solid rgba(255,255,255,0.35);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
+.home-app {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   overflow: hidden;
 }
 
-/* MIRROR LIGHT SWEEP */
-.teacher-ring::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 30%,
-    rgba(255,255,255,0.35) 45%,
-    rgba(255,255,255,0) 60%
-  );
-  transform: translateX(-120%);
-  animation: glassSweep 6s infinite ease-in-out;
+/* ========== LEFT: WHITE SIDE ========== */
+
+.white-area {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
-@keyframes glassSweep {
-  0% { transform: translateX(-120%); }
-  45% { transform: translateX(-120%); }
-  65% { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
+.logo-wrap {
+  text-align: center;
 }
 
-.teacher-ring img {
-  width: 85%;
+.logo {
+  width: 180px;
+  max-width: 70vw;
 }
 
-.tap-text {
-  margin-top: 10px;
-  margin-left: 30px;
-  color: #f2d9b8;
-  font-weight: 600;
+.tagline {
+  margin-top: 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #666;
 }
 
-/* ================= BUTTONS ================= */
+/* ========== RIGHT: GREEN SIDE (HOMEPAGE ONLY) ========== */
 
-.actions {
-  margin-top: 42px;
-  width: 300px;
+.green-area {
+  background: linear-gradient(180deg, #0f6f73, #0a4f57);
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  align-items: center;
+  justify-content: center;
 }
 
-.action-btn {
-  padding: 18px;
-  border-radius: 40px;
+/* SETTINGS BUTTON — BOTTOM RIGHT */
+.settings-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.18);
   border: none;
-  background: #3f6f69;
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.settings-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+/* TEACHER CIRCLE */
+.teacher-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
 }
 
-/* ================= OVERLAY ================= */
+.teacher-ring {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.teacher-ring img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* soft glow */
+.teacher-ring::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(110,210,255,.55), transparent 70%);
+  animation: glowPulse 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes glowPulse {
+  0% { opacity: .4; transform: scale(.96); }
+  50% { opacity: .9; transform: scale(1.05); }
+  100% { opacity: .4; transform: scale(.96); }
+}
+
+.tap-text {
+  margin-top: 12px;
+  color: #eaffff;
+  font-weight: 700;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+}
+
+.action-btn {
+  min-width: 180px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+.action-btn.primary {
+  background: #ffffff;
+  color: #0a4f57;
+}
+
+.action-btn.secondary {
+  background: rgba(255,255,255,.18);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+}
+
+/* ========== WHAT WE OFFER OVERLAY ========== */
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(12, 25, 35, 0.88);
-  backdrop-filter: blur(22px);
-
+  background: rgba(0,0,0,.85);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 34px;
-
-  z-index: 50;
-
+  color: white;
   opacity: 0;
-  transform: scale(1.02);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-
   pointer-events: none;
+  transition: opacity .6s ease;
+  z-index: 1000;
 }
 
 .overlay.active {
   opacity: 1;
-  transform: scale(1);
   pointer-events: auto;
 }
 
@@ -141,114 +177,47 @@ body {
   display: none;
 }
 
-.overlay h2 {
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-
-/* ================= PILLS ================= */
-
 .pill-list {
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
+  max-width: 520px;
+  width: 90%;
 }
 
 .pill {
-  width: 420px;
-  height: 56px;
-  border-radius: 50px;
-
-  background: linear-gradient(
-    to bottom right,
-    rgba(255,255,255,0.28),
-    rgba(255,255,255,0.08)
-  );
-
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,0.35);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  background: rgba(255,255,255,.12);
+  padding: 14px 20px;
+  border-radius: 999px;
+  text-align: center;
   opacity: 0;
-  transition: opacity 3s ease;
-}
-
-.pill span {
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  opacity: 0;
-  transition: opacity 2.4s ease;
+  transform: translateY(10px);
+  transition: all .6s ease;
 }
 
 .pill.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
-.pill.show span {
-  opacity: 1;
-}
-
-/* ================= MOBILE FIX ================= */
+/* ========== MOBILE ========== */
 
 @media (max-width: 900px) {
-
-  .app {
-    flex-direction: column;
-  }
-
-  .white-area,
-  .green-area {
-    width: 100%;
+  .home-app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 
   .white-area {
-    padding: 36px 0 24px;
+    padding: 24px;
   }
 
   .green-area {
-    padding: 28px 0 42px;
-  }
-
-  .logo {
-    width: 250px;
-  }
-
-  .teacher-ring {
-    width: 110px;
-    height: 110px;
+    min-height: 70vh;
   }
 
   .actions {
-    width: 88%;
-    margin-top: 36px;
-  }
-
-  .action-btn {
-    padding: 16px;
-    font-size: 17px;
-  }
-
-  .overlay {
-    padding: 30px 0;
-  }
-
-  .overlay h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .pill {
-    width: 88vw;
-    height: 52px;
-  }
-
-  .pill span {
-    font-size: 15px;
+    flex-direction: column;
   }
 }

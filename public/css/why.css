@@ -1,0 +1,121 @@
+/* ==================================================
+   WHY PAGE — CENTERED, PREMIUM, FUN
+================================================== */
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, #f0f7ff, #dbe9ff);
+  font-family: "Nunito", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.why-app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-card {
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  padding: 40px 32px;
+  width: 90%;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.12);
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(0, 160, 200, 0.12);
+  color: #0b4f5a;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.why-title {
+  margin: 8px 0 6px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0b2f33;
+}
+
+.why-sub {
+  margin: 0 0 22px;
+  color: #0b2f33;
+  opacity: .85;
+  font-size: 14px;
+}
+
+/* OPTIONS GRID */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.why-option {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b2f33;
+  cursor: pointer;
+  transition: all .2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.why-option span {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: .8;
+}
+
+.why-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.why-option.active {
+  background: linear-gradient(135deg, #e6f3ff, #cfe7ff);
+  border-color: rgba(0, 160, 200, 0.3);
+}
+
+/* CONTINUE BUTTON */
+.continue-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2af598, #08aeea);
+  color: #001a1f;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
