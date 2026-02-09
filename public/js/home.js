@@ -1,25 +1,45 @@
-document.addEventListener("DOMContentLoaded", () => {
+const teacher = document.getElementById("teacherCircle");
+const audio = document.getElementById("introAudio");
+const overlay = document.getElementById("offerOverlay");
+const pills = document.querySelectorAll(".pill");
 
-  const teacher = document.getElementById("teacherTap");
-  const getStartedBtn = document.getElementById("getStartedBtn");
-  const loginBtn = document.getElementById("loginBtn");
+let started = false;
 
-  // Teacher tap -> open cinematic overlay (your existing behavior)
-  teacher.addEventListener("click", () => {
-    window.location.href = "/loader.html";
+teacher.addEventListener("click", () => {
+  if (started) return;
+  started = true;
+
+  overlay.classList.remove("hidden");
+
+  requestAnimationFrame(() => {
+    overlay.classList.add("active");
   });
 
-  // Glass button shimmer + navigation
-  getStartedBtn.addEventListener("click", () => {
-    getStartedBtn.classList.add("clicked");
-    sessionStorage.setItem("saybon_next", "why.html");
-    window.location.href = "/loader.html";
+  audio.play();
+
+  pills.forEach((pill, index) => {
+    setTimeout(() => {
+      pill.classList.add("show");
+    }, index * 4200); // VERY slow reveal
   });
 
-  loginBtn.addEventListener("click", () => {
-    loginBtn.classList.add("clicked");
-    sessionStorage.setItem("saybon_next", "dashboard/index.html");
-    window.location.href = "/loader.html";
-  });
+  audio.onended = () => {
+    overlay.classList.remove("active");
 
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+    }, 650);
+
+    pills.forEach(p => p.classList.remove("show"));
+    started = false;
+  };
 });
+
+document.getElementById("startBtn").onclick = () => {
+  sessionStorage.setItem("saybon_next", "/why.html");
+  window.location.href = "/loader.html";
+};
+
+document.getElementById("loginBtn").onclick = () => {
+  window.location.href = "/auth/login.html";
+};
