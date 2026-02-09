@@ -5,47 +5,55 @@ const pills = document.querySelectorAll(".pill");
 
 let started = false;
 
+/* =====================================================
+   TEACHER TAP — CINEMATIC OVERLAY (28s)
+===================================================== */
+
 teacher.addEventListener("click", () => {
   if (started) return;
   started = true;
 
-  // 1️⃣ START WITH A BLANK OVERLAY
-  overlay.classList.remove("hidden");
+  // Reset any previous state
+  overlay.classList.remove("hidden", "closing");
+  pills.forEach(p => p.classList.remove("show"));
 
+  // 1️⃣ Show blank overlay first
   requestAnimationFrame(() => {
     overlay.classList.add("active");
   });
 
-  // Start music
+  // Play audio
   audio.currentTime = 0;
   audio.play();
 
-  // 2️⃣ SHOW PILLS ONE-BY-ONE (matches CSS timing)
-  pills.forEach((pill) => {
-    pill.classList.remove("show"); // reset
-  });
-
-  // 3️⃣ DO NOT CLOSE UNTIL 28 SECONDS
+  // 2️⃣ Start closing sequence near the end (25s)
   setTimeout(() => {
     overlay.classList.add("closing");
-  }, 25000); // start closing at 25s
+  }, 25000);
 
+  // 3️⃣ Fully hide at 28 seconds
   setTimeout(() => {
     overlay.classList.remove("active", "closing");
     overlay.classList.add("hidden");
 
-    // reset pills for next tap
+    // Reset pills for next tap
     pills.forEach(p => p.classList.remove("show"));
 
     started = false;
-  }, 28000); // FULL 28 SECONDS
+  }, 28000);
 });
 
+/* =====================================================
+   BUTTONS — FIXED (NOW THEY WORK)
+===================================================== */
+
+// GET STARTED → loader → why page
 document.getElementById("startBtn").onclick = () => {
   sessionStorage.setItem("saybon_next", "/why.html");
   window.location.href = "/loader.html";
 };
 
+// LOGIN → login page
 document.getElementById("loginBtn").onclick = () => {
   window.location.href = "/auth/login.html";
 };
