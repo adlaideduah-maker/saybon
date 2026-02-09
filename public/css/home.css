@@ -10,9 +10,10 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   font-family: "Nunito", system-ui, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;      /* no horizontal scroll */
+  overflow-y: auto;        /* ✅ ALLOWS MOBILE SCROLL */
 }
 
 /* =====================================================
@@ -21,7 +22,7 @@ html, body {
 
 .app {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;       /* allows content to extend */
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -31,14 +32,15 @@ html, body {
 ===================================================== */
 
 .white-area {
-  background: #ffffff; /* very clean white */
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 40px 0;          /* helps mobile breathing room */
 }
 
-/* BIG TEACHER — NO RING, NO GLOW (your rule) */
+/* BIG TEACHER — NO RING, NO GLOW */
 
 .teacher-wrap {
   display: flex;
@@ -46,10 +48,9 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* 👇 HOVER REACTION ON TEACHER */
 .teacher-wrap:hover {
   transform: scale(1.04);
   filter: brightness(1.05);
@@ -57,7 +58,7 @@ html, body {
 
 .teacher-img {
   width: 95%;
-  max-width: 480px; /* made bigger */
+  max-width: 480px;
 }
 
 .tap-text {
@@ -78,10 +79,11 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 40px 0;          /* helps mobile scroll */
 }
 
 /* =====================================================
-   BIGGER, ZOOMED-IN LOGO
+   BIG LOGO
 ===================================================== */
 
 .logo-wrap {
@@ -90,21 +92,19 @@ html, body {
   justify-content: center;
 }
 
-/* 👇 LOGO MADE NOTICEABLY BIGGER + CLEARER */
 .big-logo {
-  width: 280px;          /* increased */
-  max-width: 80vw;       /* responsive */
-  transition: transform 0.25s ease, filter 0.25s ease;
+  width: 280px;
+  max-width: 80vw;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* 👇 HOVER REACTION ON LOGO */
 .big-logo:hover {
   transform: scale(1.06);
   filter: brightness(1.08);
 }
 
 /* =====================================================
-   ACTION BUTTONS — TRUE 3D GLASS
+   ACTION BUTTONS — 3D GLASS
 ===================================================== */
 
 .actions {
@@ -119,11 +119,9 @@ html, body {
   padding: 18px 32px;
   border-radius: 999px;
   border: none;
-
   font-size: 17px;
   font-weight: 700;
 
-  /* GLASS 3D BASE */
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.32),
@@ -131,20 +129,17 @@ html, body {
   );
 
   color: #ffffff;
-
   backdrop-filter: blur(16px);
   cursor: pointer;
 
-  /* 3D DEPTH */
   box-shadow:
     inset 0 2px 2px rgba(255,255,255,0.6),
     inset 0 -2px 2px rgba(0,0,0,0.1),
     0 12px 28px rgba(0,0,0,0.22);
 
-  transition: all 0.28s cubic-bezier(.22,.61,.36,1);
+  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 }
 
-/* 👇 VISIBLE HOVER REACTION */
 .action-btn:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow:
@@ -152,7 +147,6 @@ html, body {
     0 16px 34px rgba(0,0,0,0.28);
 }
 
-/* 👇 SHIMMER / PRESS FEEL ON CLICK */
 .action-btn:active {
   transform: translateY(1px) scale(0.99);
   background: linear-gradient(
@@ -163,15 +157,6 @@ html, body {
   box-shadow: 0 0 28px rgba(255,255,255,0.45);
 }
 
-/* Slightly different tone for login if you want contrast */
-.action-btn.secondary {
-  background: linear-gradient(
-    180deg,
-    rgba(240, 255, 250, 0.28),
-    rgba(200, 240, 230, 0.08)
-  );
-}
-
 /* =====================================================
    SETTINGS ICON (ADMIN ENTRY)
 ===================================================== */
@@ -180,7 +165,6 @@ html, body {
   position: absolute;
   bottom: 20px;
   right: 20px;
-
   background: rgba(255,255,255,0.22);
   backdrop-filter: blur(10px);
   border: none;
@@ -188,30 +172,27 @@ html, body {
   width: 48px;
   height: 48px;
   font-size: 20px;
-
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* 👇 HOVER ON SETTINGS */
 .settings-btn:hover {
   transform: scale(1.08);
   box-shadow: 0 0 18px rgba(255,255,255,0.4);
 }
 
 /* =====================================================
-   CINEMATIC OVERLAY (WHAT WE OFFER)
+   CINEMATIC OVERLAY — MUCH SLOWER & SMOOTHER
 ===================================================== */
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 30, 40, 0.9);
-  backdrop-filter: blur(12px);
+  background: rgba(10, 30, 40, 0.92);
+  backdrop-filter: blur(14px);
 
   display: flex;
   flex-direction: column;
@@ -220,7 +201,7 @@ html, body {
 
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.9s ease;
+  transition: opacity 1.4s ease;   /* ✅ SLOWER FADE-IN */
   z-index: 999;
 }
 
@@ -233,16 +214,23 @@ html, body {
   display: none;
 }
 
-/* TITLE */
+/* TITLE ANIMATION (SLOW ENTRANCE) */
 
 .overlay h2 {
   color: #ffffff;
   font-size: 32px;
   margin-bottom: 28px;
   opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* PILLS */
+.overlay.active h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PILLS (STAGGERED + SLOW) */
 
 .pill-list {
   display: flex;
@@ -260,6 +248,31 @@ html, body {
   color: white;
   font-weight: 600;
   opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+/* When active, pills appear gently one-by-one */
+.overlay.active .pill:nth-child(1) { transition-delay: 0.6s; }
+.overlay.active .pill:nth-child(2) { transition-delay: 1.2s; }
+.overlay.active .pill:nth-child(3) { transition-delay: 1.8s; }
+.overlay.active .pill:nth-child(4) { transition-delay: 2.4s; }
+
+.overlay.active .pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* EXIT: EVERYTHING FADES FROM BOTTOM UP */
+.overlay.closing h2 {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+
+.overlay.closing .pill {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 /* =====================================================
@@ -269,7 +282,7 @@ html, body {
 @media (max-width: 900px) {
   .app {
     grid-template-columns: 1fr;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: auto auto;  /* ✅ ALLOWS SCROLL */
   }
 
   .teacher-img {
