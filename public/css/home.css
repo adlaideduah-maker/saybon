@@ -1,183 +1,4 @@
 /* =====================================================
-   GLOBAL RESET
-===================================================== */
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
-  font-family: "Nunito", system-ui, sans-serif;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-/* =====================================================
-   APP CONTAINER (SPLIT SCREEN)
-===================================================== */
-
-.app {
-  width: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-/* =====================================================
-   WHITE SIDE (LEFT)
-===================================================== */
-
-.white-area {
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 40px 0;
-}
-
-.teacher-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.35s ease, filter 0.35s ease;
-}
-
-.teacher-wrap:hover {
-  transform: scale(1.04);
-  filter: brightness(1.05);
-}
-
-.teacher-img {
-  width: 95%;
-  max-width: 480px;
-}
-
-.tap-text {
-  margin-top: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #0a4f57;
-}
-
-/* =====================================================
-   GREEN SIDE (RIGHT)
-===================================================== */
-
-.green-area {
-  background: linear-gradient(180deg, #0f6f73, #0a4f57);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 40px 0;
-}
-
-/* =====================================================
-   BIG LOGO
-===================================================== */
-
-.logo-wrap {
-  margin-bottom: 28px;
-  display: flex;
-  justify-content: center;
-}
-
-.big-logo {
-  width: 280px;
-  max-width: 80vw;
-  transition: transform 0.35s ease, filter 0.35s ease;
-}
-
-.big-logo:hover {
-  transform: scale(1.06);
-  filter: brightness(1.08);
-}
-
-/* =====================================================
-   ACTION BUTTONS — 3D GLASS
-===================================================== */
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-}
-
-.action-btn {
-  min-width: 240px;
-  padding: 18px 32px;
-  border-radius: 999px;
-  border: none;
-  font-size: 17px;
-  font-weight: 700;
-
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.32),
-    rgba(255, 255, 255, 0.08)
-  );
-
-  color: #ffffff;
-  backdrop-filter: blur(16px);
-  cursor: pointer;
-
-  box-shadow:
-    inset 0 2px 2px rgba(255,255,255,0.6),
-    inset 0 -2px 2px rgba(0,0,0,0.1),
-    0 12px 28px rgba(0,0,0,0.22);
-
-  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
-}
-
-.action-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    inset 0 2px 3px rgba(255,255,255,0.7),
-    0 16px 34px rgba(0,0,0,0.28);
-}
-
-.action-btn:active {
-  transform: translateY(1px) scale(0.99);
-  box-shadow: 0 0 28px rgba(255,255,255,0.45);
-}
-
-/* =====================================================
-   SETTINGS ICON (ADMIN ENTRY)
-===================================================== */
-
-.settings-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(10px);
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.settings-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(255,255,255,0.4);
-}
-
-/* =====================================================
    CINEMATIC OVERLAY — 25 SECOND FLOW
 ===================================================== */
 
@@ -199,6 +20,9 @@ html, body {
   transition: opacity 3s ease;
 
   z-index: 999;
+
+  /* IMPORTANT: allow transform origin for carpet roll */
+  transform-origin: bottom center;
 }
 
 .overlay.active {
@@ -263,13 +87,21 @@ html, body {
   transform: translateY(0);
 }
 
-/* 3) EXIT — ALL TEXT TOGETHER (21–23s) */
+/* =====================================================
+   🎬 NEW: CARPET ROLL EXIT (21–25s)
+===================================================== */
 
-.overlay.closing h2,
-.overlay.closing .pill {
+.overlay.carpet-exit {
+  /* The whole overlay becomes a “carpet” and rolls up */
+  transform: scaleY(0.02) translateY(100%);
+  transition: transform 4s cubic-bezier(.55, .05, .22, .99);
+}
+
+/* Make all content fade gently as it rolls */
+.overlay.carpet-exit h2,
+.overlay.carpet-exit .pill {
   opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 2s ease, transform 2s ease;
+  transition: opacity 2s ease;
 }
 
 /* =====================================================
@@ -300,3 +132,4 @@ html, body {
     height: 42px;
   }
 }
+

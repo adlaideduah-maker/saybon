@@ -6,7 +6,7 @@ const pills = document.querySelectorAll(".pill");
 let started = false;
 
 /* =====================================================
-   TEACHER TAP — CINEMATIC 25s OVERLAY (FINAL)
+   TEACHER TAP — CINEMATIC 25s OVERLAY (CARPET EXIT)
 ===================================================== */
 
 teacher.addEventListener("click", () => {
@@ -14,7 +14,7 @@ teacher.addEventListener("click", () => {
   started = true;
 
   // HARD RESET
-  overlay.classList.remove("hidden", "active", "closing");
+  overlay.classList.remove("hidden", "active", "closing", "carpet-exit");
   overlay.style.pointerEvents = "auto";
 
   pills.forEach(p => p.classList.remove("show"));
@@ -36,18 +36,18 @@ teacher.addEventListener("click", () => {
    * 0–3s   : Blank overlay fades in
    * 3–6s   : Title appears
    * 7–19s  : Pills appear one by one
-   * 21s    : Begin exit (2s after last pill lands)
+   * 21s    : Begin CARPET exit (2s after last pill lands)
    * 25s    : Fully reset & close
    */
 
-  // 2️⃣ START EXIT at 21s (2 seconds after last pill finishes)
+  // 2️⃣ START CARPET EXIT at 21s
   setTimeout(() => {
-    overlay.classList.add("closing");
+    overlay.classList.add("carpet-exit");
   }, 21000);
 
   // 3️⃣ FULL RESET at 25s
   setTimeout(() => {
-    overlay.classList.remove("active", "closing");
+    overlay.classList.remove("active", "closing", "carpet-exit");
     overlay.classList.add("hidden");
 
     overlay.style.pointerEvents = "none";
