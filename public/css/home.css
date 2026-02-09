@@ -1,23 +1,6 @@
-/* =====================================================
-   GLOBAL
-===================================================== */
-
-* {
-  box-sizing: border-box;
-  font-family: "Nunito", system-ui, sans-serif;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* =====================================================
-   APP LAYOUT
-===================================================== */
+/* ===========================
+   PAGE SPLIT
+=========================== */
 
 .app {
   width: 100vw;
@@ -26,7 +9,7 @@ html, body {
   grid-template-columns: 1fr 1fr;
 }
 
-/* LEFT SIDE — WHITE */
+/* LEFT = WHITE SIDE (TEACHER) */
 .white-area {
   background: #ffffff;
   display: flex;
@@ -34,58 +17,96 @@ html, body {
   justify-content: center;
 }
 
-.white-area .logo {
-  width: 160px;
-}
-
-/* RIGHT SIDE — GREEN */
+/* RIGHT = GREEN SIDE (LOGO + BUTTONS) */
 .green-area {
-  background: linear-gradient(180deg, #0f6f73, #0a4f57);
+  background: #0f6f73; /* Matches your deep green reference */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 28px;
   position: relative;
 }
 
-/* =====================================================
-   TEACHER CIRCLE
-===================================================== */
+/* ===========================
+   TEACHER (BIG, CLEAN, NO RING)
+=========================== */
 
 .teacher-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
 }
 
-.teacher-ring {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.02));
-  backdrop-filter: blur(10px);
+.teacher-wrap img {
+  width: 420px;      /* BIG */
+  max-width: 70%;
+  height: auto;
 }
 
-.teacher-ring img {
-  width: 90%;
-  border-radius: 50%;
-}
-
+/* Small tap text beneath teacher */
 .tap-text {
   margin-top: 10px;
-  color: #eaffff;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 700;
+  color: #0f6f73;
+  opacity: 0.8;
 }
 
-/* =====================================================
-   ACTION BUTTONS
-===================================================== */
+/* ===========================
+   3D LOGO ON GREEN SIDE
+=========================== */
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure NO white background around logo */
+.logo-container img {
+  width: 180px;
+  background: transparent !important;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.25));
+  transition: all 0.4s ease;
+}
+
+/* Glass shimmer sweep over logo */
+.logo-container img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container img:active::after {
+  opacity: 1;
+}
+
+/* Gentle glow pulse */
+.logo-container img {
+  animation: logoGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes logoGlow {
+  from {
+    filter: drop-shadow(0 8px 18px rgba(255,255,255,0.15));
+  }
+  to {
+    filter: drop-shadow(0 12px 26px rgba(255,255,255,0.35));
+  }
+}
+
+/* ===========================
+   3D GLASS BUTTONS (STACKED)
+=========================== */
 
 .actions {
   display: flex;
@@ -93,96 +114,59 @@ html, body {
   gap: 14px;
 }
 
+/* Base glass button */
 .action-btn {
-  min-width: 200px;
+  min-width: 220px;
   padding: 16px 28px;
   border-radius: 999px;
   border: none;
   font-size: 16px;
   font-weight: 700;
+  color: white;
   cursor: pointer;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  transition: all 0.3s ease;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.6),
+    0 8px 22px rgba(0,0,0,0.25);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* 3D lift on hover */
 .action-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.7),
+    0 12px 30px rgba(0,0,0,0.3);
 }
 
-/* =====================================================
-   OVERLAY (CINEMATIC “WHAT WE OFFER”)
-===================================================== */
-
-.overlay {
-  position: fixed;
+/* CLICK SHIMMER EFFECT */
+.action-btn::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(16px);
-  color: white;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 25%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0) 75%
+  );
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
-  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease, opacity 0.2s ease;
 }
 
-.overlay.active {
+/* When clicked, shimmer sweeps */
+.action-btn:active::after {
   opacity: 1;
-  pointer-events: auto;
+  transform: translateX(100%);
 }
 
-.overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Title */
-.overlay h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-}
-
-/* Pills container */
-.pill-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  width: 90%;
-  max-width: 520px;
-}
-
-/* Individual pill */
-.pill {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  padding: 16px 20px;
-  border-radius: 999px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s ease;
-}
-
-.pill.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =====================================================
-   MOBILE RESPONSIVENESS
-===================================================== */
+/* ===========================
+   MOBILE (KEEP CLEAN)
+=========================== */
 
 @media (max-width: 768px) {
   .app {
@@ -193,20 +177,7 @@ html, body {
     display: none;
   }
 
-  .green-area {
-    width: 100%;
-  }
-
-  .teacher-ring {
-    width: 200px;
-    height: 200px;
-  }
-
-  .overlay h2 {
-    font-size: 28px;
-  }
-
-  .pill {
-    font-size: 15px;
+  .teacher-wrap img {
+    width: 320px;
   }
 }
