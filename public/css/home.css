@@ -119,18 +119,22 @@ html, body {
   border: none;
   font-size: 17px;
   font-weight: 700;
+
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.32),
     rgba(255, 255, 255, 0.08)
   );
+
   color: #ffffff;
   backdrop-filter: blur(16px);
   cursor: pointer;
+
   box-shadow:
     inset 0 2px 2px rgba(255,255,255,0.6),
     inset 0 -2px 2px rgba(0,0,0,0.1),
     0 12px 28px rgba(0,0,0,0.22);
+
   transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 }
 
@@ -174,7 +178,7 @@ html, body {
 }
 
 /* =====================================================
-   CINEMATIC OVERLAY — FIXED EXIT (ALL TOGETHER)
+   CINEMATIC OVERLAY — 25 SECOND FLOW
 ===================================================== */
 
 .overlay {
@@ -182,13 +186,18 @@ html, body {
   inset: 0;
   background: rgba(10, 30, 40, 0.92);
   backdrop-filter: blur(14px);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
   pointer-events: none;
-  transition: opacity 4s ease;
+
+  /* 1) BLANK ENTRY (0–3s) */
+  transition: opacity 3s ease;
+
   z-index: 999;
 }
 
@@ -201,7 +210,7 @@ html, body {
   display: none;
 }
 
-/* TITLE — enters after blank overlay */
+/* TITLE — enters AFTER blank settles (3–6s) */
 
 .overlay h2 {
   color: #ffffff;
@@ -209,13 +218,14 @@ html, body {
   margin-bottom: 28px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 4s ease, transform 4s ease;
+
+  transition: opacity 3s ease, transform 3s ease;
 }
 
 .overlay.active h2 {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 4s;
+  transition-delay: 3s;
 }
 
 /* PILLS */
@@ -237,22 +247,23 @@ html, body {
   font-weight: 600;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 4s ease, transform 4s ease;
+
+  transition: opacity 3s ease, transform 3s ease;
 }
 
-/* STAGGERED ENTRANCE (UNCHANGED) */
+/* 2) STAGGERED PILLS (fits 25s total) */
 
-.overlay.active .pill:nth-child(1) { transition-delay: 9s;  }
-.overlay.active .pill:nth-child(2) { transition-delay: 13s; }
-.overlay.active .pill:nth-child(3) { transition-delay: 17s; }
-.overlay.active .pill:nth-child(4) { transition-delay: 21s; }
+.overlay.active .pill:nth-child(1) { transition-delay: 7s;  } /* 7–10 */
+.overlay.active .pill:nth-child(2) { transition-delay: 10s; } /* 10–13 */
+.overlay.active .pill:nth-child(3) { transition-delay: 13s; } /* 13–16 */
+.overlay.active .pill:nth-child(4) { transition-delay: 16s; } /* 16–19 */
 
 .overlay.active .pill {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ✅ NEW: EXIT — ALL TEXT TOGETHER, SMOOTH, 2s AFTER LAST PILL */
+/* 3) EXIT — ALL TEXT TOGETHER (21–23s) */
 
 .overlay.closing h2,
 .overlay.closing .pill {

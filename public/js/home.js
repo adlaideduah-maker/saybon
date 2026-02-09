@@ -6,7 +6,7 @@ const pills = document.querySelectorAll(".pill");
 let started = false;
 
 /* =====================================================
-   TEACHER TAP — CINEMATIC FLOW (FIXED EXIT)
+   TEACHER TAP — CINEMATIC 25s OVERLAY (FINAL)
 ===================================================== */
 
 teacher.addEventListener("click", () => {
@@ -30,13 +30,22 @@ teacher.addEventListener("click", () => {
     console.log("Autoplay blocked, user tap should allow playback");
   });
 
-  // 2️⃣ START EXIT EXACTLY 2 SECONDS AFTER LAST PILL LANDS
-  // Last pill lands at ~25s → start closing at 27s
+  /**
+   * TIMING MAP (25 SECONDS TOTAL)
+   * --------------------------------
+   * 0–3s   : Blank overlay fades in
+   * 3–6s   : Title appears
+   * 7–19s  : Pills appear one by one
+   * 21s    : Begin exit (2s after last pill lands)
+   * 25s    : Fully reset & close
+   */
+
+  // 2️⃣ START EXIT at 21s (2 seconds after last pill finishes)
   setTimeout(() => {
     overlay.classList.add("closing");
-  }, 27000);
+  }, 21000);
 
-  // 3️⃣ FULL RESET (after 2s exit animation → 29s total)
+  // 3️⃣ FULL RESET at 25s
   setTimeout(() => {
     overlay.classList.remove("active", "closing");
     overlay.classList.add("hidden");
@@ -46,7 +55,7 @@ teacher.addEventListener("click", () => {
     pills.forEach(p => p.classList.remove("show"));
 
     started = false;
-  }, 29000);
+  }, 25000);
 });
 
 /* =====================================================
