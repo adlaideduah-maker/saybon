@@ -1,53 +1,30 @@
-const teacher = document.getElementById("teacherCircle");
-const audio = document.getElementById("introAudio");
-const overlay = document.getElementById("offerOverlay");
-const pills = document.querySelectorAll(".pill");
+document.addEventListener("DOMContentLoaded", () => {
+  const teacher = document.getElementById("teacherTrigger");
+  const overlay = document.getElementById("cinematicOverlay");
+  const getStarted = document.getElementById("getStartedBtn");
+  const login = document.getElementById("loginBtn");
+  const settings = document.getElementById("settingsBtn");
 
-let started = false;
-
-teacher.addEventListener("click", () => {
-  if (started) return;
-  started = true;
-
-  overlay.classList.remove("hidden");
-
-  requestAnimationFrame(() => {
+  // Cinematic teacher tap
+  teacher.addEventListener("click", () => {
     overlay.classList.add("active");
-  });
-
-  audio.play();
-
-  pills.forEach((pill, index) => {
-    setTimeout(() => {
-      pill.classList.add("show");
-    }, index * 4200); // VERY slow reveal
-  });
-
-  audio.onended = () => {
-    overlay.classList.remove("active");
 
     setTimeout(() => {
-      overlay.classList.add("hidden");
-    }, 650);
+      window.location.href = "/start.html";
+    }, 1200);
+  });
 
-    pills.forEach(p => p.classList.remove("show"));
-    started = false;
-  };
+  // Buttons
+  getStarted.addEventListener("click", () => {
+    window.location.href = "/start.html";
+  });
+
+  login.addEventListener("click", () => {
+    window.location.href = "/auth/login.html";
+  });
+
+  // Settings (Admin Entry)
+  settings.addEventListener("click", () => {
+    window.location.href = "/admin/auth.html";
+  });
 });
-
-document.getElementById("startBtn").onclick = () => {
-  sessionStorage.setItem("saybon_next", "/why.html");
-  window.location.href = "/loader.html";
-};
-
-document.getElementById("loginBtn").onclick = () => {
-  window.location.href = "/auth/login.html";
-};
-
-// 🔒 ADMIN ENTRY (NEW — LOCKED)
-document.getElementById("adminBtn").onclick = () => {
-  window.location.href = "/admin/";
-};
-document.getElementById("settingsBtn").onclick = () => {
-  window.location.href = "/admin/";
-};

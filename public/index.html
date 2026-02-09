@@ -3,65 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SayBon — Easy. Fun. French.</title>
 
-  <title>SayBon — Easy Fun French</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/home.css" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css" />
+  <script defer src="/js/home.js"></script>
 </head>
+<body class="home-body">
 
-<body>
+  <!-- ========== BACKGROUND LAYERS ========== -->
+  <div class="home-sky"></div>
+  <div class="home-horizon"></div>
+  <div class="home-stage"></div>
 
-  <!-- AUDIO -->
-  <audio id="introAudio" preload="auto">
-    <source src="assets/sounds/intro-v2.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="app">
-
-    <!-- LEFT (WHITE) — RESTORED -->
-    <section class="white-area">
-      <img src="assets/images/logo.png" class="logo" />
-    </section>
-
-    <!-- RIGHT (GREEN) — RESTORED -->
-    <section class="green-area">
-
-      <!-- SETTINGS ICON (MOVED TO BOTTOM RIGHT) -->
-      <button id="settingsBtn" class="settings-btn">⚙️</button>
-
-      <!-- TEACHER -->
-      <div class="teacher-wrap" id="teacherCircle">
-        <div class="teacher-ring">
-          <img src="assets/images/teacher.png" />
-        </div>
-        <p class="tap-text">Tap 👆🏽</p>
-      </div>
-
-      <!-- ACTIONS (UNCHANGED) -->
-      <div class="actions">
-        <button class="action-btn" id="startBtn">Get started</button>
-        <button class="action-btn" id="loginBtn">Log in</button>
-      </div>
-
-    </section>
-
+  <!-- ========== LOGO ZONE ========== -->
+  <div class="home-logo-zone">
+    <img 
+      src="/assets/images/saybon-logo.png"
+      alt="SayBon Logo"
+      class="home-logo"
+    />
+    <p class="home-tagline">Easy. Fun. French.</p>
   </div>
 
-  <!-- OVERLAY (UNCHANGED) -->
-  <div id="offerOverlay" class="overlay hidden">
-    <h2>What we offer</h2>
+  <!-- ========== TEACHER HERO ========== -->
+  <div class="teacher-stage">
+    <div class="teacher-spotlight"></div>
 
-    <div class="pill-list">
-      <div class="pill"><span>Speak French from your very first lesson</span></div>
-      <div class="pill"><span>Clear, fun CEFR-based learning</span></div>
-      <div class="pill"><span>Original music to help French stick naturally</span></div>
-      <div class="pill"><span>Tried & trusted DELF examination preparation</span></div>
-      <div class="pill"><span>Professional translation by expert translators</span></div>
+    <img 
+      src="/assets/images/teacher.png"
+      alt="SayBon Teacher"
+      class="teacher-avatar"
+      id="teacherTrigger"
+    />
+
+    <p class="tap-text">Tap to Begin</p>
+  </div>
+
+  <!-- ========== ACTION BUTTONS ========== -->
+  <div class="home-actions">
+    <button class="glass-btn primary" id="getStartedBtn">
+      Get Started
+    </button>
+
+    <button class="glass-btn secondary" id="loginBtn">
+      Log In
+    </button>
+  </div>
+
+  <!-- ========== SETTINGS (ADMIN ENTRY) ========== -->
+  <button class="settings-float" id="settingsBtn">
+    ⚙️
+  </button>
+
+  <!-- ========== CINEMATIC OVERLAY (HIDDEN BY DEFAULT) ========== -->
+  <div class="cinematic-overlay" id="cinematicOverlay">
+    <div class="cinematic-pill">
+      <span>Bienvenue à SayBon ✨</span>
     </div>
   </div>
 
-  <script src="js/home.js"></script>
-
 </body>
 </html>
+
+
