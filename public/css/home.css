@@ -12,8 +12,8 @@ html, body {
   width: 100%;
   min-height: 100%;
   font-family: "Nunito", system-ui, sans-serif;
-  overflow-x: hidden;      /* no horizontal scroll */
-  overflow-y: auto;        /* ✅ ALLOWS MOBILE SCROLL */
+  overflow-x: hidden;
+  overflow-y: auto;      /* allows mobile scroll */
 }
 
 /* =====================================================
@@ -22,7 +22,7 @@ html, body {
 
 .app {
   width: 100%;
-  min-height: 100vh;       /* allows content to extend */
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -37,7 +37,7 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 40px 0;          /* helps mobile breathing room */
+  padding: 40px 0;
 }
 
 /* BIG TEACHER — NO RING, NO GLOW */
@@ -79,7 +79,7 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 40px 0;          /* helps mobile scroll */
+  padding: 40px 0;
 }
 
 /* =====================================================
@@ -185,7 +185,7 @@ html, body {
 }
 
 /* =====================================================
-   CINEMATIC OVERLAY — MUCH SLOWER & SMOOTHER
+   CINEMATIC OVERLAY — 2× SLOWER FROM START TO END
 ===================================================== */
 
 .overlay {
@@ -201,7 +201,10 @@ html, body {
 
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1.4s ease;   /* ✅ SLOWER FADE-IN */
+
+  /* 👉 2× slower fade-in */
+  transition: opacity 2.8s ease;
+
   z-index: 999;
 }
 
@@ -214,7 +217,7 @@ html, body {
   display: none;
 }
 
-/* TITLE ANIMATION (SLOW ENTRANCE) */
+/* TITLE — slower entrance */
 
 .overlay h2 {
   color: #ffffff;
@@ -222,7 +225,9 @@ html, body {
   margin-bottom: 28px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s ease;
+
+  /* 👉 2× slower */
+  transition: opacity 2s ease, transform 2s ease;
 }
 
 .overlay.active h2 {
@@ -230,7 +235,7 @@ html, body {
   transform: translateY(0);
 }
 
-/* PILLS (STAGGERED + SLOW) */
+/* PILLS — slower stagger */
 
 .pill-list {
   display: flex;
@@ -249,21 +254,25 @@ html, body {
   font-weight: 600;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+
+  /* 👉 2× slower */
+  transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
-/* When active, pills appear gently one-by-one */
-.overlay.active .pill:nth-child(1) { transition-delay: 0.6s; }
-.overlay.active .pill:nth-child(2) { transition-delay: 1.2s; }
-.overlay.active .pill:nth-child(3) { transition-delay: 1.8s; }
-.overlay.active .pill:nth-child(4) { transition-delay: 2.4s; }
+/* 👉 Doubled delays for each pill */
+
+.overlay.active .pill:nth-child(1) { transition-delay: 1.2s; }
+.overlay.active .pill:nth-child(2) { transition-delay: 2.4s; }
+.overlay.active .pill:nth-child(3) { transition-delay: 3.6s; }
+.overlay.active .pill:nth-child(4) { transition-delay: 4.8s; }
 
 .overlay.active .pill {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* EXIT: EVERYTHING FADES FROM BOTTOM UP */
+/* EXIT — bottom-up fade, much slower */
+
 .overlay.closing h2 {
   opacity: 0;
   transform: translateY(-15px);
@@ -272,7 +281,9 @@ html, body {
 .overlay.closing .pill {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+
+  /* 👉 2× slower exit */
+  transition: opacity 2.4s ease, transform 2.4s ease;
 }
 
 /* =====================================================
@@ -282,7 +293,7 @@ html, body {
 @media (max-width: 900px) {
   .app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;  /* ✅ ALLOWS SCROLL */
+    grid-template-rows: auto auto;
   }
 
   .teacher-img {
