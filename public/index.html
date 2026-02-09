@@ -3,61 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SayBon — Home</title>
-<link rel="stylesheet" href="/css/home.css">
+<title>SayBon — Easy, Fun, French</title>
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
-<!-- SETTINGS ICON (bottom left) -->
-<button id="settingsBtn" class="settings-btn">⚙️</button>
+<div class="split-container">
 
-<div class="home-container">
+<!-- LEFT SIDE — WHITE -->
+<div class="side white-side">
 
-  <!-- 3D ROTATING LOGO -->
-  <div class="logo-3d-wrapper">
-    <div class="logo-3d">
-      <div class="logo-face front">
-        <img src="/assets/images/logo.png" alt="SayBon Logo">
-      </div>
-      <div class="logo-face back">
-        <img src="/assets/images/logo.png" alt="SayBon Logo">
+  <div class="teacher-wrapper">
+    <div class="mint-gold-ring">
+      <div class="ring-inner">
+        <img src="assets/images/teacher.png" id="teacher" alt="Teacher">
       </div>
     </div>
-  </div>
-
-  <!-- TEACHER RING STAGE -->
-  <div class="teacher-ring-container">
-    <div class="outer-ring"></div>
-    <div class="inner-ring"></div>
-
-    <div class="glass-dome">
-      <img id="teacherImg" src="/assets/images/teacher.png" alt="Teacher">
-    </div>
-
-    <p class="tap-hint">Tap to Begin ✨</p>
-  </div>
-
-  <!-- BOTTOM ACTIONS -->
-  <div class="action-bar">
-    <button class="btn primary">Get Started</button>
-    <button class="btn secondary">Log In</button>
+    <p class="tap-text">Tap ✨</p>
   </div>
 
 </div>
 
-<!-- AUDIO FOR CINEMATIC OVERLAY -->
-<audio id="introAudio" src="/assets/sounds/intro-v2.mp3"></audio>
+<!-- RIGHT SIDE — GREEN / TEAL -->
+<div class="side green-side">
 
-<script>
-const teacher = document.getElementById("teacherImg");
-const audio = document.getElementById("introAudio");
+  <div class="logo-3d-container">
+    <div class="logo-3d">
+      <div class="logo-face front">
+        <img src="assets/images/logo.png" alt="SayBon Logo">
+      </div>
+      <div class="logo-face back">
+        <img src="assets/images/logo.png" alt="SayBon Logo Back">
+      </div>
+      <div class="logo-edge"></div>
+    </div>
+  </div>
 
-teacher.addEventListener("click", () => {
-  audio.currentTime = 0;
-  audio.play();
-  document.body.classList.add("cinematic-active");
-});
-</script>
+  <div class="buttons-stack">
+    <button class="glass-btn primary">Get Started</button>
+    <button class="glass-btn outline">Log In</button>
+  </div>
 
+</div>
+
+</div>
+
+<!-- SETTINGS ICON -->
+<div class="settings-btn">
+  ⚙️
+</div>
+
+<!-- CINEMATIC OVERLAY -->
+<div id="cinematicOverlay">
+  <audio id="introAudio" src="assets/sounds/intro-v2.mp3"></audio>
+</div>
+
+<script src="js/home.js"></script>
 </body>
 </html>

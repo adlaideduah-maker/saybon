@@ -1,206 +1,194 @@
-/* =======================
-   GLOBAL LAYOUT
-======================= */
-
-html, body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  width: 100%;
-  height: 100%;
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: white;
-  overflow: hidden;
 }
 
-.home-container {
+body, html {
   width: 100%;
   height: 100%;
-  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* SPLIT SCREEN */
+.split-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* SIDES */
+.side {
+  width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-/* =======================
-   SETTINGS ICON
-======================= */
-
-.settings-btn {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(8px);
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 1000;
+/* COLORS */
+.white-side {
+  background: #ffffff;
 }
 
-/* =======================
-   3D ROTATING LOGO
-======================= */
-
-.logo-3d-wrapper {
-  margin-top: 60px;
-  perspective: 800px;
+.green-side {
+  background: linear-gradient(180deg, #1f8fa3, #0b5f6b);
 }
 
+/* 3D LOGO CONTAINER */
+.logo-3d-container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+/* 3D LOGO */
 .logo-3d {
-  width: 220px;   /* BIGGER */
+  width: 220px;
   height: 220px;
   position: relative;
   transform-style: preserve-3d;
-  animation: slowSpin 8s infinite linear;
+  animation: spinLogo 8s infinite linear;
 }
 
+/* FRONT & BACK */
 .logo-face {
   position: absolute;
   width: 220px;
   height: 220px;
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  backface-visibility: visible;
 }
 
 .logo-face img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
-/* Front of the logo */
-.front {
-  transform: translateZ(40px);
+/* BACK FACE ROTATED */
+.logo-face.back {
+  transform: rotateY(180deg);
 }
 
-/* Back of the logo (so you SEE it) */
-.back {
-  transform: rotateY(180deg) translateZ(40px);
+/* EDGE (3D thickness) */
+.logo-edge {
+  position: absolute;
+  width: 220px;
+  height: 20px;
+  background: linear-gradient(90deg, #a3d9d3, #0b5f6b);
+  transform: rotateX(90deg) translateZ(100px);
 }
 
-@keyframes slowSpin {
-  0%   { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
+/* SPIN ANIMATION */
+@keyframes spinLogo {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 
-/* =======================
-   TEACHER RING (STATIC)
-======================= */
-
-.teacher-ring-container {
-  position: relative;
-  width: 260px;
-  height: 260px;
+/* BUTTON STACK */
+.buttons-stack {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  gap: 12px;
 }
 
-/* OUTER RING - GOLD SHIMMER */
-.outer-ring {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: conic-gradient(
-    #fef3c7,
-    #facc15,
-    #fde68a,
-    #facc15,
-    #fef3c7
-  );
-  filter: blur(1px);
-}
-
-/* INNER RING - MINT */
-.inner-ring {
-  position: absolute;
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #86efac, #16a34a);
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.6);
-}
-
-/* DARK INSIDE BACKGROUND */
-.glass-dome {
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #020617, #0b1220);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* TEACHER AS GLASSY / TRANSPARENT */
-.glass-dome img {
-  width: 110px;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-}
-
-/* TAP TEXT */
-.tap-hint {
-  position: absolute;
-  bottom: -30px;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* =======================
-   BUTTONS
-======================= */
-
-.action-bar {
-  margin-bottom: 60px;
-  display: flex;
-  gap: 16px;
-}
-
-.btn {
-  padding: 14px 28px;
-  border-radius: 24px;
+/* GLASS BUTTONS */
+.glass-btn {
+  width: 220px;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.25);
   border: none;
-  font-size: 14px;
+  color: white;
   cursor: pointer;
 }
 
-.primary {
-  background: white;
-  color: black;
+.glass-btn.primary {
+  background: linear-gradient(90deg, #e6fff9, #c4f5ec);
+  color: #0b5f6b;
 }
 
-.secondary {
-  background: transparent;
-  color: white;
+.glass-btn.outline {
   border: 1px solid white;
+  background: transparent;
 }
 
-/* =======================
-   CINEMATIC OVERLAY
-======================= */
-
-.cinematic-active::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 2000;
-  animation: fadeIn 0.6s ease;
+/* TEACHER RING */
+.mint-gold-ring {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: conic-gradient(#c4f5ec, gold, #c4f5ec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(255,215,0,0.5);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+.ring-inner {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: #0b1f24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#teacher {
+  width: 140px;
+  filter: brightness(1.3) opacity(0.85);
+}
+
+/* TAP TEXT */
+.tap-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #0b5f6b;
+}
+
+/* SETTINGS BUTTON */
+.settings-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;
+  }
+
+  .side {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .logo-3d {
+    width: 160px;
+    height: 160px;
+  }
+
+  .glass-btn {
+    width: 180px;
+  }
+
+  .mint-gold-ring {
+    width: 200px;
+    height: 200px;
+  }
+
+  .ring-inner {
+    width: 170px;
+    height: 170px;
+  }
 }
