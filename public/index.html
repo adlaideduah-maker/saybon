@@ -3,71 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SayBon — Easy Fun French</title>
-
-  <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/css/home.css" />
+  <title>SayBon — Easy. Fun. French.</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
 
-  <div id="home-split">
+<div class="homepage">
 
-    <!-- LEFT SIDE — WHITE (TEACHER ONLY, NO RING) -->
-    <div class="home-left">
+  <!-- LEFT SIDE (WHITE) -->
+  <div class="home-left">
 
-      <!-- JUST THE TEACHER IMAGE — NOTHING ELSE -->
+    <div class="teacher-wrapper">
       <img 
         src="/assets/images/teacher.png" 
-        alt="SayBon Teacher"
-        class="teacher-hero"
-        id="teacher-trigger"
+        alt="SayBon Teacher" 
+        class="teacher-img"
+        id="teacherTap"
       />
-
+      <div class="tap-text">Tap ✨</div>
     </div>
 
-    <!-- RIGHT SIDE — GREEN (LOGO + BUTTONS) -->
-    <div class="home-right">
-
-      <!-- 3D LOGO (STATIC, NO ROTATION, NO BACKGROUND) -->
-      <div class="logo-container">
-        <video 
-          class="saybon-3d-logo"
-          src="/assets/images/saybon_logo_spin.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-        ></video>
-      </div>
-
-      <!-- GLASSY BUTTON STACK -->
-      <div class="cta-stack">
-        <button class="glass-btn primary" id="get-started">
-          Get Started
-        </button>
-
-        <button class="glass-btn secondary" id="login">
-          Log In
-        </button>
-      </div>
-
-      <!-- SETTINGS ICON (ADMIN ENTRY) -->
-      <div class="settings-icon">
-        ⚙️
-      </div>
-
-    </div>
   </div>
 
-  <!-- CINEMATIC OVERLAY WHEN TEACHER IS TAPPED -->
-  <div id="teacher-overlay">
-    <audio id="intro-audio" src="/assets/sounds/intro-v2.mp3"></audio>
+  <!-- RIGHT SIDE (GREEN) -->
+  <div class="home-right">
 
-    <div class="overlay-content">
-      <span class="close-overlay">✕</span>
-      <h2>Why Learn French?</h2>
+    <div class="logo-wrapper">
+      <img 
+        src="/assets/images/logo.png" 
+        alt="SayBon 3D Logo"
+        class="logo-3d"
+      />
     </div>
+
+    <div class="cta-stack">
+      <button class="glass-btn primary" id="getStartedBtn">
+        Get Started
+      </button>
+
+      <button class="glass-btn secondary" id="loginBtn">
+        Log In
+      </button>
+    </div>
+
   </div>
+
+</div>
 
 <script src="/js/home.js"></script>
 </body>
