@@ -1,12 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const getStartedBtn = document.getElementById("getStartedBtn");
-  const loginBtn = document.getElementById("loginBtn");
+  const teacher = document.getElementById("teacher-trigger");
+  const overlay = document.getElementById("teacher-overlay");
+  const audio = document.getElementById("intro-audio");
+  const closeBtn = document.querySelector(".close-overlay");
 
-  function shimmer(btn) {
-    btn.classList.add("shimmer");
-    setTimeout(() => btn.classList.remove("shimmer"), 400);
-  }
+  // OPEN CINEMATIC OVERLAY WHEN TEACHER IS CLICKED
+  teacher.addEventListener("click", () => {
+    overlay.classList.add("active");
+    audio.currentTime = 0;
+    audio.play();
+  });
 
-  getStartedBtn.addEventListener("click", () => shimmer(getStartedBtn));
-  loginBtn.addEventListener("click", () => shimmer(loginBtn));
+  // CLOSE OVERLAY
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("active");
+    audio.pause();
+  });
+
+  // BUTTON ROUTING (PLACEHOLDERS FOR NOW)
+  document.getElementById("get-started").addEventListener("click", () => {
+    window.location.href = "/start";
+  });
+
+  document.getElementById("login").addEventListener("click", () => {
+    window.location.href = "/login";
+  });
 });
