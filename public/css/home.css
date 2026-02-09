@@ -195,9 +195,7 @@ html, body {
   opacity: 0;
   pointer-events: none;
 
-  /* 1) BLANK ENTRY (0–3s) */
   transition: opacity 3s ease;
-
   z-index: 999;
 }
 
@@ -210,15 +208,23 @@ html, body {
   display: none;
 }
 
-/* TITLE — enters AFTER blank settles (3–6s) */
+/* CONTENT WRAPPER FOR CARPET ROLL */
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  transition: transform 4s cubic-bezier(.22,.61,.36,1),
+              opacity 3s ease;
+}
 
+/* TITLE */
 .overlay h2 {
   color: #ffffff;
   font-size: 32px;
   margin-bottom: 28px;
   opacity: 0;
   transform: translateY(20px);
-
   transition: opacity 3s ease, transform 3s ease;
 }
 
@@ -229,7 +235,6 @@ html, body {
 }
 
 /* PILLS */
-
 .pill-list {
   display: flex;
   flex-direction: column;
@@ -247,16 +252,14 @@ html, body {
   font-weight: 600;
   opacity: 0;
   transform: translateY(18px);
-
   transition: opacity 3s ease, transform 3s ease;
 }
 
-/* 2) STAGGERED PILLS (fits 25s total) */
-
-.overlay.active .pill:nth-child(1) { transition-delay: 7s;  } /* 7–10 */
-.overlay.active .pill:nth-child(2) { transition-delay: 10s; } /* 10–13 */
-.overlay.active .pill:nth-child(3) { transition-delay: 13s; } /* 13–16 */
-.overlay.active .pill:nth-child(4) { transition-delay: 16s; } /* 16–19 */
+/* STAGGERED PILLS */
+.overlay.active .pill:nth-child(1) { transition-delay: 7s; }
+.overlay.active .pill:nth-child(2) { transition-delay: 10s; }
+.overlay.active .pill:nth-child(3) { transition-delay: 13s; }
+.overlay.active .pill:nth-child(4) { transition-delay: 16s; }
 
 .overlay.active .pill {
   opacity: 1;
@@ -264,26 +267,14 @@ html, body {
 }
 
 /* =====================================================
-   3) EXIT — “CARPET ROLL” (21–25s)
+   CARPET ROLL EXIT (21–25s)
 ===================================================== */
 
-/* Wrap the entire content so we can roll it like a carpet */
-.overlay-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center; /* critical for carpet effect */
-  transition: transform 4s cubic-bezier(.22,.61,.36,1), 
-              opacity 3s ease;
-}
-
-/* When closing, roll everything upward like a carpet */
 .overlay.closing .overlay-content {
   transform: scaleY(0.02) translateY(-20vh);
   opacity: 0;
 }
 
-/* Keep individual elements from animating separately */
 .overlay.closing h2,
 .overlay.closing .pill {
   transition: none;
