@@ -263,13 +263,30 @@ html, body {
   transform: translateY(0);
 }
 
-/* 3) EXIT — ALL TEXT TOGETHER (21–23s) */
+/* =====================================================
+   3) EXIT — “CARPET ROLL” (21–25s)
+===================================================== */
 
+/* Wrap the entire content so we can roll it like a carpet */
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center; /* critical for carpet effect */
+  transition: transform 4s cubic-bezier(.22,.61,.36,1), 
+              opacity 3s ease;
+}
+
+/* When closing, roll everything upward like a carpet */
+.overlay.closing .overlay-content {
+  transform: scaleY(0.02) translateY(-20vh);
+  opacity: 0;
+}
+
+/* Keep individual elements from animating separately */
 .overlay.closing h2,
 .overlay.closing .pill {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 2s ease, transform 2s ease;
+  transition: none;
 }
 
 /* =====================================================
