@@ -185,7 +185,7 @@ html, body {
 }
 
 /* =====================================================
-   CINEMATIC OVERLAY — NEW TIMING FLOW (YOUR REQUEST)
+   CINEMATIC OVERLAY — 28 SECOND FLOW
 ===================================================== */
 
 .overlay {
@@ -202,8 +202,8 @@ html, body {
   opacity: 0;
   pointer-events: none;
 
-  /* 1) SLOW BLANK ENTRY FIRST */
-  transition: opacity 3s ease;   /* was 1.4s → now 2× slower */
+  /* 1) BLANK ENTRY — slow fade (0–4s) */
+  transition: opacity 4s ease;
 
   z-index: 999;
 }
@@ -217,7 +217,7 @@ html, body {
   display: none;
 }
 
-/* TITLE — comes in AFTER blank overlay settles */
+/* TITLE — enters AFTER blank settles */
 
 .overlay h2 {
   color: #ffffff;
@@ -226,17 +226,17 @@ html, body {
   opacity: 0;
   transform: translateY(20px);
 
-  /* 2) TITLE 2× SLOWER */
+  /* 2) TITLE (4–8s) */
   transition: opacity 4s ease, transform 4s ease;
 }
 
 .overlay.active h2 {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 2.5s; /* waits until blank overlay is present */
+  transition-delay: 4s; /* waits for blank */
 }
 
-/* PILLS — each comes in 2× slower, one by one */
+/* PILLS */
 
 .pill-list {
   display: flex;
@@ -256,36 +256,34 @@ html, body {
   opacity: 0;
   transform: translateY(18px);
 
-  /* 3) PILL ANIMATION 2× SLOWER */
-  transition: opacity 3.6s ease, transform 3.6s ease;
+  /* each pill animates over 4s */
+  transition: opacity 4s ease, transform 4s ease;
 }
 
-/* Staggered, all 2× slower than before */
+/* 3) STAGGERED PILL TIMINGS (fits 28s total) */
 
-.overlay.active .pill:nth-child(1) { transition-delay: 4.2s; }
-.overlay.active .pill:nth-child(2) { transition-delay: 7.8s; }
-.overlay.active .pill:nth-child(3) { transition-delay: 11.4s; }
-.overlay.active .pill:nth-child(4) { transition-delay: 15.0s; }
+.overlay.active .pill:nth-child(1) { transition-delay: 9s;  } /* 9–13 */
+.overlay.active .pill:nth-child(2) { transition-delay: 13s; } /* 13–17 */
+.overlay.active .pill:nth-child(3) { transition-delay: 17s; } /* 17–21 */
+.overlay.active .pill:nth-child(4) { transition-delay: 21s; } /* 21–25 */
 
 .overlay.active .pill {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* EXIT — EVERYTHING 2× SLOWER, BOTTOM → UP */
+/* 4) EXIT — bottom → up, slow (25–28s) */
 
 .overlay.closing h2 {
   opacity: 0;
   transform: translateY(-15px);
-  transition: opacity 4s ease, transform 4s ease;
+  transition: opacity 3s ease, transform 3s ease;
 }
 
 .overlay.closing .pill {
   opacity: 0;
   transform: translateY(30px);
-
-  /* 4) EXIT ALSO 2× SLOWER */
-  transition: opacity 4.8s ease, transform 4.8s ease;
+  transition: opacity 3s ease, transform 3s ease;
 }
 
 /* =====================================================
