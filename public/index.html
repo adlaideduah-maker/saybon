@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SayBon — Easy, Fun, French</title>
-<link rel="stylesheet" href="css/home.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SayBon — Easy. Fun. French.</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
 
-<div class="split-container">
+<div class="home-container">
 
-<!-- LEFT SIDE — WHITE (TEACHER SIDE) -->
-<div class="side white-side">
-
-  <div class="teacher-wrapper">
-    <img src="assets/images/teacher.png" id="teacher" alt="Teacher">
-    <p class="tap-text">Tap ✨</p>
+  <!-- WHITE SIDE -->
+  <div class="home-left">
+    <img 
+      src="/assets/images/logo.png"
+      class="saybon-logo"
+      alt="SayBon Logo"
+    />
   </div>
 
-</div>
+  <!-- GREEN SIDE -->
+  <div class="home-right">
 
-<!-- RIGHT SIDE — GREEN / TEAL (LOGO SIDE) -->
-<div class="side green-side">
-
-  <div class="logo-3d-container">
-    <div class="logo-3d">
-      <div class="logo-face front">
-        <img src="assets/images/logo.png" alt="SayBon Logo">
-      </div>
-      <div class="logo-face back">
-        <img src="assets/images/logo.png" alt="SayBon Logo Back">
-      </div>
-      <div class="logo-edge"></div>
+    <!-- 3D LOGO (NO WHITE CIRCLE) -->
+    <div class="logo-3d-container">
+      <img 
+        src="/assets/images/logo.png"
+        class="logo-3d"
+        alt="SayBon 3D Logo"
+      />
     </div>
+
+    <!-- BUTTON STACK -->
+    <div class="home-buttons">
+      <button class="glass-btn primary" id="getStartedBtn">
+        Get Started
+      </button>
+      <button class="glass-btn secondary" id="loginBtn">
+        Log In
+      </button>
+    </div>
+
+    <!-- TEACHER (BIGGER + NO RING) -->
+    <div class="teacher-container">
+      <img 
+        src="/assets/images/teacher.png"
+        class="teacher-hero"
+        alt="SayBon Teacher"
+      />
+      <p class="tap-text">Tap ✨</p>
+    </div>
+
   </div>
 
-  <div class="buttons-stack">
-    <button class="glass-btn primary">Get Started</button>
-    <button class="glass-btn outline">Log In</button>
-  </div>
-
 </div>
 
-</div>
-
-<!-- SETTINGS ICON (BOTTOM RIGHT OF GREEN SIDE) -->
-<div class="settings-btn">
-  ⚙️
-</div>
-
-<!-- CINEMATIC OVERLAY (YOUR EXISTING EXPERIENCE) -->
-<div id="cinematicOverlay"></div>
-<audio id="introAudio" src="assets/sounds/intro-v2.mp3"></audio>
-
-<script src="js/home.js"></script>
+<script src="/js/home.js"></script>
 </body>
 </html>

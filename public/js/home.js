@@ -1,13 +1,12 @@
-const teacher = document.getElementById("teacher");
-const overlay = document.getElementById("cinematicOverlay");
-const audio = document.getElementById("introAudio");
+document.addEventListener("DOMContentLoaded", () => {
+  const getStartedBtn = document.getElementById("getStartedBtn");
+  const loginBtn = document.getElementById("loginBtn");
 
-teacher.addEventListener("click", () => {
-  overlay.style.display = "block";
-  audio.currentTime = 0;
-  audio.play();
+  function shimmer(btn) {
+    btn.classList.add("shimmer");
+    setTimeout(() => btn.classList.remove("shimmer"), 400);
+  }
 
-  setTimeout(() => {
-    overlay.style.display = "none;
-  }, 5000);
+  getStartedBtn.addEventListener("click", () => shimmer(getStartedBtn));
+  loginBtn.addEventListener("click", () => shimmer(loginBtn));
 });
