@@ -1,25 +1,63 @@
-/* ===========================
-   PAGE SPLIT
-=========================== */
+/* =========================
+   GLOBAL PAGE LAYOUT
+========================= */
 
+:root {
+  --green: #0f6f73;
+  --white: #ffffff;
+}
+
+/* Full screen split layout */
 .app {
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
+  overflow: hidden;
 }
 
-/* LEFT = WHITE SIDE (TEACHER) */
+/* =========================
+   WHITE SIDE (TEACHER)
+========================= */
+
 .white-area {
-  background: #ffffff;
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* RIGHT = GREEN SIDE (LOGO + BUTTONS) */
+/* Teacher wrapper */
+.teacher-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make teacher BIG and clean */
+.teacher-wrap img {
+  width: 420px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+}
+
+/* Small tap text under teacher */
+.tap-text {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  opacity: 0.8;
+}
+
+/* =========================
+   GREEN SIDE (LOGO + BUTTONS)
+========================= */
+
 .green-area {
-  background: #0f6f73; /* Matches your deep green reference */
+  background: var(--green);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,85 +66,23 @@
   position: relative;
 }
 
-/* ===========================
-   TEACHER (BIG, CLEAN, NO RING)
-=========================== */
-
-.teacher-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.teacher-wrap img {
-  width: 420px;      /* BIG */
-  max-width: 70%;
-  height: auto;
-}
-
-/* Small tap text beneath teacher */
-.tap-text {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #0f6f73;
-  opacity: 0.8;
-}
-
-/* ===========================
-   3D LOGO ON GREEN SIDE
-=========================== */
-
+/* Logo container */
 .logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Ensure NO white background around logo */
+/* Ensure logo has NO white background */
 .logo-container img {
   width: 180px;
   background: transparent !important;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.25));
-  transition: all 0.4s ease;
 }
 
-/* Glass shimmer sweep over logo */
-.logo-container img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 30%,
-    rgba(255,255,255,0.6) 50%,
-    rgba(255,255,255,0) 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.logo-container img:active::after {
-  opacity: 1;
-}
-
-/* Gentle glow pulse */
-.logo-container img {
-  animation: logoGlow 3s infinite alternate ease-in-out;
-}
-
-@keyframes logoGlow {
-  from {
-    filter: drop-shadow(0 8px 18px rgba(255,255,255,0.15));
-  }
-  to {
-    filter: drop-shadow(0 12px 26px rgba(255,255,255,0.35));
-  }
-}
-
-/* ===========================
-   3D GLASS BUTTONS (STACKED)
-=========================== */
+/* =========================
+   GLASS 3D BUTTONS
+========================= */
 
 .actions {
   display: flex;
@@ -114,70 +90,54 @@
   gap: 14px;
 }
 
-/* Base glass button */
+/* Base button style */
 .action-btn {
-  min-width: 220px;
-  padding: 16px 28px;
+  width: 220px;
+  padding: 14px 20px;
   border-radius: 999px;
   border: none;
   font-size: 16px;
   font-weight: 700;
   color: white;
   cursor: pointer;
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow:
-    inset 0 1px 2px rgba(255,255,255,0.6),
-    0 8px 22px rgba(0,0,0,0.25);
-  transition: transform 0.15s ease, box-shadow 0.2s ease;
-  position: relative;
-  overflow: hidden;
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-/* 3D lift on hover */
-.action-btn:hover {
-  transform: translateY(-2px);
+/* Get Started slightly brighter */
+.action-btn:first-child {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Glass shimmer effect on click */
+.action-btn:active {
+  transform: translateY(2px);
   box-shadow:
-    inset 0 1px 2px rgba(255,255,255,0.7),
-    0 12px 30px rgba(0,0,0,0.3);
+    inset 0 2px 4px rgba(255, 255, 255, 0.8),
+    0 4px 10px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.2);
 }
 
-/* CLICK SHIMMER EFFECT */
-.action-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 25%,
-    rgba(255,255,255,0.8) 50%,
-    rgba(255,255,255,0) 75%
-  );
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: transform 0.5s ease, opacity 0.2s ease;
-}
+/* =========================
+   RESPONSIVE (MOBILE)
+========================= */
 
-/* When clicked, shimmer sweeps */
-.action-btn:active::after {
-  opacity: 1;
-  transform: translateX(100%);
-}
-
-/* ===========================
-   MOBILE (KEEP CLEAN)
-=========================== */
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .app {
     grid-template-columns: 1fr;
-  }
-
-  .white-area {
-    display: none;
+    grid-template-rows: 50% 50%;
   }
 
   .teacher-wrap img {
     width: 320px;
+  }
+
+  .logo-container img {
+    width: 140px;
   }
 }
