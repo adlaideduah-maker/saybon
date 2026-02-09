@@ -1,6 +1,5 @@
 // ================================
-// SAYBON HOMEPAGE — CINEMATIC OVERLAY
-// (MATCHES YOUR NEW DESIGN EXACTLY)
+// SAYBON HOMEPAGE — WIRED + MOBILE SAFE
 // ================================
 
 const teacher = document.getElementById("teacher");
@@ -10,22 +9,20 @@ const pills = document.querySelectorAll(".pill");
 
 let isPlaying = false;
 
+// ---- TEACHER TAP → CINEMATIC OVERLAY ----
 teacher.addEventListener("click", () => {
   if (isPlaying) return;
   isPlaying = true;
 
-  // 1) Fade in dark blurry overlay slowly
   overlay.classList.remove("hidden");
 
   requestAnimationFrame(() => {
     overlay.classList.add("active");
   });
 
-  // 2) Start music
   audio.currentTime = 0;
   audio.play().catch(() => {});
 
-  // 3) Reveal title first (small delay for drama)
   const title = overlay.querySelector("h2");
   title.style.opacity = "0";
   title.style.transform = "translateY(20px)";
@@ -36,9 +33,7 @@ teacher.addEventListener("click", () => {
     title.style.transform = "translateY(0)";
   }, 500);
 
-  // 4) Reveal pills one-by-one (slow cinematic timing)
   pills.forEach((pill, index) => {
-    pill.classList.remove("show");
     pill.style.opacity = "0";
     pill.style.transform = "translateY(20px)";
 
@@ -46,9 +41,52 @@ teacher.addEventListener("click", () => {
       pill.style.transition = "all 0.9s ease";
       pill.style.opacity = "1";
       pill.style.transform = "translateY(0)";
-      pill.classList.add("show");
-    }, 1800 + index * 1600); // slow, elegant reveal
+    }, 1800 + index * 1600);
   });
 
-  // 5) After last pill + 3s → everything fades out bottom-up
-  const total
+  const totalRevealTime = 1800 + (pills.length - 1) * 1600 + 3000;
+
+  setTimeout(() => {
+    const reversed = Array.from(pills).reverse();
+
+    reversed.forEach((pill, i) => {
+      setTimeout(() => {
+        pill.style.opacity = "0";
+        pill.style.transform = "translateY(20px)";
+      }, i * 200);
+    });
+
+    setTimeout(() => {
+      title.style.opacity = "0";
+      title.style.transform = "translateY(20px)";
+    }, 800);
+
+    setTimeout(() => {
+      overlay.classList.remove("active");
+
+      setTimeout(() => {
+        overlay.classList.add("hidden");
+        isPlaying = false;
+      }, 700);
+    }, 1200);
+
+  }, totalRevealTime);
+});
+
+// ---- BUTTON ROUTING (NOW FULLY WIRED) ----
+
+// GET STARTED → WHY → LOADER
+document.getElementById("startBtn").onclick = () => {
+  sessionStorage.setItem("saybon_next", "/why.html");
+  window.location.href = "/loader.html";
+};
+
+// LOGIN → AUTH
+document.getElementById("loginBtn").onclick = () => {
+  window.location.href = "/auth/login.html";
+};
+
+// SETTINGS (ADMIN ENTRY)
+document.getElementById("settingsBtn").onclick = () => {
+  window.location.href = "/admin/index.html";
+};
