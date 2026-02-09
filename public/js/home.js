@@ -1,4 +1,4 @@
-const teacher = document.getElementById("teacher"); // ✅ FIXED
+const teacher = document.getElementById("teacher");
 const audio = document.getElementById("introAudio");
 const overlay = document.getElementById("offerOverlay");
 const pills = document.querySelectorAll(".pill");
@@ -6,14 +6,14 @@ const pills = document.querySelectorAll(".pill");
 let started = false;
 
 /* =====================================================
-   TEACHER TAP — CINEMATIC 28s OVERLAY (STABLE)
+   TEACHER TAP — CINEMATIC FLOW (FIXED EXIT)
 ===================================================== */
 
 teacher.addEventListener("click", () => {
   if (started) return;
   started = true;
 
-  // HARD RESET (prevents invisible overlay issues)
+  // HARD RESET
   overlay.classList.remove("hidden", "active", "closing");
   overlay.style.pointerEvents = "auto";
 
@@ -24,32 +24,33 @@ teacher.addEventListener("click", () => {
     overlay.classList.add("active");
   });
 
-  // Restart and play audio
+  // Play audio
   audio.currentTime = 0;
   audio.play().catch(() => {
-    console.log("Audio playback started via user tap.");
+    console.log("Autoplay blocked, user tap should allow playback");
   });
 
-  // 2️⃣ Start closing phase at 25s
+  // 2️⃣ START EXIT EXACTLY 2 SECONDS AFTER LAST PILL LANDS
+  // Last pill lands at ~25s → start closing at 27s
   setTimeout(() => {
     overlay.classList.add("closing");
-  }, 25000);
+  }, 27000);
 
-  // 3️⃣ FULL RESET at 28s — RELEASES BUTTONS
+  // 3️⃣ FULL RESET (after 2s exit animation → 29s total)
   setTimeout(() => {
     overlay.classList.remove("active", "closing");
     overlay.classList.add("hidden");
 
-    // CRITICAL FIX — unblock the page
     overlay.style.pointerEvents = "none";
 
     pills.forEach(p => p.classList.remove("show"));
+
     started = false;
-  }, 28000);
+  }, 29000);
 });
 
 /* =====================================================
-   BUTTONS — GUARANTEED ROUTING
+   BUTTONS — GUARANTEED TO WORK
 ===================================================== */
 
 // GET STARTED → loader → why page

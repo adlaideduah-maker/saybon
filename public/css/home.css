@@ -13,7 +13,7 @@ html, body {
   min-height: 100%;
   font-family: "Nunito", system-ui, sans-serif;
   overflow-x: hidden;
-  overflow-y: auto;      /* allows mobile scroll */
+  overflow-y: auto;
 }
 
 /* =====================================================
@@ -39,8 +39,6 @@ html, body {
   position: relative;
   padding: 40px 0;
 }
-
-/* BIG TEACHER — NO RING, NO GLOW */
 
 .teacher-wrap {
   display: flex;
@@ -121,22 +119,18 @@ html, body {
   border: none;
   font-size: 17px;
   font-weight: 700;
-
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.32),
     rgba(255, 255, 255, 0.08)
   );
-
   color: #ffffff;
   backdrop-filter: blur(16px);
   cursor: pointer;
-
   box-shadow:
     inset 0 2px 2px rgba(255,255,255,0.6),
     inset 0 -2px 2px rgba(0,0,0,0.1),
     0 12px 28px rgba(0,0,0,0.22);
-
   transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 }
 
@@ -149,11 +143,6 @@ html, body {
 
 .action-btn:active {
   transform: translateY(1px) scale(0.99);
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.38),
-    rgba(255,255,255,0.12)
-  );
   box-shadow: 0 0 28px rgba(255,255,255,0.45);
 }
 
@@ -185,7 +174,7 @@ html, body {
 }
 
 /* =====================================================
-   CINEMATIC OVERLAY — 28 SECOND FLOW
+   CINEMATIC OVERLAY — FIXED EXIT (ALL TOGETHER)
 ===================================================== */
 
 .overlay {
@@ -193,18 +182,13 @@ html, body {
   inset: 0;
   background: rgba(10, 30, 40, 0.92);
   backdrop-filter: blur(14px);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   pointer-events: none;
-
-  /* 1) BLANK ENTRY — slow fade (0–4s) */
   transition: opacity 4s ease;
-
   z-index: 999;
 }
 
@@ -217,7 +201,7 @@ html, body {
   display: none;
 }
 
-/* TITLE — enters AFTER blank settles */
+/* TITLE — enters after blank overlay */
 
 .overlay h2 {
   color: #ffffff;
@@ -225,15 +209,13 @@ html, body {
   margin-bottom: 28px;
   opacity: 0;
   transform: translateY(20px);
-
-  /* 2) TITLE (4–8s) */
   transition: opacity 4s ease, transform 4s ease;
 }
 
 .overlay.active h2 {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 4s; /* waits for blank */
+  transition-delay: 4s;
 }
 
 /* PILLS */
@@ -255,35 +237,28 @@ html, body {
   font-weight: 600;
   opacity: 0;
   transform: translateY(18px);
-
-  /* each pill animates over 4s */
   transition: opacity 4s ease, transform 4s ease;
 }
 
-/* 3) STAGGERED PILL TIMINGS (fits 28s total) */
+/* STAGGERED ENTRANCE (UNCHANGED) */
 
-.overlay.active .pill:nth-child(1) { transition-delay: 9s;  } /* 9–13 */
-.overlay.active .pill:nth-child(2) { transition-delay: 13s; } /* 13–17 */
-.overlay.active .pill:nth-child(3) { transition-delay: 17s; } /* 17–21 */
-.overlay.active .pill:nth-child(4) { transition-delay: 21s; } /* 21–25 */
+.overlay.active .pill:nth-child(1) { transition-delay: 9s;  }
+.overlay.active .pill:nth-child(2) { transition-delay: 13s; }
+.overlay.active .pill:nth-child(3) { transition-delay: 17s; }
+.overlay.active .pill:nth-child(4) { transition-delay: 21s; }
 
 .overlay.active .pill {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 4) EXIT — bottom → up, slow (25–28s) */
+/* ✅ NEW: EXIT — ALL TEXT TOGETHER, SMOOTH, 2s AFTER LAST PILL */
 
-.overlay.closing h2 {
-  opacity: 0;
-  transform: translateY(-15px);
-  transition: opacity 3s ease, transform 3s ease;
-}
-
+.overlay.closing h2,
 .overlay.closing .pill {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 3s ease, transform 3s ease;
+  transform: translateY(-20px);
+  transition: opacity 2s ease, transform 2s ease;
 }
 
 /* =====================================================
