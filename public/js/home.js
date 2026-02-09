@@ -1,45 +1,54 @@
-const teacher = document.getElementById("teacherCircle");
+// ================================
+// SAYBON HOMEPAGE — CINEMATIC OVERLAY
+// (MATCHES YOUR NEW DESIGN EXACTLY)
+// ================================
+
+const teacher = document.getElementById("teacher");
 const audio = document.getElementById("introAudio");
 const overlay = document.getElementById("offerOverlay");
 const pills = document.querySelectorAll(".pill");
 
-let started = false;
+let isPlaying = false;
 
 teacher.addEventListener("click", () => {
-  if (started) return;
-  started = true;
+  if (isPlaying) return;
+  isPlaying = true;
 
+  // 1) Fade in dark blurry overlay slowly
   overlay.classList.remove("hidden");
 
   requestAnimationFrame(() => {
     overlay.classList.add("active");
   });
 
-  audio.play();
+  // 2) Start music
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
 
+  // 3) Reveal title first (small delay for drama)
+  const title = overlay.querySelector("h2");
+  title.style.opacity = "0";
+  title.style.transform = "translateY(20px)";
+
+  setTimeout(() => {
+    title.style.transition = "all 0.9s ease";
+    title.style.opacity = "1";
+    title.style.transform = "translateY(0)";
+  }, 500);
+
+  // 4) Reveal pills one-by-one (slow cinematic timing)
   pills.forEach((pill, index) => {
+    pill.classList.remove("show");
+    pill.style.opacity = "0";
+    pill.style.transform = "translateY(20px)";
+
     setTimeout(() => {
+      pill.style.transition = "all 0.9s ease";
+      pill.style.opacity = "1";
+      pill.style.transform = "translateY(0)";
       pill.classList.add("show");
-    }, index * 4200); // VERY slow reveal
+    }, 1800 + index * 1600); // slow, elegant reveal
   });
 
-  audio.onended = () => {
-    overlay.classList.remove("active");
-
-    setTimeout(() => {
-      overlay.classList.add("hidden");
-    }, 650);
-
-    pills.forEach(p => p.classList.remove("show"));
-    started = false;
-  };
-});
-
-document.getElementById("startBtn").onclick = () => {
-  sessionStorage.setItem("saybon_next", "/why.html");
-  window.location.href = "/loader.html";
-};
-
-document.getElementById("loginBtn").onclick = () => {
-  window.location.href = "/auth/login.html";
-};
+  // 5) After last pill + 3s → everything fades out bottom-up
+  const total
