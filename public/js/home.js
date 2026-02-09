@@ -17,12 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.pause();
   });
 
-  // BUTTON ROUTING (PLACEHOLDERS FOR NOW)
-  document.getElementById("get-started").addEventListener("click", () => {
+  // FIXED BUTTON CLICKS
+  document.getElementById("get-started").addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("Get Started clicked");
     window.location.href = "/start";
   });
 
-  document.getElementById("login").addEventListener("click", () => {
+  document.getElementById("login").addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("Login clicked");
     window.location.href = "/login";
   });
 });

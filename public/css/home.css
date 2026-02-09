@@ -1,4 +1,4 @@
-/* SPLIT SCREEN LAYOUT */
+/* SPLIT SCREEN */
 #home-split {
   display: flex;
   width: 100vw;
@@ -12,35 +12,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
-/* TEACHER CONTAINER */
-.teacher-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* MAKE TEACHER BIG */
+/* TEACHER — NO RING, NO BLACK, JUST IMAGE */
+/* Make it as big as your existing circle was */
 .teacher-hero {
-  width: 420px;
-  max-width: 70%;
-  position: relative;
-  z-index: 2;
-}
-
-/* SINGLE EMERGING RING (NO EXTRA RINGS) */
-.teacher-ring {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  border: 8px solid gold;
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 1;
+  width: 520px;   /* matches your current circle size */
+  max-width: 80%;
+  cursor: pointer;
 }
 
 /* RIGHT SIDE — GREEN */
@@ -55,20 +34,22 @@
   position: relative;
 }
 
-/* LOGO CONTAINER (NO WHITE CIRCLE) */
+/* LOGO CONTAINER — CRITICAL FIX */
 .logo-container {
   width: 260px;
   height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent; /* IMPORTANT */
 }
 
-/* 3D LOGO — STATIC, TRANSPARENT BACKGROUND */
+/* 3D LOGO — FIXED VISIBILITY */
 .saybon-3d-logo {
   width: 240px;
   height: auto;
   background: transparent;
+  pointer-events: none;
 }
 
 /* BUTTON STACK */
@@ -92,7 +73,7 @@
   box-shadow: 
     0 4px 10px rgba(255,255,255,0.2) inset,
     0 6px 15px rgba(0,0,0,0.25);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /* PRIMARY BUTTON */
@@ -106,18 +87,19 @@
   color: white;
 }
 
-/* SHIMMER ON CLICK */
+/* VISIBLE SHIMMER ON CLICK */
 .glass-btn:active {
   animation: shimmer 0.6s ease-in-out;
 }
 
+/* Shimmer effect */
 @keyframes shimmer {
   0% { filter: brightness(1); }
-  50% { filter: brightness(1.4); }
+  50% { filter: brightness(1.5); }
   100% { filter: brightness(1); }
 }
 
-/* SETTINGS ICON (ADMIN ENTRY) */
+/* SETTINGS ICON */
 .settings-icon {
   position: absolute;
   bottom: 20px;
