@@ -1,30 +1,50 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const teacher = document.getElementById("teacherTrigger");
-  const overlay = document.getElementById("cinematicOverlay");
-  const getStarted = document.getElementById("getStartedBtn");
-  const login = document.getElementById("loginBtn");
-  const settings = document.getElementById("settingsBtn");
+const teacher = document.getElementById("teacherCircle");
+const audio = document.getElementById("introAudio");
+const overlay = document.getElementById("offerOverlay");
+const pills = document.querySelectorAll(".pill-card");
 
-  // Cinematic teacher tap
-  teacher.addEventListener("click", () => {
-    overlay.classList.add("active");
+let started = false;
 
+teacher.addEventListener("click", () => {
+  if (started) return;
+  started = true;
+
+  overlay.classList.add("active");
+  audio.currentTime = 0;
+  audio.play();
+
+  pills.forEach((pill, index) => {
     setTimeout(() => {
-      window.location.href = "/start.html";
-    }, 1200);
+      pill.classList.add("show");
+    }, index * 1200);
   });
 
-  // Buttons
-  getStarted.addEventListener("click", () => {
-    window.location.href = "/start.html";
-  });
-
-  login.addEventListener("click", () => {
-    window.location.href = "/auth/login.html";
-  });
-
-  // Settings (Admin Entry)
-  settings.addEventListener("click", () => {
-    window.location.href = "/admin/auth.html";
-  });
+  audio.onended = () => {
+    overlay.classList.remove("active");
+    pills.forEach(p => p.classList.remove("show"));
+    started = false;
+  };
 });
+
+document.getElementById("startBtn").onclick = () => {
+  sessionStorage.setItem("saybon_next", "/why.html");
+  window.location.href = "/loader.html";
+};
+
+document.getElementById("loginBtn").onclick = () => {
+  window.location.href = "/auth/login.html";
+};
+
+document.getElementById("backHomeBtn").onclick = () => {
+  overlay.classList.remove("active");
+  audio.pause();
+  started = false;
+};
+
+document.getElementById("revealBtn").onclick = () => {
+  window.location.href = "/reveal/";
+};
+
+document.getElementById("settingsBtn").onclick = () => {
+  window.location.href = "/admin/";
+};
