@@ -236,21 +236,14 @@ function triggerIntervention() {
   interventionAudio.onended = () => {
     teacherBox.style.display = "none";
     actions.style.display = "flex";
-
-    document.getElementById("continueBtn").classList.add("slide-in-left");
-    document.getElementById("revealBtn").classList.add("slide-in-right");
   };
 }
 
-// ✅ FIX: Continue now actually resumes the test properly
 document.getElementById("continueBtn").onclick = () => {
   overlay.classList.add("hidden");
   wrongStreak = 0;
-  index++;               // <-- CRITICAL FIX
-  loadQuestion();        // <-- CRITICAL FIX
 };
 
-// Reveal always finishes test
 document.getElementById("revealBtn").onclick = finish;
 
 function finish() {
@@ -262,9 +255,8 @@ function finish() {
   else if (scores.A1 > 0) level = "Beginner";
 
   sessionStorage.setItem("saybon_level", level);
-
-  // 🔒 LOCKED: Placement → Reveal (NO LOADER)
-  window.location.href = "/reveal/";
+  sessionStorage.setItem("saybon_next", "/reveal/");
+  window.location.href = "/loader.html";   // ✅ placement → loader → reveal
 }
 
 loadQuestion();

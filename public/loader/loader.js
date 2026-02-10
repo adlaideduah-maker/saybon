@@ -1,6 +1,7 @@
-// ===============================
-// LOCKED LOADER TAGS (ROTATE 1 PER LOAD)
-// ===============================
+// ================================
+// SAYBON GLOBAL LOADER — MASTER ROUTER
+// ================================
+
 const quips = [
   "Hold on… our hamsters are learning French 🐹… et toi ?",
   "Stirring the brain soup… très délicieux 🧠🥣",
@@ -24,30 +25,18 @@ const quips = [
   "Almost there… respire… inspire… expire… parfait 😮‍💨"
 ];
 
-// Show one quip per loader appearance
+// rotate quips
 let index = Number(sessionStorage.getItem("saybon_quip_index")) || 0;
 document.getElementById("loaderText").textContent = quips[index];
-
 index = (index + 1) % quips.length;
 sessionStorage.setItem("saybon_quip_index", index);
 
-// ===============================
-// GLOBAL ROUTING RULES (LOCKED)
-// ===============================
-
-// What page should we go to next?
+// CENTRALIZED ROUTING
 const next = sessionStorage.getItem("saybon_next");
 
-// ROUTING MAP (YOUR LOCKED BEHAVIOR)
-setTimeout(() => {
-  sessionStorage.removeItem("saybon_next");
-
-  if (!next) {
-    // Failsafe: go home if nothing set
-    window.location.href = "/";
-    return;
-  }
-
-  window.location.href = next;
-
-}, 2200);
+if (next) {
+  setTimeout(() => {
+    sessionStorage.removeItem("saybon_next");
+    window.location.href = next;
+  }, 2200);
+}

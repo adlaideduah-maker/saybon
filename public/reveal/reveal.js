@@ -1,4 +1,4 @@
-jconst level =
+const level =
   sessionStorage.getItem("saybon_level") || "Absolute Beginner";
 
 const levelText = document.getElementById("levelText");
@@ -10,15 +10,14 @@ setTimeout(() => {
   buttons.classList.add("show");
 }, 1700);
 
-// 🔒 LOCKED FLOW:
-// Reveal → Login (direct)
-// Login → Loader → Dashboard
-
+// START JOURNEY → loader → login
 document.getElementById("startJourney").onclick = () => {
-  window.location.href = "/auth/login.html";
+  sessionStorage.setItem("saybon_next", "/auth/login.html");
+  window.location.href = "/loader.html";
 };
 
-// Back Home stays the same
+// BACK HOME
 document.getElementById("backHome").onclick = () => {
   window.location.href = "/";
 };
+

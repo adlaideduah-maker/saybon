@@ -1,44 +1,31 @@
 const options = document.querySelectorAll(".why-option");
-const grid = document.getElementById("optionsGrid");
-const affirmationBox = document.getElementById("affirmationBox");
+const tag = document.getElementById("affirmationTag");
 
-const affirmations = {
-  travel:
-    "Better get your passport ready then… on y va ✈️🌍",
-
-  career:
-    "Ambition looks good on you… très professionnel 💼✨",
-
-  school:
-    "Study mode activated… tu vas réussir 📚🎯",
-
-  personal:
-    "Whatever your reasons may be, we’ve got you covered. 💙🌱"
+const tags = {
+  travel: "Better get your passport ready then… on y va ✈️",
+  work: "Ambition looks good on you… allez travailler 💼",
+  school: "Brain glow activated… très studieux 📚",
+  love: "L’amour + français = dangerous combo… magnifique 💕",
+  culture: "You’re already a citoyen du monde 🌍",
+  confidence: "We see you… and we’ve got you 💫"
 };
 
 options.forEach(btn => {
-  btn.addEventListener("click", (e) => {
-    const selected = e.currentTarget;
-    const reason = selected.dataset.reason;
-
-    // Fade out all others
-    options.forEach(opt => {
-      if (opt !== selected) {
-        opt.classList.add("faded");
-      }
+  btn.addEventListener("click", () => {
+    // fade out all others
+    options.forEach(o => {
+      if (o !== btn) o.classList.add("fade-out");
     });
 
-    // Center the selected one
-    selected.classList.add("selected");
+    // center selected
+    btn.classList.add("selected");
 
-    // Show affirmation
-    affirmationBox.textContent = affirmations[reason];
-    affirmationBox.classList.remove("hidden");
+    // show affirmation tag
+    const key = btn.dataset.reason;
+    tag.textContent = tags[key];
+    tag.classList.add("show");
 
-    // Store choice (optional)
-    sessionStorage.setItem("saybon_why", reason);
-
-    // After 3 seconds → loader → start page
+    // after 3s → loader → start.html
     setTimeout(() => {
       sessionStorage.setItem("saybon_next", "/start.html");
       window.location.href = "/loader.html";
