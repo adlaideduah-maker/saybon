@@ -228,24 +228,36 @@ function answer(choice) {
 function triggerIntervention() {
   overlay.classList.remove("hidden");
 
-  // hide buttons initially
-  actions.style.display = "flex";
-  continueBtn.style.opacity = "0";
-  revealBtn.style.opacity = "0";
+  teacherBox.style.display = "flex";
+  actions.style.display = "none";
 
-  // start audio
+  // reset any previous animations
+  continueBtn.classList.remove("slide-in-left", "shimmer");
+  revealBtn.classList.remove("slide-in-right", "shimmer");
+
+  // start slow vertical bounce
+  teacherBox.classList.add("slow-bounce");
+
   setTimeout(() => {
     interventionAudio.currentTime = 0;
     interventionAudio.play().catch(()=>{});
   }, 200);
 
-  // when audio ends → staggered buttons
   interventionAudio.onended = () => {
-    continueBtn.classList.add("slide-in-left");
+    // stop bounce when audio ends
+    teacherBox.classList.remove("slow-bounce");
 
+    actions.style.display = "flex";
+
+    // First button slides + shimmers
     setTimeout(() => {
-      revealBtn.classList.add("slide-in-right");
-    }, 600);
+      continueBtn.classList.add("slide-in-left", "shimmer");
+    }, 200);
+
+    // Second button slides + shimmers
+    setTimeout(() => {
+      revealBtn.classList.add("slide-in-right", "shimmer");
+    }, 900);
   };
 }
 
@@ -266,7 +278,7 @@ function finish() {
 
   sessionStorage.setItem("saybon_level", level);
   sessionStorage.setItem("saybon_next", "/reveal/");
-  window.location.href = "/loader.html"; // placement → loader → reveal
+  window.location.href = "/loader.html";   // placement → loader → reveal
 }
 
 loadQuestion();
