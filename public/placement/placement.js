@@ -231,9 +231,11 @@ function triggerIntervention() {
   teacherBox.style.display = "flex";
   actions.style.display = "none";
 
-  // reset any previous animations
+  // reset previous animations
   continueBtn.classList.remove("slide-in-left", "shimmer");
   revealBtn.classList.remove("slide-in-right", "shimmer");
+  continueBtn.style.opacity = "0";
+  revealBtn.style.opacity = "0";
 
   // start slow vertical bounce
   teacherBox.classList.add("slow-bounce");
@@ -278,7 +280,7 @@ function finish() {
 
   sessionStorage.setItem("saybon_level", level);
   sessionStorage.setItem("saybon_next", "/reveal/");
-  window.location.href = "/loader.html";   // placement → loader → reveal
+  window.location.href = "/loader.html"; // placement → loader → reveal
 }
 
 loadQuestion();
