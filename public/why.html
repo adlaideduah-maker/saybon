@@ -3,69 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why SayBon?</title>
 
-  <title>Why Learn French — SayBon</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/why.css" />
 </head>
-
 <body>
 
   <main class="why-page">
 
-    <div class="why-header">
-      <h1 class="why-title">Why do you want to learn French?</h1>
-      <p class="why-subtitle">
-        Tap what feels right — your journey starts here ✨
-      </p>
-    </div>
+    <header class="why-header">
+      <h1>Why do you want to learn French?</h1>
+      <p class="subtitle">Tap what feels right — your journey starts here ✨</p>
+    </header>
 
-    <div class="why-grid">
-
-      <div class="why-card" data-reason="travel">
-        <h3>Travel & Culture</h3>
+    <section class="why-options">
+      <div class="why-option" data-reason="travel">
+        <h3>🌍 Travel & Culture</h3>
         <p>Experience the world more deeply</p>
       </div>
 
-      <div class="why-card" data-reason="school">
-        <h3>School & Exams</h3>
-        <p>Improve grades or prepare for tests</p>
+      <div class="why-option" data-reason="school">
+        <h3>🎓 School & Exams</h3>
+        <p>Prepare for DELF and academic success</p>
       </div>
 
-      <div class="why-card" data-reason="work">
-        <h3>Work & Career</h3>
+      <div class="why-option" data-reason="work">
+        <h3>💼 Work & Career</h3>
         <p>Boost your professional opportunities</p>
       </div>
 
-      <div class="why-card" data-reason="family">
-        <h3>Family & Friends</h3>
+      <div class="why-option" data-reason="family">
+        <h3>💛 Family & Friends</h3>
         <p>Connect with loved ones in French</p>
       </div>
 
-      <div class="why-card" data-reason="fun">
-        <h3>For Fun</h3>
+      <div class="why-option" data-reason="fun">
+        <h3>🎉 Just for Fun</h3>
         <p>Because learning should feel joyful</p>
       </div>
 
-      <div class="why-card" data-reason="other">
-        <h3>Other</h3>
-        <p>Your own personal reason</p>
+      <div class="why-option" data-reason="other">
+        <h3>🌈 Other</h3>
+        <p>Your reason matters</p>
       </div>
+    </section>
 
-    </div>
+    <div id="affirmation" class="affirmation"></div>
 
   </main>
 
-  <!-- AFFIRMATION OVERLAY -->
-  <div id="affirmationOverlay" class="affirmation-overlay hidden">
-    <div class="affirmation-box">
-      <p id="affirmationText"></p>
-    </div>
-  </div>
-
   <script src="js/why.js"></script>
-
 </body>
 </html>

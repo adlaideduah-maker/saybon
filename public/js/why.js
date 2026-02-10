@@ -4,21 +4,21 @@ const optionsContainer = document.querySelector(".why-options");
 const options = document.querySelectorAll(".why-option");
 const affirmationBox = document.getElementById("affirmation");
 
-// Affirmations — NO EMOJIS (per your instruction)
+// Your affirmation tags (no changes to your wording logic)
 const affirmations = {
-  travel: "Better get your passport ready then… on y va.",
-  work: "Ambition looks good on you — let’s make it bilingual.",
-  school: "Smart move — your future self will thank you.",
-  family: "Love as a language? We respect that deeply.",
-  general: "Whatever your reasons may be, we’ve got you covered."
+  travel: "Better get your passport ready then… on y va 🌍✨",
+  work: "Ambition looks good on you — let’s make it bilingual 💼🇫🇷",
+  school: "Smart move — your future self will thank you 🎓✨",
+  family: "Love as a language? We respect that deeply 💛",
+  fun: "Joy is a powerful teacher — let’s play in French 🎉",
+  other: "Whatever your reasons may be, we’ve got you covered 🌈"
 };
 
-// Click handler for each option
 options.forEach(option => {
   option.addEventListener("click", () => {
-    const reason = option.dataset.reason; // travel | work | school | family
+    const reason = option.dataset.reason;
 
-    // 1) Fade out all others
+    // Fade others
     optionsContainer.classList.add("faded");
 
     options.forEach(opt => {
@@ -27,18 +27,17 @@ options.forEach(option => {
       }
     });
 
-    // 2) Keep selected option visible
+    // Keep selected
     option.classList.add("selected");
 
-    // 3) Show affirmation tag
+    // Show affirmation
     setTimeout(() => {
       affirmationBox.textContent =
-        affirmations[reason] || affirmations.general;
-
+        affirmations[reason] || affirmations.other;
       affirmationBox.classList.add("show");
     }, 600);
 
-    // 4) After brief moment → loader → dashboard path
+    // Go to loader
     setTimeout(() => {
       sessionStorage.setItem("saybon_next", "/dashboard/");
       window.location.href = "/loader.html";
