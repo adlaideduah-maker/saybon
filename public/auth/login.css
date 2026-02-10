@@ -10,7 +10,7 @@ html, body {
 
 /* === BACKGROUND (MATCHES PHOTO A) === */
 body {
-  background: linear-gradient(180deg, #b08968, #8d6b53);
+  background: linear-gradient(180deg, #f9d6e1, #f4c3d3);
   display: flex;
   align-items: center;
   justify-content: center;
