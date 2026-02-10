@@ -14,7 +14,6 @@ body {
   color: #ffffff;
   overflow-y: auto;
   overflow-x: hidden;
-
 }
 
 /* =====================================================
@@ -60,12 +59,16 @@ body {
   gap: 14px;
 }
 
+/* =====================================================
+   ✅ SHORTER PLACEMENT BUTTONS (SURGICAL CHANGE)
+===================================================== */
+
 .option {
-  padding: 18px;
+  padding: 12px 18px; /* ← WAS 18px → now shorter */
   border-radius: 999px;
   border: none;
 
-  font-size: 17px;
+  font-size: 16px; /* slightly cleaner */
   font-weight: 600;
 
   background: rgba(255, 255, 255, 0.15);
@@ -245,5 +248,3 @@ body {
     transform: translateX(0);
   }
 }
-
-
