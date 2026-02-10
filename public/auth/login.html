@@ -10,38 +10,26 @@
 </head>
 <body>
 
-<main class="login-wrapper">
+  <main class="login-container">
 
-  <div class="login-content">
+    <!-- LOGO -->
+    <img src="/assets/images/logo.png" class="login-logo" alt="SayBon Logo" />
 
-    <!-- BIG CENTERED LOGO -->
-    <img src="/assets/images/logo.png" class="login-logo" />
+    <!-- TEXT -->
+    <p class="login-text">Let’s get back to progress 🏋🏽‍♀️</p>
 
-    <!-- TEXT BELOW LOGO -->
-    <h2 class="journey-line">Let’s get back to progress 🏋🏽‍♀️</h2>
-
-    <!-- PRIMARY LOGIN BUTTON -->
-    <button id="loginBtn" class="google-btn">
-      <span class="g-icon">G</span>
-      <span>Continue with Google</span>
+    <!-- PRIMARY BUTTON -->
+    <button id="loginBtn" class="btn primary-btn">
+      Continue with Google
     </button>
 
-    <!-- SMALLER BACK TO HOME BUTTON -->
-    <button id="backHomeBtn" class="home-btn">
+    <!-- SECONDARY BUTTON -->
+    <button id="backHomeBtn" class="btn secondary-btn">
       Back to home
     </button>
 
-  </div>
+  </main>
 
-</main>
-
-<script type="module" src="/auth/login.js"></script>
-
-<script>
-  document.getElementById("backHomeBtn").onclick = () => {
-    window.location.href = "/";
-  };
-</script>
-
+  <script type="module" src="/auth/login.js"></script>
 </body>
 </html>
