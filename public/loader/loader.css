@@ -1,31 +1,35 @@
-.loader-screen {
+body {
+  margin: 0;
   height: 100vh;
+  background: radial-gradient(circle at center, #0f3f4b, #061c22);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, #0f6f73, #0a2f3a);
-  color: white;
+  font-family: "Nunito", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.loader-page {
   text-align: center;
-  padding: 20px;
 }
 
 .spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(255,255,255,.2);
-  border-top-color: white;
+  width: 70px;
+  height: 70px;
+  border: 6px solid rgba(255,255,255,0.2);
+  border-top-color: #6fe7ff;
   border-radius: 50%;
+  margin: 0 auto 18px;
   animation: spin 1s linear infinite;
-  margin-bottom: 20px;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-#loaderTag {
-  font-size: 18px;
+.loader-text {
+  color: #e6faff;
+  font-size: 16px;
   font-weight: 600;
   max-width: 520px;
 }

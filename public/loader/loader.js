@@ -1,4 +1,7 @@
-const tags = [
+// ===============================
+// LOCKED LOADER TAGS (ROTATE 1 PER LOAD)
+// ===============================
+const quips = [
   "Hold on… our hamsters are learning French 🐹… et toi ?",
   "Stirring the brain soup… très délicieux 🧠🥣",
   "Loading genius mode… doucement hein 😏",
@@ -21,13 +24,30 @@ const tags = [
   "Almost there… respire… inspire… expire… parfait 😮‍💨"
 ];
 
-const tagEl = document.getElementById("loaderTag");
+// Show one quip per loader appearance
+let index = Number(sessionStorage.getItem("saybon_quip_index")) || 0;
+document.getElementById("loaderText").textContent = quips[index];
 
-// ONE TAG PER LOADER APPEARANCE
-const tag = tags[Math.floor(Math.random() * tags.length)];
-tagEl.textContent = tag;
+index = (index + 1) % quips.length;
+sessionStorage.setItem("saybon_quip_index", index);
 
+// ===============================
+// GLOBAL ROUTING RULES (LOCKED)
+// ===============================
+
+// What page should we go to next?
+const next = sessionStorage.getItem("saybon_next");
+
+// ROUTING MAP (YOUR LOCKED BEHAVIOR)
 setTimeout(() => {
-  const next = sessionStorage.getItem("saybon_next") || "/";
+  sessionStorage.removeItem("saybon_next");
+
+  if (!next) {
+    // Failsafe: go home if nothing set
+    window.location.href = "/";
+    return;
+  }
+
   window.location.href = next;
-}, 1800);
+
+}, 2200);
