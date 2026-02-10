@@ -1,3 +1,7 @@
+/* =====================================================
+   WHY PAGE — NEW DESIGN (CENTERED, COLORFUL, CLASSY)
+===================================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -8,121 +12,161 @@ html, body {
   width: 100%;
   min-height: 100%;
   font-family: "Nunito", system-ui, sans-serif;
-  background: radial-gradient(circle at center, #0f3f4b, #061c22);
-  color: white;
+  overflow-x: hidden;
 }
 
-/* LAYOUT */
-
-.why-app {
+/* FULL-SCREEN CONTAINER */
+.why-container {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 80px 20px;
+  padding: 40px 20px;
+
+  /* NEW COLORFUL BACKGROUND (NOT GREEN) */
+  background: radial-gradient(
+    circle at top,
+    #fff3fb,
+    #f0f5ff,
+    #f8f1ff
+  );
 }
 
+/* TITLE */
 .why-title {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
-  margin-bottom: 8px;
+  color: #2b2f56;
+  margin-bottom: 24px;
 }
 
+/* SUBTITLE */
 .why-subtitle {
-  font-size: 16px;
-  opacity: 0.85;
+  font-size: 18px;
+  color: #6b6f9a;
+  max-width: 620px;
   margin-bottom: 40px;
 }
 
-/* OPTIONS GRID */
-
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  max-width: 900px;
+/* OPTIONS GRID (CENTERED) */
+.why-options {
   width: 100%;
-}
-
-/* CARDS */
-
-.why-card {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px);
-  border: none;
-  border-radius: 20px;
-  padding: 26px 18px;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
-}
-
-.why-card h3 {
-  margin: 0 0 6px 0;
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.why-card p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-.why-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 38px rgba(0,0,0,0.25);
-  background: rgba(255,255,255,0.18);
-}
-
-/* AFFIRMATION OVERLAY */
-
-.affirmation {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 30, 40, 0.92);
-  backdrop-filter: blur(14px);
-
+  max-width: 620px;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
   align-items: center;
-  justify-content: center;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.8s ease;
 }
 
-.affirmation.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.affirmation.hidden {
-  display: none;
-}
-
-.affirmation-card {
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(14px);
-  padding: 28px 36px;
+/* OPTION BUTTONS */
+.why-option {
+  width: 100%;
+  padding: 18px 24px;
   border-radius: 18px;
-  max-width: 520px;
-  text-align: center;
-}
-
-.affirmation-card p {
+  border: none;
   font-size: 18px;
   font-weight: 700;
-  color: white;
-  margin: 0;
+  text-align: center;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.45s ease;
 }
 
-/* MOBILE */
+/* DIFFERENT COLOR TONES PER OPTION (MORE FUN) */
+.why-option.travel { background: linear-gradient(135deg, #ffe3f6, #ffd1f0); }
+.why-option.work { background: linear-gradient(135deg, #e3f3ff, #d1e9ff); }
+.why-option.school { background: linear-gradient(135deg, #e9fff1, #d9ffea); }
+.why-option.family { background: linear-gradient(135deg, #fff6e3, #fff0d1); }
 
-@media (max-width: 900px) {
-  .why-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
+/* HOVER EFFECT */
+.why-option:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
+}
+
+/* WHEN AN OPTION IS SELECTED */
+.why-option.selected {
+  transform: scale(1.05);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+}
+
+/* FADE OUT OTHER OPTIONS */
+.why-options.faded .why-option:not(.selected) {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+/* =====================================================
+   AFFIRMATION TAG (POPS UP AFTER SELECTION)
+===================================================== */
+
+.affirmation {
+  margin-top: 28px;
+  padding: 16px 24px;
+  border-radius: 18px;
+
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+
+  max-width: 580px;
+
+  opacity: 0;
+  transform: translateY(15px) scale(0.95);
+  transition: all 0.9s cubic-bezier(.22,.61,.36,1);
+
+  /* DISTINCT COLOR STYLE */
+  background: linear-gradient(135deg, #2b2f56, #4b4f8a);
+  color: #ffffff;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* SHOW AFFIRMATION */
+.affirmation.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* SMALL GLOW UNDER AFFIRMATION */
+.affirmation::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent);
+  filter: blur(6px);
+  z-index: -1;
+}
+
+/* =====================================================
+   MOBILE FRIENDLY
+===================================================== */
+
+@media (max-width: 768px) {
+  .why-title {
+    font-size: 28px;
+  }
+
+  .why-subtitle {
+    font-size: 16px;
+  }
+
+  .why-option {
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+
+  .affirmation {
+    font-size: 18px;
+    padding: 14px 20px;
   }
 }
