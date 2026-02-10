@@ -5,8 +5,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #fff6fb, #eef2ff, #e8fbff);
+  background: #0f172a; /* deep navy like your reference */
   font-family: "Nunito", system-ui, sans-serif;
+  color: white;
 }
 
 /* APP CONTAINER */
@@ -26,56 +27,51 @@ body {
   margin: 0;
   font-size: 28px;
   font-weight: 800;
-  color: #1f2937;
+  color: white;
 }
 
 .dash-sub {
   margin-top: 6px;
-  color: #4b5563;
+  color: rgba(255,255,255,0.75);
 }
 
 /* ===========================================
-   GRID (KEPT AS YOU HAD IT)
+   STACKED LIST (LIKE YOUR IMAGE)
 =========================================== */
 
 .dash-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
 /* ===========================================
-   TILE — 3D GLASS REDESIGN (NEW)
+   TILE BASE — FULL WIDTH, ROUNDED
 =========================================== */
 
 .tile {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px 20px;
-  border-radius: 16px;
+  padding: 22px 22px;
+  border-radius: 18px;
   border: none;
   text-align: left;
   cursor: pointer;
 
-  /* 3D GLASS LOOK */
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.34),
-    rgba(255, 255, 255, 0.08)
-  );
-
-  backdrop-filter: blur(16px);
+  /* GLASS EFFECT */
+  backdrop-filter: blur(14px);
 
   box-shadow:
-    inset 0 2px 2px rgba(255, 255, 255, 0.6),
-    inset 0 -2px 2px rgba(0, 0, 0, 0.08),
-    0 10px 24px rgba(0, 0, 0, 0.16);
+    inset 0 2px 2px rgba(255,255,255,0.35),
+    inset 0 -2px 2px rgba(0,0,0,0.08),
+    0 10px 26px rgba(0,0,0,0.18);
 
   transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 
   position: relative;
-  overflow: hidden; /* needed for shimmer */
+  overflow: hidden; /* for shimmer */
 }
 
 /* ICON */
@@ -85,18 +81,54 @@ body {
 
 /* TEXT */
 .tile-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
-  color: #1f2937;
+  color: white;
 }
 
 .tile-sub {
   font-size: 14px;
-  color: #4b5563;
+  color: rgba(255,255,255,0.85);
 }
 
 /* ===========================================
-   SHIMMER ON HOVER (NEW)
+   COLORS (MATCHING YOUR IMAGE)
+=========================================== */
+
+.tile-levels {
+  background: linear-gradient(135deg, #ff6b81, #ff4757);
+}
+
+.tile-games {
+  background: linear-gradient(135deg, #6c5ce7, #5f27cd);
+}
+
+.tile-music {
+  background: linear-gradient(135deg, #ff9f43, #ff7f00);
+}
+
+.tile-delf {
+  background: linear-gradient(135deg, #1e90ff, #3742fa);
+}
+
+.tile-translate {
+  background: linear-gradient(135deg, #a55eea, #8e44ad);
+}
+
+.tile-chat {
+  background: linear-gradient(135deg, #00cec9, #00b894);
+}
+
+.tile-feedback {
+  background: linear-gradient(135deg, #fdcb6e, #e17055);
+}
+
+.tile-support {
+  background: linear-gradient(135deg, #55efc4, #00b894);
+}
+
+/* ===========================================
+   SHIMMER ON HOVER (SOFT + CLASSY)
 =========================================== */
 
 .tile::before {
@@ -106,33 +138,33 @@ body {
   background: linear-gradient(
     120deg,
     rgba(255,255,255,0) 30%,
-    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0.35) 50%,
     rgba(255,255,255,0) 70%
   );
   transform: translateX(-100%);
   transition: transform 0.6s ease-in-out;
 }
 
-/* Hover lift + stronger shadow */
+/* Hover lift + glow */
 .tile:hover {
   transform: translateY(-3px) scale(1.01);
   box-shadow:
-    inset 0 2px 3px rgba(255,255,255,0.7),
-    0 16px 34px rgba(0,0,0,0.22);
+    inset 0 2px 3px rgba(255,255,255,0.45),
+    0 16px 34px rgba(0,0,0,0.26);
 }
 
-/* Trigger shimmer */
+/* Trigger shimmer sweep */
 .tile:hover::before {
   transform: translateX(100%);
 }
 
-/* Active press feel */
+/* Press feel */
 .tile:active {
   transform: translateY(1px) scale(0.99);
 }
 
 /* ===========================================
-   FOOTER BUTTON (KEEP)
+   FOOTER BUTTON
 =========================================== */
 
 .dash-footer {
@@ -145,9 +177,9 @@ body {
   border-radius: 999px;
   border: none;
   font-weight: 700;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.8);
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.14);
   cursor: pointer;
 }
 
@@ -160,4 +192,3 @@ body {
     font-size: 24px;
   }
 }
-  
