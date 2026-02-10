@@ -17,7 +17,7 @@ body {
 }
 
 /* =====================================================
-   MAIN PLACEMENT PAGE (Photo B)
+   MAIN PLACEMENT PAGE
 ===================================================== */
 
 #app {
@@ -30,7 +30,6 @@ body {
   align-items: center;
   text-align: center;
 
-  /* ✅ allow page to grow */
   height: auto;
 }
 
@@ -53,27 +52,19 @@ body {
 #options {
   width: 100%;
   max-width: 480px;
-
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* =====================================================
-   ✅ SHORTER PLACEMENT BUTTONS (SURGICAL CHANGE)
-===================================================== */
-
 .option {
-  padding: 12px 18px; /* ← WAS 18px → now shorter */
+  padding: 18px;
   border-radius: 999px;
   border: none;
-
-  font-size: 16px; /* slightly cleaner */
+  font-size: 17px;
   font-weight: 600;
-
   background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-
   backdrop-filter: blur(12px);
   cursor: pointer;
   transition: all 0.25s ease;
@@ -85,7 +76,7 @@ body {
 }
 
 /* =====================================================
-   INTERVENTION OVERLAY (Photo A)
+   INTERVENTION OVERLAY
 ===================================================== */
 
 #intervention {
@@ -109,7 +100,7 @@ body {
 }
 
 /* =====================================================
-   TEACHER
+   TEACHER — CLEAN BACKGROUND + SMOOTH BOUNCE
 ===================================================== */
 
 .teacher-box {
@@ -118,71 +109,70 @@ body {
   align-items: center;
 }
 
+/* REMOVE ALL BACKGROUND / RING / GLOW */
 .teacher-circle {
   width: 280px;
   height: 280px;
   border-radius: 50%;
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent; /* CLEARED */
 }
 
+/* Just the image, nothing behind it */
 .teacher-circle img {
   width: 100%;
   height: auto;
   border-radius: 50%;
   z-index: 2;
+
+  /* 🔥 SMOOTH, CONSISTENT BOUNCE */
+  animation: gentleBounce 2.2s ease-in-out infinite;
 }
 
-/* outer glow only */
+/* REMOVE the old glow */
 .teacher-circle::after {
-  content: "";
-  position: absolute;
-  inset: -18px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(110, 210, 255, 0.55), transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
-  z-index: 1;
+  display: none;
 }
 
-@keyframes glowPulse {
-  0%   { opacity: 0.4; transform: scale(0.96); }
-  50%  { opacity: 0.9; transform: scale(1.05); }
-  100% { opacity: 0.4; transform: scale(0.96); }
+/* Soft, elegant continuous bounce */
+@keyframes gentleBounce {
+  0%   { transform: translateY(0px); }
+  25%  { transform: translateY(-6px); }
+  50%  { transform: translateY(0px); }
+  75%  { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
 }
 
 /* =====================================================
-   BUTTONS (appear after audio)
+   BUTTONS — PREPARED FOR SEQUENTIAL SLIDE-IN
 ===================================================== */
 
 .intervention-actions {
   margin-top: 40px;
   display: flex;
-  gap: 40px;
-
-  /* bring upward */
-  transform: translateY(-40px);
+  flex-direction: column; /* STACKED */
+  gap: 16px;
+  align-items: center;
 }
 
-/* classier glass tones */
-
+/* Glass buttons */
 .glass-btn {
-  min-width: 200px;
+  min-width: 220px;
   padding: 16px 28px;
-
   border-radius: 999px;
   border: none;
-
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.4px;
-
   cursor: pointer;
   backdrop-filter: blur(14px);
-
   transition: all 0.4s ease;
+
+  /* HIDDEN BY DEFAULT */
+  opacity: 0;
 }
 
 /* elegant blue */
@@ -202,29 +192,14 @@ body {
   box-shadow: 0 14px 40px rgba(0,0,0,0.25);
 }
 
-/* ---------- SLIDE IN BUTTONS ---------- */
-
-.intervention-actions {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.intervention-actions button {
-  opacity: 0;
-  transform: translateX(0);
-  animation-duration: 1.2s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(.22,.61,.36,1);
-}
+/* ---------- SLIDE IN FROM OPPOSITE SIDES ---------- */
 
 .slide-in-left {
-  animation-name: slideLeft;
+  animation: slideLeft 1.2s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 .slide-in-right {
-  animation-name: slideRight;
+  animation: slideRight 1.2s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 @keyframes slideLeft {

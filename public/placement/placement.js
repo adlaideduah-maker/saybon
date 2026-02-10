@@ -223,19 +223,47 @@ function answer(choice) {
   else loadQuestion();
 }
 
+/* =====================================================
+   🔥 UPDATED INTERVENTION — YOUR REQUEST
+===================================================== */
+
 function triggerIntervention() {
   overlay.classList.remove("hidden");
-  actions.style.display = "none";
-  teacherBox.style.display = "flex";
 
+  // SHOW TEACHER, HIDE BUTTONS AT FIRST
+  teacherBox.style.display = "flex";
+  actions.style.display = "flex";
+
+  // Reset animations
+  document.getElementById("continueBtn").classList.remove("slide-in-left");
+  document.getElementById("revealBtn").classList.remove("slide-in-right");
+
+  // Hide buttons initially
+  document.getElementById("continueBtn").style.opacity = "0";
+  document.getElementById("revealBtn").style.opacity = "0";
+
+  // Play audio (teacher is already bouncing via CSS)
   setTimeout(() => {
     interventionAudio.currentTime = 0;
     interventionAudio.play().catch(()=>{});
   }, 200);
 
+  // WHEN AUDIO ENDS → BRING BUTTONS IN SEQUENTIALLY
   interventionAudio.onended = () => {
-    teacherBox.style.display = "none";
-    actions.style.display = "flex";
+
+    // FIRST: Continue test from LEFT
+    setTimeout(() => {
+      const c = document.getElementById("continueBtn");
+      c.style.opacity = "1";
+      c.classList.add("slide-in-left");
+    }, 300);
+
+    // SECOND: Reveal level from RIGHT
+    setTimeout(() => {
+      const r = document.getElementById("revealBtn");
+      r.style.opacity = "1";
+      r.classList.add("slide-in-right");
+    }, 900);
   };
 }
 
@@ -256,7 +284,7 @@ function finish() {
 
   sessionStorage.setItem("saybon_level", level);
   sessionStorage.setItem("saybon_next", "/reveal/");
-  window.location.href = "/loader.html";   // ✅ placement → loader → reveal
+  window.location.href = "/loader.html";   // placement → loader → reveal
 }
 
 loadQuestion();
