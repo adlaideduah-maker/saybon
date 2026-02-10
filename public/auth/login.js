@@ -20,7 +20,8 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
 
-    // 🔒 LOCKED: always → loader → dashboard
+    // 🔒 LOCKED BEHAVIOR:
+    // Always → loader → dashboard
     sessionStorage.setItem("saybon_next", "/dashboard/");
     window.location.href = "/loader.html";
 
@@ -28,3 +29,4 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
     alert("Login cancelled or failed.");
   }
 });
+
