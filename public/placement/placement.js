@@ -169,6 +169,8 @@ const mediaArea = document.getElementById("mediaArea");
 const overlay = document.getElementById("intervention");
 const teacherBox = document.querySelector(".teacher-box");
 const actions = document.querySelector(".intervention-actions");
+const continueBtn = document.getElementById("continueBtn");
+const revealBtn = document.getElementById("revealBtn");
 const interventionAudio = document.getElementById("interventionAudio");
 
 function loadQuestion() {
@@ -223,56 +225,36 @@ function answer(choice) {
   else loadQuestion();
 }
 
-/* =====================================================
-   🔥 UPDATED INTERVENTION — YOUR REQUEST
-===================================================== */
-
 function triggerIntervention() {
   overlay.classList.remove("hidden");
 
-  // SHOW TEACHER, HIDE BUTTONS AT FIRST
-  teacherBox.style.display = "flex";
+  // hide buttons initially
   actions.style.display = "flex";
+  continueBtn.style.opacity = "0";
+  revealBtn.style.opacity = "0";
 
-  // Reset animations
-  document.getElementById("continueBtn").classList.remove("slide-in-left");
-  document.getElementById("revealBtn").classList.remove("slide-in-right");
-
-  // Hide buttons initially
-  document.getElementById("continueBtn").style.opacity = "0";
-  document.getElementById("revealBtn").style.opacity = "0";
-
-  // Play audio (teacher is already bouncing via CSS)
+  // start audio
   setTimeout(() => {
     interventionAudio.currentTime = 0;
     interventionAudio.play().catch(()=>{});
   }, 200);
 
-  // WHEN AUDIO ENDS → BRING BUTTONS IN SEQUENTIALLY
+  // when audio ends → staggered buttons
   interventionAudio.onended = () => {
+    continueBtn.classList.add("slide-in-left");
 
-    // FIRST: Continue test from LEFT
     setTimeout(() => {
-      const c = document.getElementById("continueBtn");
-      c.style.opacity = "1";
-      c.classList.add("slide-in-left");
-    }, 300);
-
-    // SECOND: Reveal level from RIGHT
-    setTimeout(() => {
-      const r = document.getElementById("revealBtn");
-      r.style.opacity = "1";
-      r.classList.add("slide-in-right");
-    }, 900);
+      revealBtn.classList.add("slide-in-right");
+    }, 600);
   };
 }
 
-document.getElementById("continueBtn").onclick = () => {
+continueBtn.onclick = () => {
   overlay.classList.add("hidden");
   wrongStreak = 0;
 };
 
-document.getElementById("revealBtn").onclick = finish;
+revealBtn.onclick = finish;
 
 function finish() {
   let level = "Absolute Beginner";
@@ -284,7 +266,7 @@ function finish() {
 
   sessionStorage.setItem("saybon_level", level);
   sessionStorage.setItem("saybon_next", "/reveal/");
-  window.location.href = "/loader.html";   // placement → loader → reveal
+  window.location.href = "/loader.html"; // placement → loader → reveal
 }
 
 loadQuestion();
