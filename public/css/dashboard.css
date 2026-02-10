@@ -1,134 +1,193 @@
-/* ==================================================
-   DASHBOARD — CATCHY, NON-GREEN, PLAYFUL, CLASSY
-================================================== */
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #1f2a44, #0b1220);
-  font-family: "Nunito", system-ui, sans-serif;
-  color: #ffffff;
-}
+/* ===========================================
+   DASHBOARD BASE
+=========================================== */
 
 .dashboard-app {
-  padding: 28px 20px 40px;
-  max-width: 1100px;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 24px 16px 40px;
+  background: linear-gradient(180deg, #f7f0e9, #eae2d8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* HEADER */
+/* ===========================================
+   HEADER (matches your reference)
+=========================================== */
+
 .dash-header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .dash-title {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.6px;
+  margin: 0;
 }
 
 .dash-sub {
-  opacity: .85;
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 15px;
 }
 
-/* GRID */
+/* ===========================================
+   GRID / STACK (same structure as your image)
+=========================================== */
+
 .dash-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* TILES */
+/* ===========================================
+   TILE BASE (3D GLASS CARDS)
+=========================================== */
+
 .tile {
+  width: 100%;
   border: none;
-  border-radius: 18px;
-  padding: 20px;
-  text-align: left;
+  border-radius: 16px;
+  padding: 16px 20px;
   cursor: pointer;
-  color: #ffffff;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  /* 3D GLASS LOOK */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.32),
+    rgba(255, 255, 255, 0.08)
+  );
 
-  transition: transform .25s ease, box-shadow .25s ease;
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,0.6),
+    inset 0 -2px 2px rgba(0,0,0,0.08),
+    0 10px 24px rgba(0,0,0,0.14);
+
+  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 }
 
+/* Hover lift */
 .tile:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 44px rgba(0,0,0,.25);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.7),
+    0 14px 32px rgba(0,0,0,0.18);
 }
 
-/* ICON */
+/* Press effect */
+.tile:active {
+  transform: translateY(1px);
+}
+
+/* ===========================================
+   TILE CONTENT
+=========================================== */
+
 .tile-icon {
-  font-size: 28px;
-  margin-bottom: 6px;
+  font-size: 22px;
 }
 
-/* TITLE */
 .tile-title {
   font-size: 18px;
   font-weight: 800;
+  color: #1f2937;
 }
 
-/* SUB */
 .tile-sub {
-  font-size: 13px;
-  opacity: .85;
+  font-size: 14px;
+  color: #4b5563;
 }
 
-/* TILE COLORS — DISTINCT, NOT GREEN */
+/* Align text properly */
+.tile div {
+  display: block;
+}
+
+/* ===========================================
+   SOFT PASTEL COLORS (MATCH YOUR REFERENCE)
+=========================================== */
+
 .tile-levels {
-  background: linear-gradient(135deg, #ff7a8a, #ff3f6c);
+  background: rgba(220, 245, 210, 0.55);
 }
 
 .tile-games {
-  background: linear-gradient(135deg, #7c7cff, #4a4aff);
+  background: rgba(210, 240, 245, 0.55);
 }
 
 .tile-music {
-  background: linear-gradient(135deg, #ffb347, #ff7b00);
+  background: rgba(245, 215, 230, 0.55);
 }
 
 .tile-delf {
-  background: linear-gradient(135deg, #3fb1ff, #0b72ff);
+  background: rgba(220, 235, 240, 0.55);
 }
 
 .tile-translate {
-  background: linear-gradient(135deg, #9b7aff, #6a3cff);
+  background: rgba(215, 225, 245, 0.55);
 }
 
 .tile-chat {
-  background: linear-gradient(135deg, #ff9fdd, #ff6abf);
+  background: rgba(230, 220, 245, 0.55);
 }
 
 .tile-feedback {
-  background: linear-gradient(135deg, #4fd1c5, #2cb1a6);
+  background: rgba(240, 215, 225, 0.55);
 }
 
 .tile-support {
-  background: linear-gradient(135deg, #ffd86b, #ffb700);
+  background: rgba(225, 245, 235, 0.55);
 }
 
-/* FOOTER */
+/* ===========================================
+   FOOTER / BACK BUTTON
+=========================================== */
+
 .dash-footer {
-  margin-top: 28px;
-  text-align: center;
+  margin-top: 20px;
 }
 
 .home-mini {
-  background: rgba(255,255,255,.18);
-  color: #ffffff;
+  background: rgba(255,255,255,0.35);
   border: none;
-  padding: 10px 16px;
   border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
   cursor: pointer;
   backdrop-filter: blur(10px);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.6),
+    0 6px 14px rgba(0,0,0,0.12);
+
+  transition: all 0.3s ease;
 }
 
-/* MOBILE */
+.home-mini:hover {
+  transform: translateY(-2px);
+}
+
+/* ===========================================
+   MOBILE
+=========================================== */
+
 @media (max-width: 600px) {
+  .dash-grid {
+    max-width: 480px;
+  }
+
   .dash-title {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
