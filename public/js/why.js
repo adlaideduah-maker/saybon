@@ -1,46 +1,36 @@
-console.log("🔥 why.js loaded");
-
-const optionsContainer = document.querySelector(".why-options");
 const options = document.querySelectorAll(".why-option");
-const affirmationBox = document.getElementById("affirmation");
-
-// Your affirmation tags (no changes to your wording logic)
-const affirmations = {
-  travel: "Better get your passport ready then… on y va 🌍✨",
-  work: "Ambition looks good on you — let’s make it bilingual 💼🇫🇷",
-  school: "Smart move — your future self will thank you 🎓✨",
-  family: "Love as a language? We respect that deeply 💛",
-  fun: "Joy is a powerful teacher — let’s play in French 🎉",
-  other: "Whatever your reasons may be, we’ve got you covered 🌈"
-};
+const affirmation = document.getElementById("affirmationTag");
+const container = document.getElementById("whyContainer");
 
 options.forEach(option => {
   option.addEventListener("click", () => {
-    const reason = option.dataset.reason;
+    const text = option.getAttribute("data-affirm");
 
-    // Fade others
-    optionsContainer.classList.add("faded");
-
-    options.forEach(opt => {
-      if (opt !== option) {
-        opt.classList.remove("selected");
+    // 1) Fade out all other options
+    options.forEach(o => {
+      if (o !== option) {
+        o.classList.add("fade-out");
       }
     });
 
-    // Keep selected
+    // 2) Center the selected option visually
     option.classList.add("selected");
 
-    // Show affirmation
+    // 3) Show affirmation tag
     setTimeout(() => {
-      affirmationBox.textContent =
-        affirmations[reason] || affirmations.other;
-      affirmationBox.classList.add("show");
+      affirmation.textContent = text;
+      affirmation.classList.remove("hidden");
     }, 600);
 
-    // Go to loader
+    // 4) After a few seconds → clear page except selection + tag
     setTimeout(() => {
-      sessionStorage.setItem("saybon_next", "/dashboard/");
+      container.style.opacity = "0.3";
+    }, 2500);
+
+    // 5) Go to loader
+    setTimeout(() => {
+      sessionStorage.setItem("saybon_next", "/placement.html");
       window.location.href = "/loader.html";
-    }, 2200);
+    }, 4000);
   });
 });

@@ -3,55 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Why SayBon?</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/why.css" />
 </head>
+
 <body>
 
-  <main class="why-page">
+  <main class="why-container" id="whyContainer">
 
     <header class="why-header">
       <h1>Why do you want to learn French?</h1>
       <p class="subtitle">Tap what feels right — your journey starts here ✨</p>
     </header>
 
-    <section class="why-options">
-      <div class="why-option" data-reason="travel">
-        <h3>🌍 Travel & Culture</h3>
+    <section class="options-grid">
+
+      <div class="why-option travel" data-affirm="Better get your passport ready then… on y va 🌍✈️">
+        <h3>Travel & Culture</h3>
         <p>Experience the world more deeply</p>
       </div>
 
-      <div class="why-option" data-reason="school">
-        <h3>🎓 School & Exams</h3>
-        <p>Prepare for DELF and academic success</p>
+      <div class="why-option school" data-affirm="Academic glow-up loading… vous êtes prêt 🎓📚">
+        <h3>School & Exams</h3>
+        <p>Improve grades or prepare for tests</p>
       </div>
 
-      <div class="why-option" data-reason="work">
-        <h3>💼 Work & Career</h3>
+      <div class="why-option work" data-affirm="Promotion energy activated… allons-y 💼✨">
+        <h3>Work & Career</h3>
         <p>Boost your professional opportunities</p>
       </div>
 
-      <div class="why-option" data-reason="family">
-        <h3>💛 Family & Friends</h3>
+      <div class="why-option family" data-affirm="Love speaks many languages… merci le français 💛🤍">
+        <h3>Family & Friends</h3>
         <p>Connect with loved ones in French</p>
       </div>
 
-      <div class="why-option" data-reason="fun">
-        <h3>🎉 Just for Fun</h3>
+      <div class="why-option fun" data-affirm="Because joy + language = magic… c’est parti 🍦🎉">
+        <h3>Just for fun</h3>
         <p>Because learning should feel joyful</p>
       </div>
 
-      <div class="why-option" data-reason="other">
-        <h3>🌈 Other</h3>
-        <p>Your reason matters</p>
+      <div class="why-option other" data-affirm="Whatever your reasons may be, we’ve got you covered. 🌱🤍">
+        <h3>Other</h3>
+        <p>I have my own reason</p>
       </div>
+
     </section>
 
-    <div id="affirmation" class="affirmation"></div>
+    <!-- AFFIRMATION TAG (hidden initially) -->
+    <div id="affirmationTag" class="affirmation hidden"></div>
 
   </main>
 
   <script src="js/why.js"></script>
+
 </body>
 </html>
