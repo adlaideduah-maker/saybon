@@ -1,19 +1,19 @@
-/* ==================================================
-   DASHBOARD — CATCHY, NON-GREEN, PLAYFUL, CLASSY
-================================================== */
+/* ===========================================
+   DASHBOARD BASE
+=========================================== */
 
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1f2a44, #0b1220);
+  background: radial-gradient(circle at top, #fff6fb, #eef2ff, #e8fbff);
   font-family: "Nunito", system-ui, sans-serif;
-  color: #ffffff;
 }
 
+/* APP CONTAINER */
 .dashboard-app {
-  padding: 28px 20px 40px;
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
+  padding: 40px 20px 60px;
 }
 
 /* HEADER */
@@ -23,112 +23,141 @@ body {
 }
 
 .dash-title {
+  margin: 0;
   font-size: 28px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  color: #1f2937;
 }
 
 .dash-sub {
-  opacity: .85;
+  margin-top: 6px;
+  color: #4b5563;
 }
 
-/* GRID */
+/* ===========================================
+   GRID (KEPT AS YOU HAD IT)
+=========================================== */
+
 .dash-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-/* TILES */
+/* ===========================================
+   TILE — 3D GLASS REDESIGN (NEW)
+=========================================== */
+
 .tile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 16px;
   border: none;
-  border-radius: 18px;
-  padding: 20px;
   text-align: left;
   cursor: pointer;
-  color: #ffffff;
 
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  /* 3D GLASS LOOK */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.34),
+    rgba(255, 255, 255, 0.08)
+  );
 
-  transition: transform .25s ease, box-shadow .25s ease;
-}
+  backdrop-filter: blur(16px);
 
-.tile:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 44px rgba(0,0,0,.25);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 2px rgba(0, 0, 0, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+
+  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
+
+  position: relative;
+  overflow: hidden; /* needed for shimmer */
 }
 
 /* ICON */
 .tile-icon {
-  font-size: 28px;
-  margin-bottom: 6px;
+  font-size: 24px;
 }
 
-/* TITLE */
+/* TEXT */
 .tile-title {
   font-size: 18px;
   font-weight: 800;
+  color: #1f2937;
 }
 
-/* SUB */
 .tile-sub {
-  font-size: 13px;
-  opacity: .85;
+  font-size: 14px;
+  color: #4b5563;
 }
 
-/* TILE COLORS — DISTINCT, NOT GREEN */
-.tile-levels {
-  background: linear-gradient(135deg, #ff7a8a, #ff3f6c);
+/* ===========================================
+   SHIMMER ON HOVER (NEW)
+=========================================== */
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0) 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease-in-out;
 }
 
-.tile-games {
-  background: linear-gradient(135deg, #7c7cff, #4a4aff);
+/* Hover lift + stronger shadow */
+.tile:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.7),
+    0 16px 34px rgba(0,0,0,0.22);
 }
 
-.tile-music {
-  background: linear-gradient(135deg, #ffb347, #ff7b00);
+/* Trigger shimmer */
+.tile:hover::before {
+  transform: translateX(100%);
 }
 
-.tile-delf {
-  background: linear-gradient(135deg, #3fb1ff, #0b72ff);
+/* Active press feel */
+.tile:active {
+  transform: translateY(1px) scale(0.99);
 }
 
-.tile-translate {
-  background: linear-gradient(135deg, #9b7aff, #6a3cff);
-}
+/* ===========================================
+   FOOTER BUTTON (KEEP)
+=========================================== */
 
-.tile-chat {
-  background: linear-gradient(135deg, #ff9fdd, #ff6abf);
-}
-
-.tile-feedback {
-  background: linear-gradient(135deg, #4fd1c5, #2cb1a6);
-}
-
-.tile-support {
-  background: linear-gradient(135deg, #ffd86b, #ffb700);
-}
-
-/* FOOTER */
 .dash-footer {
-  margin-top: 28px;
+  margin-top: 24px;
   text-align: center;
 }
 
 .home-mini {
-  background: rgba(255,255,255,.18);
-  color: #ffffff;
-  border: none;
-  padding: 10px 16px;
+  padding: 10px 18px;
   border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   cursor: pointer;
-  backdrop-filter: blur(10px);
 }
 
-/* MOBILE */
+/* ===========================================
+   MOBILE
+=========================================== */
+
 @media (max-width: 600px) {
   .dash-title {
     font-size: 24px;
   }
 }
+  
