@@ -10,26 +10,39 @@
 </head>
 <body>
 
-  <main class="login-container">
+<main class="login-split">
 
-    <!-- LOGO -->
-    <img src="/assets/images/logo.png" class="login-logo" alt="SayBon Logo" />
+  <!-- LEFT PANEL (TEXT + BUTTONS ONLY) -->
+  <section class="login-left">
 
-    <!-- TEXT -->
-    <p class="login-text">Let’s get back to progress 🏋🏽‍♀️</p>
+    <div class="copy-block">
+      <h1 class="headline">Let’s get back to progress 🏋🏽‍♀️</h1>
+    </div>
 
-    <!-- PRIMARY BUTTON -->
-    <button id="loginBtn" class="btn primary-btn">
-      Continue with Google
-    </button>
+    <div class="buttons-block">
+      <button id="loginBtn" class="btn-primary">
+        <span class="g-icon">G</span>
+        <span>Continue with Google</span>
+      </button>
 
-    <!-- SECONDARY BUTTON -->
-    <button id="backHomeBtn" class="btn secondary-btn">
-      Back to home
-    </button>
+      <button id="backHomeBtn" class="btn-secondary">
+        Back to home
+      </button>
+    </div>
 
-  </main>
+  </section>
 
-  <script type="module" src="/auth/login.js"></script>
+  <!-- RIGHT PANEL (PHOTO B) -->
+  <section class="login-right">
+    <img 
+      src="/assets/images/teacher-holding-logo.png"
+      alt="SayBon teacher holding logo"
+      class="hero-image"
+    />
+  </section>
+
+</main>
+
+<script type="module" src="/auth/login.js"></script>
 </body>
 </html>
