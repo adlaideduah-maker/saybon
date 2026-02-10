@@ -1,121 +1,128 @@
-/* ==================================================
-   WHY PAGE — CENTERED, PREMIUM, FUN
-================================================== */
-
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(180deg, #f0f7ff, #dbe9ff);
-  font-family: "Nunito", system-ui, sans-serif;
-  overflow-x: hidden;
+* {
+  box-sizing: border-box;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: "Nunito", system-ui, sans-serif;
+  background: radial-gradient(circle at center, #0f3f4b, #061c22);
+  color: white;
+}
+
+/* LAYOUT */
 
 .why-app {
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-
-.why-card {
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(14px);
-  border-radius: 28px;
-  padding: 40px 32px;
-  width: 90%;
-  max-width: 520px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,.12);
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(0, 160, 200, 0.12);
-  color: #0b4f5a;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 12px;
-  margin-bottom: 10px;
+  padding: 80px 20px;
 }
 
 .why-title {
-  margin: 8px 0 6px;
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 800;
-  color: #0b2f33;
+  margin-bottom: 8px;
 }
 
-.why-sub {
-  margin: 0 0 22px;
-  color: #0b2f33;
-  opacity: .85;
-  font-size: 14px;
+.why-subtitle {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 40px;
 }
 
 /* OPTIONS GRID */
+
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-bottom: 22px;
-}
-
-.why-option {
-  background: rgba(255,255,255,0.9);
-  border: 1px solid rgba(0,0,0,0.06);
-  border-radius: 16px;
-  padding: 14px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 700;
-  color: #0b2f33;
-  cursor: pointer;
-  transition: all .2s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.why-option span {
-  font-size: 12px;
-  font-weight: 600;
-  opacity: .8;
-}
-
-.why-option:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-}
-
-.why-option.active {
-  background: linear-gradient(135deg, #e6f3ff, #cfe7ff);
-  border-color: rgba(0, 160, 200, 0.3);
-}
-
-/* CONTINUE BUTTON */
-.continue-btn {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 900px;
   width: 100%;
-  padding: 16px;
-  border-radius: 999px;
-  border: none;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  background: linear-gradient(135deg, #2af598, #08aeea);
-  color: #001a1f;
-  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.continue-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+/* CARDS */
+
+.why-card {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border: none;
+  border-radius: 20px;
+  padding: 26px 18px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.why-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.why-card p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.why-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.18);
+}
+
+/* AFFIRMATION OVERLAY */
+
+.affirmation {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 30, 40, 0.92);
+  backdrop-filter: blur(14px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.affirmation.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.affirmation.hidden {
+  display: none;
+}
+
+.affirmation-card {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  padding: 28px 36px;
+  border-radius: 18px;
+  max-width: 520px;
+  text-align: center;
+}
+
+.affirmation-card p {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
+
+@media (max-width: 900px) {
   .why-grid {
     grid-template-columns: 1fr;
+    max-width: 420px;
   }
 }

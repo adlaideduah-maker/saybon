@@ -3,97 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Why learn French? — SayBon</title>
+
+  <title>Why Learn French — SayBon</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/why.css" />
 </head>
 
 <body>
 
-<div class="why-app">
+  <main class="why-page">
 
-  <div class="why-card">
-
-    <div class="badge">🎯 Your motivation</div>
-
-    <h1 class="why-title">
-      Why do you want to learn French?
-    </h1>
-
-    <p class="why-sub">
-      Choose one (or more). Your choice helps us personalize your journey.
+    <h1 class="why-title">Why do you want to learn French?</h1>
+    <p class="why-subtitle">
+      Choose what resonates with you — there’s no wrong answer.
     </p>
 
     <div class="why-grid">
 
-      <button class="why-option" data-value="travel">
-        🌍 Travel & Culture  
-        <span>Speak confidently abroad</span>
-      </button>
+      <div class="why-card" data-reason="travel">
+        <h3>Travel & Culture</h3>
+        <p>Experience the world more deeply</p>
+      </div>
 
-      <button class="why-option" data-value="school">
-        🎓 School or Exams  
-        <span>DELF, grades, or studies</span>
-      </button>
+      <div class="why-card" data-reason="school">
+        <h3>School & Exams</h3>
+        <p>Improve grades or prepare for tests</p>
+      </div>
 
-      <button class="why-option" data-value="work">
-        💼 Work & Career  
-        <span>Business, interviews, promotion</span>
-      </button>
+      <div class="why-card" data-reason="work">
+        <h3>Work & Career</h3>
+        <p>Boost your professional opportunities</p>
+      </div>
 
-      <button class="why-option" data-value="family">
-        ❤️ Family & Friends  
-        <span>Connect with loved ones</span>
-      </button>
+      <div class="why-card" data-reason="family">
+        <h3>Family & Friends</h3>
+        <p>Connect with loved ones in French</p>
+      </div>
 
-      <button class="why-option" data-value="fun">
-        ✨ Just for fun  
-        <span>I love languages!</span>
-      </button>
+      <div class="why-card" data-reason="fun">
+        <h3>For Fun</h3>
+        <p>Because learning should feel joyful</p>
+      </div>
 
-      <button class="why-option" data-value="other">
-        🤔 Other  
-        <span>I have my own reason</span>
-      </button>
+      <div class="why-card" data-reason="other">
+        <h3>Other</h3>
+        <p>Your own personal reason</p>
+      </div>
 
     </div>
 
-    <button class="continue-btn" id="whyContinue">
-      Continue →
-    </button>
+  </main>
 
+  <!-- AFFIRMATION OVERLAY -->
+  <div id="affirmationOverlay" class="affirmation-overlay hidden">
+    <div class="affirmation-box">
+      <p id="affirmationText"></p>
+    </div>
   </div>
 
-</div>
-
-<script>
-  const options = document.querySelectorAll(".why-option");
-  let selected = null;
-
-  options.forEach(btn => {
-    btn.addEventListener("click", () => {
-      options.forEach(o => o.classList.remove("active"));
-      btn.classList.add("active");
-      selected = btn.dataset.value;
-    });
-  });
-
-  document.getElementById("whyContinue").onclick = () => {
-    if (!selected) {
-      alert("Please select a reason first 😊");
-      return;
-    }
-
-    // Save motivation (for future personalization)
-    sessionStorage.setItem("saybon_why", selected);
-
-    // Send to loader → dashboard
-    sessionStorage.setItem("saybon_next", "/dashboard/");
-    window.location.href = "/loader.html";
-  };
-</script>
+  <!-- SCRIPT -->
+  <script src="js/why.js"></script>
 
 </body>
 </html>
