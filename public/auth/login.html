@@ -6,43 +6,41 @@
   <title>Login — SayBon</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/login.css" />
+  <link rel="stylesheet" href="./login.css" />
 </head>
 <body>
 
-<main class="login-split">
+<main class="login-page">
 
-  <!-- LEFT PANEL (TEXT + BUTTONS ONLY) -->
-  <section class="login-left">
+  <div class="login-card">
 
-    <div class="content">
-      <h1>Let’s get back to Progress</h1>
+    <!-- LEFT SIDE (TEXT + BUTTONS) -->
+    <div class="left-panel">
+      <h1 class="title">Let’s get back to progress 🏋🏽‍♀️</h1>
 
-      <div class="buttons">
-        <button id="loginBtn" class="btn-primary">
-          <span class="g-icon">G</span>
-          Continue with Google
-        </button>
+      <button id="loginBtn" class="google-btn">
+        <span class="g-icon">G</span>
+        <span>Continue with Google</span>
+      </button>
 
-        <button id="backHomeBtn" class="btn-secondary">
-          Back to home
-        </button>
-      </div>
+      <button id="backBtn" class="back-btn">
+        Back to home
+      </button>
     </div>
 
-  </section>
+    <!-- RIGHT SIDE (TEACHER + ICON IMAGE) -->
+    <div class="right-panel">
+      <img 
+        src="/assets/images/teacher-full.png"
+        alt="SayBon Teacher"
+        class="hero-image"
+      />
+    </div>
 
-  <!-- RIGHT PANEL (PHOTO B) -->
-  <section class="login-right">
-    <img 
-      src="/assets/images/teacher-holding-logo.png"
-      alt="SayBon teacher holding logo"
-      class="hero-image"
-    />
-  </section>
+  </div>
 
 </main>
 
-<script type="module" src="/auth/login.js"></script>
+<script type="module" src="./login.js"></script>
 </body>
 </html>
