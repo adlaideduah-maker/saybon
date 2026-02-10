@@ -1,3 +1,7 @@
+/* ===========================================
+   GLOBAL
+=========================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -5,129 +9,150 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   font-family: "Nunito", system-ui, sans-serif;
-  background: #F2E2C6;
+  background: radial-gradient(circle at top, #fff6fb, #eef2ff, #e8fbff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* CONTAINER */
+/* ===========================================
+   LAYOUT
+=========================================== */
+
 .why-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px;
+  width: 90%;
+  max-width: 780px;
   text-align: center;
-  transition: opacity 0.8s ease;
 }
 
-/* HEADER */
-.why-header h1 {
-  font-size: clamp(28px, 4vw, 36px);
-  color: #333;
-  margin-bottom: 6px;
+/* Title */
+
+.why-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: #1f2937;
 }
 
-.subtitle {
-  color: #555;
-  margin-bottom: 40px;
-}
+/* ===========================================
+   OPTIONS GRID
+=========================================== */
 
-/* GRID */
 .options-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
-/* OPTION CARDS */
+/* Base option style */
+
 .why-option {
   padding: 22px 18px;
   border-radius: 18px;
-  cursor: pointer;
-  transition: transform 0.35s ease, opacity 0.5s ease;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-}
-
-.why-option h3 {
-  margin: 0 0 6px;
-}
-
-.why-option p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* UNIQUE COLOURS (YOUR PALETTE) */
-.travel {
-  background: #FB9DA7;
-}
-
-.school {
-  background: #FCCCC4;
-}
-
-.work {
-  background: #8EB695;
-  color: white;
-}
-
-.family {
-  background: #FBDEA2;
-}
-
-.fun {
-  background: #F2E2C6;
-  border: 1px solid rgba(0,0,0,0.08);
-}
-
-.other {
-  background: #FFFFFF;
-  border: 1px solid rgba(0,0,0,0.1);
-}
-
-/* HOVER */
-.why-option:hover {
-  transform: translateY(-4px) scale(1.02);
-}
-
-/* WHEN SELECTED */
-.selected {
-  transform: scale(1.05);
-}
-
-/* FADE OUT OTHERS */
-.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* AFFIRMATION TAG */
-.affirmation {
-  margin-top: 28px;
+  border: none;
   font-size: 18px;
-  font-weight: 800;
-  padding: 16px 24px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  display: inline-block;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  font-weight: 700;
+  cursor: pointer;
+  color: #1f2937;
+  transition: all 0.45s cubic-bezier(.22,.61,.36,1);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
 }
 
-/* hidden state */
-.hidden {
+/* Hover effect */
+
+.why-option:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Distinct colorful styles — NO GREEN THEME */
+
+/* Travel */
+.travel {
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+}
+
+/* Career */
+.career {
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+}
+
+/* School */
+.school {
+  background: linear-gradient(135deg, #84fab0, #8fd3f4);
+}
+
+/* Personal */
+.personal {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+/* ===========================================
+   FADE OUT OTHERS WHEN SELECTED
+=========================================== */
+
+.faded {
   opacity: 0;
-  transform: translateY(10px);
+  transform: scale(0.9);
   pointer-events: none;
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
-  .options-grid {
-    grid-template-columns: 1fr;
+/* Selected stays centered */
+
+.selected {
+  grid-column: 1 / -1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ===========================================
+   AFFIRMATION TAG
+=========================================== */
+
+.affirmation {
+  margin-top: 26px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 20px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  animation: popIn 0.7s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Cute pop animation */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
+/* ===========================================
+   MOBILE FRIENDLY
+=========================================== */
 
+@media (max-width: 700px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-title {
+    font-size: 26px;
+  }
+
+  .why-option {
+    font-size: 17px;
+  }
+}
