@@ -49,10 +49,10 @@ body {
 .tile {
   width: 100%;
   max-width: 880px;
-  padding: 22px 26px;
+  padding: 14px 16px;
   border-radius: 18px;
   border: none;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
 
   /* 3D GLASS EFFECT */
