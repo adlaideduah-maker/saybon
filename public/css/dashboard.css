@@ -47,9 +47,9 @@ body {
 
 /* Each tile full-width like your reference */
 .tile {
-  width: 100%;
-  max-width: 880px;
-  padding: 10px 10px;
+  width: 70%;
+  max-width: 600px;
+  padding: 17px 20px;
   border-radius: 18px;
   border: none;
   text-align: center;
