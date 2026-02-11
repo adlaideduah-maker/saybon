@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: "Nunito", system-ui, sans-serif;
+  font-family: "Greycliff", system-ui, sans-serif;
   background: #0b1220; /* dark navy like your screenshot */
   color: white;
 }
@@ -41,14 +41,14 @@ body {
   display: flex;
   flex-direction: column; /* ONE COLUMN ONLY */
   align-items: center;
-  gap: 25px;
+  gap: 30px;
   width: 100%;
 }
 
 /* Each tile full-width like your reference */
 .tile {
-  width: 50%;
-  max-width: 500px;
+  width: 60%;
+  max-width: 700px;
   padding: 17px 20px;
   border-radius: 18px;
   border: none;
