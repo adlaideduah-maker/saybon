@@ -38,19 +38,20 @@ body {
 =========================================== */
 
 .dash-grid {
-  display: flex;
-  flex-direction: column; /* ONE COLUMN ONLY */
-  align-items: center;
-  gap: 30px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Each tile full-width like your reference */
 .tile {
-  width: 60%;
-  max-width: 700px;
-  padding: 17px 20px;
-  border-radius: 18px;
+  width: 100%;
+  aspect-ratio: 1 / 1;  /* MAKES THEM PERFECT SQUARES */
+  padding: 18px;
+  border-radius: 20px;
   border: none;
   text-align: center;
   cursor: pointer;
@@ -69,8 +70,8 @@ body {
 
 /* TEXT INSIDE TILES */
 .tile-icon {
-  font-size: 24px;
-  margin-bottom: 4px;
+  font-size: 36px;
+  margin-bottom: 8px;
 }
 
 .tile-title {
@@ -171,5 +172,40 @@ body {
 @media (max-width: 768px) {
   .tile {
     max-width: 100%;
+  }
+}
+/* ======== MOBILE LAYOUT ======== */
+@media (max-width: 768px) {
+
+  .dash-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+    grid-template-rows: auto;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .tile {
+    aspect-ratio: 1 / 1; /* keep squares */
+    padding: 14px;
+  }
+
+  .tile-icon {
+    font-size: 32px;
+  }
+
+  .tile-title {
+    font-size: 16px;
+  }
+
+  .tile-sub {
+    font-size: 12px;
+  }
+
+  .dash-title {
+    font-size: 20px;
+  }
+
+  .dash-sub {
+    font-size: 13px;
   }
 }
