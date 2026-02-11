@@ -41,7 +41,7 @@ body {
   display: flex;
   flex-direction: column; /* ONE COLUMN ONLY */
   align-items: center;
-  gap: 16px;
+  gap: 25px;
   width: 100%;
 }
 
@@ -114,7 +114,7 @@ body {
 }
 
 .tile-feedback {
-  background: linear-gradient(135deg, #ABDBB4, #5feaff);
+  background: linear-gradient(135deg, #FFAOAC, #5feaff);
 }
 
 .tile-support {
