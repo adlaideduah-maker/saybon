@@ -2,78 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LEARNER 📌 DASHBOARD — SayBon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/global.css" />
-<link rel="stylesheet" href="../css/dashboard.css" />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
 
-<div class="dashboard-app">
+<div class="dashboard-wrapper">
 
-<header class="dash-header">
-<h1 class="dash-title">LEARNER 📌 DASHBOARD</h1>
-<p class="dash-sub">Your French journey at a glance</p>
-</header>
+  <h1 class="dash-title">LEARNER 📌 DASHBOARD</h1>
+  <p class="dash-sub">Your French journey at a glance</p>
 
-<main class="dash-grid">
+  <!-- DARK GLASS CIRCLE -->
+  <div class="circle-glass">
 
-<button class="tile tile-levels" onclick="goLevels()">
-<img src="../assets/icons/levels.svg" class="tile-icon" />
-<div class="tile-title">Levels</div>
-<div class="tile-sub">A0 → C1</div>
-</button>
+      <div class="icon-item" data-route="../levels/index.html">
+          <img src="../assets/icons/levels.svg">
+          <span class="label">Levels</span>
+      </div>
 
-<button class="tile tile-games" onclick="goTalkletics()">
-<img src="../assets/icons/games.svg" class="tile-icon" />
-<div class="tile-title">Talkletics Games</div>
-<div class="tile-sub">20 skill games</div>
-</button>
+      <div class="icon-item" data-route="../games/index.html">
+          <img src="../assets/icons/games.svg">
+          <span class="label">Talkletics</span>
+      </div>
 
-<button class="tile tile-music" onclick="goMusic()">
-<img src="../assets/icons/music.svg" class="tile-icon" />
-<div class="tile-title">SayBon Music</div>
-<div class="tile-sub">8 playlists</div>
-</button>
+      <div class="icon-item" data-route="../music/index.html">
+          <img src="../assets/icons/music.svg">
+          <span class="label">Music</span>
+      </div>
 
-<button class="tile tile-delf" onclick="goDelf()">
-<img src="../assets/icons/delf.svg" class="tile-icon" />
-<div class="tile-title">DELF Prep</div>
-<div class="tile-sub">Mock exams</div>
-</button>
+      <div class="icon-item" data-route="../delf/index.html">
+          <img src="../assets/icons/delf.svg">
+          <span class="label">DELF Prep</span>
+      </div>
 
-<button class="tile tile-translate" onclick="goTranslation()">
-<img src="../assets/icons/translation.svg" class="tile-icon" />
-<div class="tile-title">Translation</div>
-<div class="tile-sub">Clients & Translators</div>
-</button>
+      <div class="icon-item" data-route="../translation/index.html">
+          <img src="../assets/icons/translation.svg">
+          <span class="label">Translation</span>
+      </div>
 
-<button class="tile tile-chat" onclick="goChat()">
-<img src="../assets/icons/chat.svg" class="tile-icon" />
-<div class="tile-title">Chat Room</div>
-<div class="tile-sub">Community space</div>
-</button>
+      <div class="icon-item" data-route="../chat/index.html">
+          <img src="../assets/icons/chat.svg">
+          <span class="label">Chat</span>
+      </div>
 
-<button class="tile tile-feedback" onclick="goFeedback()">
-<img src="../assets/icons/feedback.svg" class="tile-icon" />
-<div class="tile-title">Feedback</div>
-<div class="tile-sub">We’re listening</div>
-</button>
+  </div>
 
-<button class="tile tile-support" onclick="goSupport()">
-<img src="../assets/icons/support.svg" class="tile-icon" />
-<div class="tile-title">Support 💚 SayBon</div>
-<div class="tile-sub">Invest • Donate • Partner</div>
-</button>
-
-</main>
-
-<footer class="dash-footer">
-<button class="home-mini" onclick="goHome()">← Back to Home</button>
-</footer>
+  <!-- BOTTOM BUTTONS -->
+  <div class="bottom-buttons">
+      <button onclick="goFeedback()">Feedback</button>
+      <button onclick="goSupport()">Support 💚 SayBon</button>
+      <button onclick="goHome()">Back to Home</button>
+  </div>
 
 </div>
 
