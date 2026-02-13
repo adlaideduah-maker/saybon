@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LEARNER DASHBOARD — SayBon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEARNER 📌 DASHBOARD — SayBon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/dashboard.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
 </head>
+
 <body>
 
-<div class="dashboard-wrapper">
+<div class="dashboard-app">
 
-  <!-- 3D HEADING BUTTON (NON CLICKABLE) -->
-  <div class="heading-pill">
-    LEARNER 📌 DASHBOARD
-  </div>
+  <!-- ================= HEADER ================= -->
 
-  <p class="dash-sub">Your French journey at a glance</p>
+  <header class="dash-header">
+    <h1 class="dash-title">LEARNER 📌 DASHBOARD</h1>
+    <p class="dash-sub">Your French journey at a glance</p>
+  </header>
 
-  <!-- 3D GLASS CIRCLE -->
-  <div class="glass-circle">
+  <!-- ================= MAIN ================= -->
 
-      <div class="circle-icon" onclick="goLevels()">
-        <img src="../assets/icons/levels.svg" />
-      </div>
+  <main>
 
-      <div class="circle-icon" onclick="goTalkletics()">
-        <img src="../assets/icons/games.svg" />
-      </div>
+    <div class="circle-container">
 
-      <div class="circle-icon" onclick="goMusic()">
-        <img src="../assets/icons/music.svg" />
-      </div>
+      <!-- GLASS CIRCLE -->
+      <div class="glass-circle"></div>
 
-      <div class="circle-icon" onclick="goDelf()">
-        <img src="../assets/icons/delf.svg" />
-      </div>
+      <!-- LEVELS -->
+      <button class="icon-btn levels pos-top" onclick="goLevels()">
+        <img src="../assets/icons/levels.svg" alt="Levels">
+      </button>
 
-      <div class="circle-icon" onclick="goTranslation()">
-        <img src="../assets/icons/translation.svg" />
-      </div>
+      <!-- TALKLETICS -->
+      <button class="icon-btn games pos-right" onclick="goTalkletics()">
+        <img src="../assets/icons/games.svg" alt="Talkletics">
+      </button>
 
-      <div class="circle-icon" onclick="goChat()">
-        <img src="../assets/icons/chat.svg" />
-      </div>
+      <!-- MUSIC -->
+      <button class="icon-btn music pos-br" onclick="goMusic()">
+        <img src="../assets/icons/music.svg" alt="Music">
+      </button>
 
-  </div>
+      <!-- DELF -->
+      <button class="icon-btn delf pos-bottom" onclick="goDelf()">
+        <img src="../assets/icons/delf.svg" alt="DELF">
+      </button>
 
-  <!-- BOTTOM BUTTONS -->
-  <div class="bottom-buttons">
-    <button onclick="goFeedback()">Feedback</button>
-    <button onclick="goSupport()">Support 💚 SayBon</button>
-    <button onclick="goHome()">Back to Home</button>
-  </div>
+      <!-- TRANSLATION -->
+      <button class="icon-btn translation pos-left" onclick="goTranslation()">
+        <img src="../assets/icons/translation.svg" alt="Translation">
+      </button>
+
+      <!-- CHAT -->
+      <button class="icon-btn chat pos-tr" onclick="goChat()">
+        <img src="../assets/icons/chat.svg" alt="Chat">
+      </button>
+
+    </div>
+
+    <!-- ================= BOTTOM BUTTONS ================= -->
+
+    <div class="bottom-buttons">
+      <button onclick="goFeedback()">Feedback</button>
+      <button onclick="goSupport()">Support 💚 SayBon</button>
+      <button onclick="goHome()">Back to Home</button>
+    </div>
+
+  </main>
 
 </div>
 
+<!-- ================= JS ================= -->
+
 <script src="dashboard.js"></script>
+
 </body>
 </html>
