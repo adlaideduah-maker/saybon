@@ -1,94 +1,103 @@
-/* ===========================================
-   DASHBOARD — CORRECT LAYOUT (STACKED LIST)
-=========================================== */
+/* ===============================
+   BASE
+================================ */
 
 body {
   margin: 0;
-  font-family: "Greycliff", system-ui, sans-serif;
-  background: #0b1220; /* dark navy like your screenshot */
+  font-family: "Nunito", system-ui, sans-serif;
+  background: #0b1220;
   color: white;
 }
 
-/* Wrapper */
 .dashboard-app {
-  max-width: 920px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 50px 20px 60px;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER
+================================ */
+
 .dash-header {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 40px;
 }
 
 .dash-title {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
 }
 
 .dash-sub {
-  margin-top: 6px;
+  margin-top: 8px;
   opacity: 0.8;
 }
 
-/* ===========================================
-   STACKED TILES (THIS IS THE KEY FIX)
-=========================================== */
+/* ===============================
+   GRID
+================================ */
 
 .dash-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 25px;
-  max-width: 900px;
-  margin: 0 auto;
+  gap: 28px;
 }
 
-/* Each tile full-width like your reference */
+/* ===============================
+   TILE BASE
+================================ */
+
 .tile {
-  width: 100%;
-  aspect-ratio: 1 / 1;  /* MAKES THEM PERFECT SQUARES */
-  padding: 18px;
-  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
   border: none;
-  text-align: center;
   cursor: pointer;
-
-  /* 3D GLASS EFFECT */
-  backdrop-filter: blur(12px);
-  box-shadow:
-    inset 0 2px 2px rgba(255,255,255,0.4),
-    inset 0 -2px 2px rgba(0,0,0,0.12),
-    0 12px 28px rgba(0,0,0,0.18);
-
-  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
+  text-align: center;
+  padding: 24px;
   position: relative;
   overflow: hidden;
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 3px 4px rgba(255,255,255,0.35),
+    inset 0 -3px 4px rgba(0,0,0,0.18),
+    0 18px 35px rgba(0,0,0,0.28);
+
+  transition: all 0.35s cubic-bezier(.22,.61,.36,1);
 }
 
-/* TEXT INSIDE TILES */
+/* ===============================
+   ICONS
+================================ */
+
 .tile-icon {
-  font-size: 36px;
-  margin-bottom: 8px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.25));
 }
+
+/* ===============================
+   TEXT
+================================ */
 
 .tile-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
-  color: white;
 }
 
 .tile-sub {
-  font-size: 14px;
-  opacity: 0.85;
-  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 6px;
 }
 
-/* ===========================================
-   COLOR MATCHING YOUR IMAGE
-=========================================== */
+/* ===============================
+   GRADIENTS (CLEAN)
+================================ */
 
 .tile-levels {
   background: linear-gradient(135deg, #ff4f7b, #ff6b9b);
@@ -115,16 +124,16 @@ body {
 }
 
 .tile-feedback {
-  background: linear-gradient(135deg, #FFAOAC, #5feaff);
+  background: linear-gradient(135deg, #27d6d6, #5feaff);
 }
 
 .tile-support {
-  background: linear-gradient(135deg, #EOA17F, #f5d27a);
+  background: linear-gradient(135deg, #f5b26b, #f5d27a);
 }
 
-/* ===========================================
-   SHIMMER ON HOVER
-=========================================== */
+/* ===============================
+   HOVER SHIMMER
+================================ */
 
 .tile::before {
   content: "";
@@ -133,33 +142,38 @@ body {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.4),
     transparent
   );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
 }
 
 .tile:hover::before {
-  transform: translateX(100%);
+  transform: translateX(120%);
 }
 
 .tile:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.28);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
 }
 
-/* ===========================================
-   BACK TO HOME BUTTON
-=========================================== */
+/* Touch feedback */
+.tile:active {
+  transform: scale(0.96);
+}
+
+/* ===============================
+   FOOTER
+================================ */
 
 .dash-footer {
   text-align: center;
-  margin-top: 28px;
+  margin-top: 40px;
 }
 
 .home-mini {
-  padding: 10px 16px;
+  padding: 12px 20px;
   border-radius: 999px;
   border: none;
   background: rgba(255,255,255,0.12);
@@ -168,44 +182,36 @@ body {
   cursor: pointer;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .tile {
-    max-width: 100%;
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+  .dash-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 }
-/* ======== MOBILE LAYOUT ======== */
-@media (max-width: 768px) {
 
+@media (max-width: 480px) {
   .dash-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
-    grid-template-rows: auto;
-    gap: 12px;
-    padding: 0 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
 
   .tile {
-    aspect-ratio: 1 / 1; /* keep squares */
-    padding: 14px;
-  }
-
-  .tile-icon {
-    font-size: 32px;
+    padding: 18px;
   }
 
   .tile-title {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .tile-sub {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .dash-title {
-    font-size: 20px;
-  }
-
-  .dash-sub {
-    font-size: 13px;
+    font-size: 22px;
   }
 }

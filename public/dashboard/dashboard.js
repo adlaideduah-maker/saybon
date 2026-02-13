@@ -2,42 +2,42 @@
 // DASHBOARD ROUTING — CLEAN & SAFE
 // ============================
 
-// LEVELS (real route)
+// LEVELS
 function goLevels() {
   window.location.href = "../levels/index.html";
 }
 
-// TALKLETICS (placeholder hub)
+// TALKLETICS
 function goTalkletics() {
   window.location.href = "../games/index.html";
 }
 
-// MUSIC (placeholder hub)
+// MUSIC
 function goMusic() {
   window.location.href = "../music/index.html";
 }
 
-// DELF (placeholder hub)
+// DELF
 function goDelf() {
   window.location.href = "../delf/index.html";
 }
 
-// TRANSLATION (placeholder hub)
+// TRANSLATION
 function goTranslation() {
   window.location.href = "../translation/index.html";
 }
 
-// CHAT (placeholder)
+// CHAT
 function goChat() {
   window.location.href = "../chat/index.html";
 }
 
-// FEEDBACK (real route)
+// FEEDBACK
 function goFeedback() {
   window.location.href = "../features/feedback/index.html";
 }
 
-// SUPPORT (placeholder)
+// SUPPORT
 function goSupport() {
   window.location.href = "../support/index.html";
 }
