@@ -2,59 +2,57 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LEARNER 📌 DASHBOARD — SayBon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LEARNER DASHBOARD — SayBon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/dashboard.css">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/dashboard.css" />
 </head>
 <body>
 
 <div class="dashboard-wrapper">
 
-  <h1 class="dash-title">LEARNER 📌 DASHBOARD</h1>
+  <!-- 3D HEADING BUTTON (NON CLICKABLE) -->
+  <div class="heading-pill">
+    LEARNER 📌 DASHBOARD
+  </div>
+
   <p class="dash-sub">Your French journey at a glance</p>
 
-  <!-- DARK GLASS CIRCLE -->
-  <div class="circle-glass">
+  <!-- 3D GLASS CIRCLE -->
+  <div class="glass-circle">
 
-      <div class="icon-item" data-route="../levels/index.html">
-          <img src="../assets/icons/levels.svg">
-          <span class="label">Levels</span>
+      <div class="circle-icon" onclick="goLevels()">
+        <img src="../assets/icons/levels.svg" />
       </div>
 
-      <div class="icon-item" data-route="../games/index.html">
-          <img src="../assets/icons/games.svg">
-          <span class="label">Talkletics</span>
+      <div class="circle-icon" onclick="goTalkletics()">
+        <img src="../assets/icons/games.svg" />
       </div>
 
-      <div class="icon-item" data-route="../music/index.html">
-          <img src="../assets/icons/music.svg">
-          <span class="label">Music</span>
+      <div class="circle-icon" onclick="goMusic()">
+        <img src="../assets/icons/music.svg" />
       </div>
 
-      <div class="icon-item" data-route="../delf/index.html">
-          <img src="../assets/icons/delf.svg">
-          <span class="label">DELF Prep</span>
+      <div class="circle-icon" onclick="goDelf()">
+        <img src="../assets/icons/delf.svg" />
       </div>
 
-      <div class="icon-item" data-route="../translation/index.html">
-          <img src="../assets/icons/translation.svg">
-          <span class="label">Translation</span>
+      <div class="circle-icon" onclick="goTranslation()">
+        <img src="../assets/icons/translation.svg" />
       </div>
 
-      <div class="icon-item" data-route="../chat/index.html">
-          <img src="../assets/icons/chat.svg">
-          <span class="label">Chat</span>
+      <div class="circle-icon" onclick="goChat()">
+        <img src="../assets/icons/chat.svg" />
       </div>
 
   </div>
 
   <!-- BOTTOM BUTTONS -->
   <div class="bottom-buttons">
-      <button onclick="goFeedback()">Feedback</button>
-      <button onclick="goSupport()">Support 💚 SayBon</button>
-      <button onclick="goHome()">Back to Home</button>
+    <button onclick="goFeedback()">Feedback</button>
+    <button onclick="goSupport()">Support 💚 SayBon</button>
+    <button onclick="goHome()">Back to Home</button>
   </div>
 
 </div>
