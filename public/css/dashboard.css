@@ -1,13 +1,17 @@
-/* ===============================
-   SAYBON PREMIUM DASHBOARD
-================================ */
+/* ======================================================
+   SAYBON PREMIUM DASHBOARD — FINAL PRODUCTION VERSION
+====================================================== */
 
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at top, #0f172a 0%, #050a16 80%);
+  background: radial-gradient(circle at top, #0f172a 0%, #050a18 80%);
   color: white;
 }
+
+/* ================================
+   WRAPPER
+================================ */
 
 .dashboard {
   max-width: 1200px;
@@ -15,7 +19,7 @@ body {
   padding: 80px 30px;
 }
 
-/* ===============================
+/* ================================
    HEADER
 ================================ */
 
@@ -24,58 +28,81 @@ body {
   margin-bottom: 60px;
 }
 
-.premium-title {
+.dashboard-header h1 {
   font-size: 48px;
   font-weight: 800;
-  background: linear-gradient(90deg, #7dd3fc, #c084fc, #f472b6);
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #4facfe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dashboard-header p {
-  margin-top: 15px;
+  margin-top: 14px;
+  font-size: 18px;
   opacity: 0.7;
-  font-size: 16px;
 }
 
-/* ===============================
+/* ================================
    GRID
 ================================ */
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 35px;
 }
 
-/* ===============================
-   GLASS CARDS
+/* ================================
+   BASE CARD
 ================================ */
 
 .card {
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 40px 30px;
-  text-align: center;
+  position: relative;
+  padding: 45px 35px;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.35s ease;
 
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(22px);
+  background: rgba(255,255,255,0.05);
 
   box-shadow:
-    0 15px 40px rgba(0,0,0,0.5),
-    inset 0 0 20px rgba(255,255,255,0.04);
+    0 20px 60px rgba(0,0,0,0.6),
+    inset 0 2px 6px rgba(255,255,255,0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.card img {
-  width: 60px;
-  margin-bottom: 20px;
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
 }
+
+/* ================================
+   CARD ICON IMAGE
+================================ */
+
+.card-icon {
+  margin-bottom: 18px;
+}
+
+.card-icon img {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+/* ================================
+   CARD TEXT
+================================ */
 
 .card h3 {
-  margin: 10px 0 8px;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
 }
 
 .card span {
@@ -83,73 +110,114 @@ body {
   opacity: 0.7;
 }
 
-/* ===============================
-   TINT COLORS
-================================ */
+/* =====================================================
+   INDIVIDUAL CARD COLOR THEMES
+   Matching Your Uploaded Icons
+===================================================== */
 
-.levels      { background: linear-gradient(145deg, rgba(236,72,153,0.15), rgba(255,255,255,0.05)); }
-.games       { background: linear-gradient(145deg, rgba(59,130,246,0.15), rgba(255,255,255,0.05)); }
-.music       { background: linear-gradient(145deg, rgba(251,146,60,0.15), rgba(255,255,255,0.05)); }
-.delf        { background: linear-gradient(145deg, rgba(34,211,238,0.15), rgba(255,255,255,0.05)); }
-.translation { background: linear-gradient(145deg, rgba(139,92,246,0.15), rgba(255,255,255,0.05)); }
-.chat        { background: linear-gradient(145deg, rgba(168,85,247,0.15), rgba(255,255,255,0.05)); }
-
-/* Hover Effect */
-
-.card:hover {
-  transform: translateY(-8px);
+/* A — LEVELS (Pink Neon) */
+.card.levels {
+  border: 1px solid rgba(255, 80, 160, 0.4);
   box-shadow:
-    0 25px 60px rgba(0,0,0,0.7),
-    inset 0 0 30px rgba(255,255,255,0.05);
+    0 0 30px rgba(255, 80, 160, 0.6),
+    0 25px 60px rgba(0,0,0,0.7);
 }
 
-/* ===============================
+/* B — TALKLETICS (Gold Luxury) */
+.card.talkletics {
+  border: 1px solid rgba(255, 200, 90, 0.4);
+  box-shadow:
+    0 0 30px rgba(255, 200, 90, 0.6),
+    0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* C — MUSIC (Orange Glow) */
+.card.music {
+  border: 1px solid rgba(255, 150, 0, 0.4);
+  box-shadow:
+    0 0 30px rgba(255, 150, 0, 0.6),
+    0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* D — DELF (Soft Rose Premium) */
+.card.delf {
+  border: 1px solid rgba(210, 150, 140, 0.4);
+  box-shadow:
+    0 0 30px rgba(210, 150, 140, 0.5),
+    0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* E — TRANSLATION (Green Glow) */
+.card.translation {
+  border: 1px solid rgba(100, 220, 120, 0.4);
+  box-shadow:
+    0 0 30px rgba(100, 220, 120, 0.6),
+    0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* F — CHAT (Blue Premium) */
+.card.chat {
+  border: 1px solid rgba(80, 170, 255, 0.4);
+  box-shadow:
+    0 0 30px rgba(80, 170, 255, 0.6),
+    0 25px 60px rgba(0,0,0,0.7);
+}
+
+/* ================================
    FOOTER BUTTONS
 ================================ */
 
 .dashboard-footer {
   margin-top: 70px;
+  text-align: center;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
 }
 
-.btn {
+.dashboard-footer button {
   padding: 14px 28px;
   border-radius: 30px;
   border: none;
-  cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
-  transition: 0.3s ease;
-}
-
-.premium-btn {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
+  cursor: pointer;
   color: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+
+  background: linear-gradient(145deg, #1c2338, #0f1526);
+
+  box-shadow:
+    inset 0 2px 5px rgba(255,255,255,0.08),
+    inset 0 -3px 6px rgba(0,0,0,0.6),
+    0 15px 40px rgba(0,0,0,0.6);
+
+  transition: all 0.3s ease;
 }
 
-.premium-btn:hover {
+.dashboard-footer button:hover {
   transform: translateY(-3px);
 }
 
-.gold {
-  background: linear-gradient(145deg, #fbbf24, #f59e0b);
-  color: #111;
-}
-
-/* ===============================
-   MOBILE
+/* ================================
+   MOBILE RESPONSIVE
 ================================ */
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .dashboard {
+    padding: 50px 20px;
+  }
 
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
-  .premium-title {
-    font-size: 36px;
+  .dashboard-header h1 {
+    font-size: 34px;
   }
-
 }
