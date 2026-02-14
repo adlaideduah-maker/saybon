@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LEARNER 📌 DASHBOARD — SayBon</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="../css/global.css" />
   <link rel="stylesheet" href="../css/dashboard.css" />
 </head>
@@ -17,56 +15,52 @@
 
 <div class="dashboard-app">
 
-  <!-- ================= HEADER ================= -->
-
+  <!-- HEADER -->
   <header class="dash-header">
-    <h1 class="dash-title">LEARNER 📌 DASHBOARD</h1>
+    <div class="dash-title">LEARNER 📌 DASHBOARD</div>
     <p class="dash-sub">Your French journey at a glance</p>
   </header>
 
-  <!-- ================= MAIN ================= -->
-
+  <!-- MAIN -->
   <main>
 
     <div class="circle-container">
 
-      <!-- GLASS CIRCLE -->
       <div class="glass-circle"></div>
 
       <!-- LEVELS -->
       <button class="icon-btn levels pos-top" onclick="goLevels()">
-        <img src="../assets/icons/levels.svg" alt="Levels">
+        <img src="../assets/icons-3d/levels.png" alt="Levels">
       </button>
 
-      <!-- TALKLETICS -->
+      <!-- GAMES -->
       <button class="icon-btn games pos-right" onclick="goTalkletics()">
-        <img src="../assets/icons/games.svg" alt="Talkletics">
+        <img src="../assets/icons-3d/games.png" alt="Games">
       </button>
 
       <!-- MUSIC -->
       <button class="icon-btn music pos-br" onclick="goMusic()">
-        <img src="../assets/icons/music.svg" alt="Music">
+        <img src="../assets/icons-3d/music.png" alt="Music">
       </button>
 
       <!-- DELF -->
       <button class="icon-btn delf pos-bottom" onclick="goDelf()">
-        <img src="../assets/icons/delf.svg" alt="DELF">
+        <img src="../assets/icons-3d/delf.png" alt="DELF">
       </button>
 
       <!-- TRANSLATION -->
       <button class="icon-btn translation pos-left" onclick="goTranslation()">
-        <img src="../assets/icons/translation.svg" alt="Translation">
+        <img src="../assets/icons-3d/translation.png" alt="Translation">
       </button>
 
       <!-- CHAT -->
       <button class="icon-btn chat pos-tr" onclick="goChat()">
-        <img src="../assets/icons/chat.svg" alt="Chat">
+        <img src="../assets/icons-3d/chat.png" alt="Chat">
       </button>
 
     </div>
 
-    <!-- ================= BOTTOM BUTTONS ================= -->
-
+    <!-- BOTTOM BUTTONS -->
     <div class="bottom-buttons">
       <button onclick="goFeedback()">Feedback</button>
       <button onclick="goSupport()">Support 💚 SayBon</button>
@@ -77,9 +71,6 @@
 
 </div>
 
-<!-- ================= JS ================= -->
-
 <script src="dashboard.js"></script>
-
 </body>
 </html>

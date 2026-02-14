@@ -1,11 +1,11 @@
 /* ===============================
-   DASHBOARD — FINAL 3D VERSION
+   DARK BACKGROUND
 ================================ */
 
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
-  background: radial-gradient(circle at center, #10182b 0%, #070c18 100%);
+  background: radial-gradient(circle at center, #0f172a 0%, #060b16 100%);
   color: white;
   height: 100vh;
   overflow: hidden;
@@ -20,42 +20,43 @@ body {
 }
 
 /* ===============================
-   3D HEADING BUTTON
+   BIGGER 3D HEADING BUTTON
 ================================ */
 
 .dash-header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .dash-title {
   display: inline-block;
-  padding: 18px 40px;
-  font-size: 32px;
+  padding: 22px 60px;
+  font-size: 38px;
   font-weight: 800;
-  border-radius: 40px;
+  border-radius: 60px;
 
   background: linear-gradient(145deg, #1b2338, #0e1526);
   box-shadow:
-    inset 0 2px 4px rgba(255,255,255,0.1),
-    inset 0 -3px 6px rgba(0,0,0,0.5),
-    0 10px 30px rgba(0,0,0,0.6);
+    inset 0 3px 6px rgba(255,255,255,0.1),
+    inset 0 -4px 8px rgba(0,0,0,0.6),
+    0 20px 40px rgba(0,0,0,0.8);
 }
 
 .dash-sub {
-  margin-top: 10px;
-  opacity: 0.75;
+  margin-top: 12px;
+  opacity: 0.7;
+  font-size: 15px;
 }
 
 /* ===============================
-   GLASS CIRCLE
+   SMALLER 3D GLASS CIRCLE
 ================================ */
 
 .circle-container {
   position: relative;
-  width: 360px;
-  height: 360px;
-  margin: 20px 0;
+  width: 320px;
+  height: 320px;
+  margin: 15px 0;
 }
 
 .glass-circle {
@@ -63,95 +64,72 @@ body {
   height: 100%;
   border-radius: 50%;
 
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(25px);
 
   box-shadow:
-    inset 0 0 40px rgba(255,255,255,0.08),
-    0 20px 60px rgba(0,0,0,0.6);
+    inset 0 0 60px rgba(255,255,255,0.08),
+    inset 0 -20px 40px rgba(0,0,0,0.5),
+    0 30px 80px rgba(0,0,0,0.8);
 }
 
 /* ===============================
-   ICON BUTTONS (PHOTO B STYLE)
+   ICON BUTTONS (NO WHITE)
 ================================ */
 
 .icon-btn {
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 95px;
+  height: 95px;
   border-radius: 28px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-
-  background: #e6e6e6;
-  box-shadow:
-    0 6px 12px rgba(0,0,0,0.4),
-    inset 0 2px 6px rgba(255,255,255,0.8);
+  background: transparent;
+  transition: transform 0.25s ease;
 }
-
-.icon-btn::after {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 32px;
-  z-index: -1;
-  filter: blur(8px);
-}
-
-/* Colored glow wrappers */
-
-.levels::after { background: #ff5a8c; }
-.games::after { background: #4a6cff; }
-.music::after { background: #ff9b30; }
-.delf::after { background: #3fb5ff; }
-.translation::after { background: #6c5cff; }
-.chat::after { background: #b35cff; }
-
-/* ICON IMAGE */
 
 .icon-btn img {
-  width: 38px;
-  height: 38px;
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
 }
 
-/* Hover press effect */
-
+/* Hover lift */
 .icon-btn:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-6px) scale(1.08);
 }
 
 .icon-btn:active {
-  transform: translateY(2px) scale(0.96);
+  transform: scale(0.95);
 }
 
 /* ===============================
-   ICON POSITIONS (CIRCLE LAYOUT)
+   ICON POSITIONS
 ================================ */
 
-.pos-top    { top: -20px; left: 50%; transform: translateX(-50%); }
-.pos-right  { top: 50%; right: -20px; transform: translateY(-50%); }
-.pos-bottom { bottom: -20px; left: 50%; transform: translateX(-50%); }
-.pos-left   { top: 50%; left: -20px; transform: translateY(-50%); }
+.pos-top    { top: -30px; left: 50%; transform: translateX(-50%); }
+.pos-right  { top: 50%; right: -30px; transform: translateY(-50%); }
+.pos-bottom { bottom: -30px; left: 50%; transform: translateX(-50%); }
+.pos-left   { top: 50%; left: -30px; transform: translateY(-50%); }
 
-.pos-tr { top: 60px; right: 20px; }
-.pos-br { bottom: 60px; right: 20px; }
+.pos-tr { top: 55px; right: 15px; }
+.pos-br { bottom: 55px; right: 15px; }
 
 /* ===============================
    BOTTOM BUTTONS
 ================================ */
 
 .bottom-buttons {
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
-  gap: 20px;
+  gap: 18px;
 }
 
 .bottom-buttons button {
-  padding: 12px 24px;
-  border-radius: 30px;
+  padding: 14px 28px;
+  border-radius: 40px;
   border: none;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 
   background: linear-gradient(145deg, #1b2338, #0e1526);
@@ -159,12 +137,12 @@ body {
 
   box-shadow:
     inset 0 2px 4px rgba(255,255,255,0.1),
-    inset 0 -3px 6px rgba(0,0,0,0.5),
-    0 10px 25px rgba(0,0,0,0.5);
+    inset 0 -3px 6px rgba(0,0,0,0.6),
+    0 15px 30px rgba(0,0,0,0.7);
 }
 
 .bottom-buttons button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 /* ===============================
@@ -174,21 +152,28 @@ body {
 @media (max-width: 768px) {
 
   .circle-container {
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
   }
 
   .icon-btn {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
   }
 
   .icon-btn img {
-    width: 28px;
-    height: 28px;
+    width: 75px;
+    height: 75px;
   }
 
   .dash-title {
-    font-size: 24px;
+    font-size: 26px;
+    padding: 16px 40px;
+  }
+
+  .bottom-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
 }
