@@ -1,204 +1,174 @@
 /* =========================================
-   SAYBON CLASSIC PREMIUM DASHBOARD
-   Compact • No Scroll • Balanced
-========================================= */
+   SAYBON PREMIUM GLASS DASHBOARD
+   ========================================= */
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
+body {
   margin: 0;
-  padding: 0;
+  font-family: "Inter", sans-serif;
   height: 100vh;
   overflow: hidden;
-  font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at top, #0f172a 0%, #050a18 85%);
+  background: radial-gradient(circle at top, #0f172a 0%, #050a18 70%);
   color: white;
 }
 
-/* =========================================
-   MAIN WRAPPER
-========================================= */
-
+/* Wrapper */
 .dashboard {
-  height: 100vh;
-  max-width: 1150px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 35px 30px;
-
+  padding: 40px 30px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* ================= HEADER ================= */
 
 .dashboard-header {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .dashboard-header h1 {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 800;
-  margin: 0;
-
-  background: linear-gradient(90deg, #ff4d8d, #6c8cff, #4ade80);
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #60a5fa, #2563eb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dashboard-header p {
-  margin-top: 8px;
-  font-size: 15px;
-  opacity: 0.7;
+  margin-top: 6px;
+  opacity: 0.8;
+  font-size: 14px;
 }
 
-/* =========================================
-   GRID (PERFECT FIT)
-========================================= */
+/* ================= GRID ================= */
 
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  flex-grow: 1;
+  align-content: center;
 }
 
-/* =========================================
-   CARDS — COMPACT
-========================================= */
+/* ================= CARD BASE ================= */
 
 .card {
-  border-radius: 20px;
-  padding: 18px 22px;
-  height: 115px;
-
+  position: relative;
+  border-radius: 22px;
+  padding: 20px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  cursor: pointer;
-  transition: all 0.25s ease;
-
+  min-height: 110px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
   box-shadow:
-    0 12px 25px rgba(0,0,0,0.45),
-    inset 0 1px 0 rgba(255,255,255,0.25);
+    inset 0 1px 2px rgba(255,255,255,0.2),
+    0 8px 25px rgba(0,0,0,0.4);
 }
 
+/* Glass shine overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  border-radius: 22px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.05)
+  );
+  pointer-events: none;
+}
+
+/* Hover 3D effect */
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    0 15px 40px rgba(0,0,0,0.5);
 }
 
-.card:active {
-  transform: scale(0.97);
-}
-
-/* =========================================
-   TITLE DOMINANT
-========================================= */
+/* ================= CARD CONTENT ================= */
 
 .card h3 {
   font-size: 20px;
-  font-weight: 800;
-  margin: 0 0 5px 0;
+  font-weight: 700;
+  margin: 0;
 }
 
 .card span {
   font-size: 12px;
   opacity: 0.85;
+  margin-top: 6px;
 }
 
-/* =========================================
-   ICON — SMALL LIKE EMOJI
-========================================= */
-
-.card-icon {
-  width: 20px;
-  height: 20px;
-  margin-bottom: 6px;
+/* Emoji styling */
+.card .emoji {
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
-.card-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+/* ================= INDIVIDUAL GRADIENTS ================= */
+
+/* LEVELS – Pink */
+.levels {
+  background: linear-gradient(145deg, #ff4fa3, #d4145a);
 }
 
-/* =========================================
-   FULL COLOR CARDS (NOT TINT)
-========================================= */
-
-.card.levels {
-  background: #ff4d8d;
+/* TALKLETICS – Gold */
+.talkletics {
+  background: linear-gradient(145deg, #f6c453, #b8860b);
 }
 
-.card.talkletics {
-  background: #d4af37;
-  color: #222;
+/* MUSIC – Orange */
+.music {
+  background: linear-gradient(145deg, #ff9a2f, #ff5e00);
 }
 
-.card.music {
-  background: #fb923c;
+/* DELF – Teal */
+.delf {
+  background: linear-gradient(145deg, #30cfd0, #0f9b8e);
 }
 
-.card.delf {
-  background: #f5d0c5;
-  color: #222;
+/* TRANSLATION – Green */
+.translation {
+  background: linear-gradient(145deg, #58cc02, #1f7a1f);
 }
 
-.card.translation {
-  background: #4ade80;
-  color: #062b12;
+/* CHAT ROOM – Blue */
+.chat {
+  background: linear-gradient(145deg, #5dade2, #1b4f72);
 }
 
-.card.chat {
-  background: #60a5fa;
-}
-
-/* =========================================
-   FOOTER
-========================================= */
+/* ================= FOOTER BUTTONS ================= */
 
 .dashboard-footer {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .dashboard-footer button {
-  padding: 10px 24px;
-  border-radius: 30px;
+  margin: 0 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
   border: none;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
   cursor: pointer;
-
-  background: linear-gradient(145deg, #1e293b, #0f172a);
+  background: rgba(255,255,255,0.1);
   color: white;
-
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-
-  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  transition: 0.2s;
 }
 
 .dashboard-footer button:hover {
-  transform: translateY(-2px);
-}
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 900px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card {
-    height: 105px;
-  }
+  background: rgba(255,255,255,0.2);
 }

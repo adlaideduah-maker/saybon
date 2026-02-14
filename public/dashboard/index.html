@@ -1,77 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LEARNER DASHBOARD — SayBon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEARNER DASHBOARD — SayBon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../css/global.css?v=3">
-<link rel="stylesheet" href="../css/dashboard.css?v=3">
+  <!-- Global + Dashboard CSS -->
+  <link rel="stylesheet" href="../css/global.css?v=5" />
+  <link rel="stylesheet" href="../css/dashboard.css?v=5" />
 </head>
 
 <body>
 
-<div class="dashboard">
+  <div class="dashboard">
 
-  <!-- HEADER -->
-  <header class="dashboard-header">
-    <h1 class="premium-title">LEARNER DASHBOARD</h1>
-    <p>Your French journey at a glance</p>
-  </header>
+    <!-- ================= HEADER ================= -->
+    <header class="dashboard-header">
+      <h1>LEARNER DASHBOARD</h1>
+      <p>Your French journey at a glance</p>
+    </header>
 
-  <!-- MAIN GRID -->
-  <main class="dashboard-grid">
 
-    <div class="card levels" onclick="goLevels()">
-      <img src="../assets/icons/levels.svg" alt="Levels">
-      <h3>Levels</h3>
-      <span>A0 → C1 structured path</span>
+    <!-- ================= MAIN GRID ================= -->
+    <main class="dashboard-grid">
+
+      <div class="card levels" onclick="goLevels()">
+        <div class="emoji">🎓</div>
+        <h3>Levels</h3>
+        <span>A0 → C1 structured path</span>
+      </div>
+
+      <div class="card talkletics" onclick="goTalkletics()">
+        <div class="emoji">🧩</div>
+        <h3>Talkletics</h3>
+        <span>Skill building games</span>
+      </div>
+
+      <div class="card music" onclick="goMusic()">
+        <div class="emoji">🎵</div>
+        <h3>Music</h3>
+        <span>Learn with rhythm</span>
+      </div>
+
+      <div class="card delf" onclick="goDelf()">
+        <div class="emoji">📄</div>
+        <h3>DELF Prep</h3>
+        <span>Mock exams</span>
+      </div>
+
+      <div class="card translation" onclick="goTranslation()">
+        <div class="emoji">🌍</div>
+        <h3>Translation</h3>
+        <span>Clients & translators</span>
+      </div>
+
+      <div class="card chat" onclick="goChat()">
+        <div class="emoji">💬</div>
+        <h3>Chat Room</h3>
+        <span>Community space</span>
+      </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <div class="dashboard-footer">
+      <button onclick="goFeedback()">Feedback</button>
+      <button onclick="goSupport()">Support 💚 SayBon</button>
+      <button onclick="goHome()">Back to Home</button>
     </div>
 
-    <div class="card games" onclick="goTalkletics()">
-      <img src="../assets/icons/games.svg" alt="Talkletics">
-      <h3>Talkletics</h3>
-      <span>Skill building games</span>
-    </div>
-
-    <div class="card music" onclick="goMusic()">
-      <img src="../assets/icons/music.svg" alt="Music">
-      <h3>Music</h3>
-      <span>Learn with rhythm</span>
-    </div>
-
-    <div class="card delf" onclick="goDelf()">
-      <img src="../assets/icons/delf.svg" alt="DELF">
-      <h3>DELF Prep</h3>
-      <span>Mock exams</span>
-    </div>
-
-    <div class="card translation" onclick="goTranslation()">
-      <img src="../assets/icons/translation.svg" alt="Translation">
-      <h3>Translation</h3>
-      <span>Clients & translators</span>
-    </div>
-
-    <div class="card chat" onclick="goChat()">
-      <img src="../assets/icons/chat.svg" alt="Chat">
-      <h3>Chat Room</h3>
-      <span>Community space</span>
-    </div>
-
-  </main>
-
-  <!-- FOOTER BUTTONS -->
-  <div class="dashboard-footer">
-    <button class="btn premium-btn" onclick="goFeedback()">Feedback</button>
-    <button class="btn premium-btn gold" onclick="goSupport()">Support SayBon</button>
-    <button class="btn premium-btn" onclick="goHome()">Back to Home</button>
   </div>
 
-</div>
 
-<script src="dashboard.js"></script>
+  <!-- ================= NAVIGATION SCRIPT ================= -->
+  <script>
+    function goLevels() {
+      window.location.href = "/levels/";
+    }
+
+    function goTalkletics() {
+      window.location.href = "/talkletics/";
+    }
+
+    function goMusic() {
+      window.location.href = "/music/";
+    }
+
+    function goDelf() {
+      window.location.href = "/delf/";
+    }
+
+    function goTranslation() {
+      window.location.href = "/translation/";
+    }
+
+    function goChat() {
+      window.location.href = "/chat/";
+    }
+
+    function goFeedback() {
+      window.location.href = "/feedback/";
+    }
+
+    function goSupport() {
+      window.location.href = "/support/";
+    }
+
+    function goHome() {
+      window.location.href = "/";
+    }
+  </script>
 
 </body>
 </html>
