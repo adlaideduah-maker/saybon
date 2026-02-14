@@ -1,66 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LEARNER 📌 DASHBOARD — SayBon</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LEARNER DASHBOARD — SayBon</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/dashboard.css">
 
-  <link rel="stylesheet" href="../css/global.css" />
-  <link rel="stylesheet" href="../css/dashboard.css" />
 </head>
-
 <body>
 
-<div class="dashboard-app">
+<div class="dashboard">
 
-  <!-- HEADER -->
-  <header class="dash-header">
-    <div class="dash-title">LEARNER 📌 DASHBOARD</div>
-    <p class="dash-sub">Your French journey at a glance</p>
-  </header>
+    <!-- HEADER -->
+    <header class="dashboard-header">
+        <h1>LEARNER DASHBOARD</h1>
+        <p>Your French journey at a glance</p>
+    </header>
 
-  <!-- WHITE CARD -->
-  <div class="dashboard-card">
+    <!-- MAIN GRID -->
+    <main class="dashboard-grid">
 
-    <!-- ICON GRID -->
-    <div class="icon-grid">
+        <div class="card" onclick="goLevels()">
+            <div class="card-icon">🎓</div>
+            <h3>Levels</h3>
+            <span>A0 → C1 structured path</span>
+        </div>
 
-      <button class="icon-btn" onclick="goLevels()">
-        <img src="../assets/icons-3d/levels.png" alt="Levels">
-      </button>
+        <div class="card" onclick="goTalkletics()">
+            <div class="card-icon">🧩</div>
+            <h3>Talkletics</h3>
+            <span>Skill building games</span>
+        </div>
 
-      <button class="icon-btn" onclick="goTalkletics()">
-        <img src="../assets/icons-3d/games.png" alt="Games">
-      </button>
+        <div class="card" onclick="goMusic()">
+            <div class="card-icon">🎵</div>
+            <h3>Music</h3>
+            <span>Curated French playlists</span>
+        </div>
 
-      <button class="icon-btn" onclick="goMusic()">
-        <img src="../assets/icons-3d/music.png" alt="Music">
-      </button>
+        <div class="card" onclick="goDelf()">
+            <div class="card-icon">📝</div>
+            <h3>DELF Prep</h3>
+            <span>Exam preparation tools</span>
+        </div>
 
-      <button class="icon-btn" onclick="goDelf()">
-        <img src="../assets/icons-3d/delf.png" alt="DELF">
-      </button>
+        <div class="card" onclick="goTranslation()">
+            <div class="card-icon">🌍</div>
+            <h3>Translation</h3>
+            <span>Clients & translators</span>
+        </div>
 
-      <button class="icon-btn" onclick="goTranslation()">
-        <img src="../assets/icons-3d/translation.png" alt="Translation">
-      </button>
+        <div class="card" onclick="goChat()">
+            <div class="card-icon">💬</div>
+            <h3>Community</h3>
+            <span>Chat & discussion</span>
+        </div>
 
-      <button class="icon-btn" onclick="goChat()">
-        <img src="../assets/icons-3d/chat.png" alt="Chat">
-      </button>
+    </main>
 
+    <!-- FOOTER BUTTONS -->
+    <div class="dashboard-footer">
+        <button onclick="goFeedback()">Feedback</button>
+        <button onclick="goSupport()">Support 💚 SayBon</button>
+        <button onclick="goHome()">Back to Home</button>
     </div>
-
-  </div>
-
-  <!-- BOTTOM BUTTONS -->
-  <div class="bottom-buttons">
-    <button onclick="goFeedback()">Feedback</button>
-    <button onclick="goSupport()">Support 💚 SayBon</button>
-    <button onclick="goHome()">Back to Home</button>
-  </div>
 
 </div>
 
