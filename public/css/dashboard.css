@@ -1,45 +1,50 @@
-/* ==============================================
-   SAYBON PREMIUM FULL COLOR DASHBOARD
-   No Scroll. Full Viewport. 3D Glass Cards.
-============================================== */
+/* =========================================
+   SAYBON PREMIUM DASHBOARD — FINAL POLISHED
+   No scroll • Full viewport fit • Clean luxury
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden; /* 🚫 No scroll */
   font-family: "Inter", sans-serif;
-  overflow: hidden; /* No scrolling */
-  background: radial-gradient(circle at top, #0f172a 0%, #050a18 80%);
+  background: radial-gradient(circle at top, #0f172a 0%, #050a18 85%);
   color: white;
 }
 
-/* ===============================
-   MAIN WRAPPER (FULL SCREEN)
-================================ */
+/* =========================================
+   WRAPPER
+========================================= */
 
 .dashboard {
   height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 60px;
-  box-sizing: border-box;
 }
 
-/* ===============================
+/* =========================================
    HEADER
-================================ */
+========================================= */
 
 .dashboard-header {
   text-align: center;
 }
 
 .dashboard-header h1 {
-  margin: 0;
   font-size: 44px;
   font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(90deg, #6c8cff, #9b8cff);
+  margin: 0;
+
+  background: linear-gradient(90deg, #ff4d8d, #6c8cff, #4ade80);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -47,65 +52,61 @@ html, body {
 .dashboard-header p {
   margin-top: 10px;
   font-size: 16px;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* ===============================
-   GRID — PERFECT FIT
-================================ */
+/* =========================================
+   GRID
+========================================= */
 
 .dashboard-grid {
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 30px;
-  align-items: stretch;
+  gap: 22px;
 }
 
-/* ===============================
-   BASE CARD
-================================ */
+/* =========================================
+   CARDS — Smaller, Clean, Fully Colored
+========================================= */
 
 .card {
-  border-radius: 32px;
-  padding: 30px;
-  cursor: pointer;
-  transition: all 0.35s ease;
+  border-radius: 22px;
+  padding: 22px 24px;
+  height: 140px;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
-/* Gloss highlight */
-.card::before {
-  content: "";
-  position: absolute;
-  top: -30%;
-  left: -30%;
-  width: 160%;
-  height: 160%;
-  background: radial-gradient(circle at top left,
-    rgba(255,255,255,0.4),
-    transparent 60%);
-  pointer-events: none;
-}
-
-/* Hover Lift */
+/* Hover */
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.35);
 }
 
-/* ===============================
-   TEXT
-================================ */
+.card:active {
+  transform: scale(0.98);
+}
+
+/* =========================================
+   TITLE IS MAIN FEATURE
+========================================= */
 
 .card h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
+  margin: 0 0 6px 0;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .card span {
@@ -113,81 +114,61 @@ html, body {
   opacity: 0.85;
 }
 
-/* ===============================
-   ICON
-================================ */
+/* =========================================
+   ICONS — SMALL, SUBTLE (like emojis)
+========================================= */
 
-.card-icon img {
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  top: 30px;
-  right: 30px;
+.card-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 8px;
   opacity: 0.9;
 }
 
-/* =====================================================
-   FULL COLOR CARD THEMES
-   MATCHING YOUR REFERENCE IMAGES EXACTLY
-===================================================== */
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-/* A — LEVELS (Pink 3D) */
+/* =========================================
+   FULL COLOR CARDS (LIKE REFERENCE)
+========================================= */
+
+/* A — Levels (Pink) */
 .card.levels {
-  background: linear-gradient(145deg, #ff6aa9, #ff3f8e);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.4),
-    inset 0 -8px 18px rgba(0,0,0,0.4),
-    0 25px 60px rgba(255, 60, 140, 0.6);
+  background: linear-gradient(145deg, #ff4d8d, #c81e5f);
 }
 
-/* B — TALKLETICS (Gold 3D) */
+/* B — Talkletics (Gold/White) */
 .card.talkletics {
-  background: linear-gradient(145deg, #f6d365, #fbbf24);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.6),
-    inset 0 -8px 18px rgba(0,0,0,0.3),
-    0 25px 60px rgba(255, 200, 60, 0.5);
+  background: linear-gradient(145deg, #facc15, #b45309);
 }
 
-/* C — MUSIC (Orange 3D) */
+/* C — Music (Orange) */
 .card.music {
-  background: linear-gradient(145deg, #ffb347, #ff7a00);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.4),
-    inset 0 -8px 18px rgba(0,0,0,0.4),
-    0 25px 60px rgba(255, 130, 0, 0.5);
+  background: linear-gradient(145deg, #fb923c, #ea580c);
 }
 
-/* D — DELF (Rose Glass) */
+/* D — Delf (Soft Peach) */
 .card.delf {
-  background: linear-gradient(145deg, #e8b4a7, #c08478);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.4),
-    inset 0 -8px 18px rgba(0,0,0,0.3),
-    0 25px 60px rgba(200, 130, 120, 0.4);
+  background: linear-gradient(145deg, #f5d0c5, #e8b4a0);
+  color: #2b2b2b;
 }
 
-/* E — TRANSLATION (Green Glass) */
+/* E — Translation (Green) */
 .card.translation {
-  background: linear-gradient(145deg, #9be15d, #00c853);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.5),
-    inset 0 -8px 18px rgba(0,0,0,0.4),
-    0 25px 60px rgba(0, 200, 80, 0.4);
+  background: linear-gradient(145deg, #4ade80, #166534);
 }
 
-/* F — CHAT (Blue Glass) */
+/* F — Chat (Blue) */
 .card.chat {
-  background: linear-gradient(145deg, #6dd5fa, #2980ff);
-  box-shadow:
-    inset 0 6px 12px rgba(255,255,255,0.5),
-    inset 0 -8px 18px rgba(0,0,0,0.4),
-    0 25px 60px rgba(50, 140, 255, 0.5);
+  background: linear-gradient(145deg, #60a5fa, #1e3a8a);
 }
 
-/* ===============================
-   FOOTER BUTTONS
-================================ */
+/* =========================================
+   FOOTER BUTTONS — PREMIUM
+========================================= */
 
 .dashboard-footer {
   display: flex;
@@ -196,20 +177,40 @@ html, body {
 }
 
 .dashboard-footer button {
-  padding: 12px 26px;
+  padding: 12px 28px;
   border-radius: 30px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(145deg, #1c2338, #0f1526);
+  transition: all 0.25s ease;
+
+  background: linear-gradient(145deg, #1e293b, #0f172a);
   color: white;
+
   box-shadow:
-    inset 0 2px 5px rgba(255,255,255,0.08),
-    inset 0 -3px 6px rgba(0,0,0,0.6),
-    0 12px 35px rgba(0,0,0,0.6);
-  transition: 0.3s ease;
+    0 8px 20px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .dashboard-footer button:hover {
   transform: translateY(-3px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    height: 120px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 32px;
+  }
 }
