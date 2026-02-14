@@ -1,18 +1,18 @@
 /* =============================
-   UNFORGETTABLE CLASSIC DASHBOARD
+   PREMIUM GLASS DASHBOARD
 ============================= */
 
 body {
     margin: 0;
     font-family: "Inter", sans-serif;
-    background: radial-gradient(circle at top, #1a2238 0%, #0b1220 60%);
+    background: radial-gradient(circle at top, #111827 0%, #0b1220 60%);
     color: white;
 }
 
 .dashboard {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 70px 20px;
 }
 
 /* =============================
@@ -24,17 +24,19 @@ body {
     margin-bottom: 60px;
 }
 
-.dashboard-header h1 {
-    font-size: 42px;
+.premium-title {
+    font-size: 44px;
     font-weight: 800;
     letter-spacing: -1px;
-    margin: 0;
+    background: linear-gradient(90deg, #6c8cff, #b06cff, #ff6ca8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .dashboard-header p {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 16px;
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 /* =============================
@@ -48,29 +50,62 @@ body {
 }
 
 /* =============================
-   CARD DESIGN
+   3D GLASS CARDS
 ============================= */
 
 .card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 22px;
-    padding: 30px;
+    border-radius: 24px;
+    padding: 32px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(18px);
+    transition: all 0.35s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.25),
+        inset 0 -4px 8px rgba(0,0,0,0.25),
+        0 20px 40px rgba(0,0,0,0.35);
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    background: rgba(255,255,255,0.07);
-    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-8px);
 }
 
+/* COLOR TINTS */
+
+.levels {
+    background: rgba(255, 90, 140, 0.15);
+}
+
+.games {
+    background: rgba(74, 108, 255, 0.15);
+}
+
+.music {
+    background: rgba(255, 155, 48, 0.15);
+}
+
+.delf {
+    background: rgba(63, 181, 255, 0.15);
+}
+
+.translation {
+    background: rgba(108, 92, 255, 0.15);
+}
+
+.chat {
+    background: rgba(179, 92, 255, 0.15);
+}
+
+/* ICONS */
+
 .card-icon {
-    font-size: 28px;
+    width: 42px;
+    height: 42px;
     margin-bottom: 18px;
 }
+
+/* TEXT */
 
 .card h3 {
     margin: 0;
@@ -82,37 +117,43 @@ body {
     display: block;
     margin-top: 8px;
     font-size: 14px;
-    opacity: 0.65;
+    opacity: 0.7;
 }
 
 /* =============================
-   FOOTER
+   FOOTER BUTTONS
 ============================= */
 
 .dashboard-footer {
     margin-top: 60px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 22px;
 }
 
-.dashboard-footer button {
-    padding: 12px 26px;
+.btn-premium {
+    padding: 14px 28px;
     border-radius: 40px;
     border: none;
-    background: linear-gradient(135deg, #5c7cfa, #748ffc);
-    color: white;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s ease;
+    color: white;
+
+    background: linear-gradient(135deg, #1f2937, #111827);
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.08),
+        inset 0 -3px 6px rgba(0,0,0,0.6),
+        0 10px 30px rgba(0,0,0,0.6);
+
+    transition: all 0.25s ease;
 }
 
-.dashboard-footer button:hover {
-    transform: translateY(-3px);
+.btn-premium:hover {
+    transform: translateY(-4px);
 }
 
 /* =============================
-   MOBILE
+   RESPONSIVE
 ============================= */
 
 @media (max-width: 900px) {
@@ -126,8 +167,8 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .dashboard-header h1 {
-        font-size: 30px;
+    .premium-title {
+        font-size: 32px;
     }
 
     .dashboard-footer {
